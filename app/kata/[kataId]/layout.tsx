@@ -2,20 +2,15 @@
 
 import { TabsTrigger, TabsContent, Tabs, TabsList } from "@/components/ui/tabs";
 import Link from "next/link";
-import { notFound, usePathname } from "next/navigation";
+import { notFound, useParams, usePathname } from "next/navigation";
 import { getKata } from "@/app/data/get-kata";
 
-export default async function Layout({
+export default function Layout({
   children,
-  params
-}: Readonly<{
-  children: React.ReactNode,
-  params: Promise<{kataId: string}>
-}>){
+}: Readonly<{children: React.ReactNode}>){
     const pathName = usePathname();
-    
-    const kataId = (await params).kataId;
-    const kata = getKata(kataId);
+    const { kataId } = useParams();
+    const kata = getKata(typeof kataId === 'string' ? kataId : '');
     if (!kata) {
       notFound()
     }

@@ -39,7 +39,7 @@ export default function RootLayout({
                     <SidebarGroupLabel>Katas</SidebarGroupLabel>
                     <SidebarGroupContent>
                       {katas.map((kata) => (
-                        <SidebarMenu>
+                        <SidebarMenu key={kata.id}>
                           <SidebarMenuItem key={kata.id}>
                             <SidebarMenuButton isActive={kata.id === kataId}>
                               <a href={`/kata/${kata.id}/motions`}>{kata.name}</a>
