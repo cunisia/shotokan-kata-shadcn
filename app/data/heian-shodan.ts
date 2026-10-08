@@ -1,9 +1,10 @@
-import { Kata, Position, Side, Target, Type, Orientation } from "@/type";
+import { type Kata, Orientation, Position, Side, Target, Type } from "@/type";
 
 export const HEIAN_SHODAN: Kata = {
   id: "heian-shodan",
   name: "Heian Shodan (Heian N° 1)",
-  description: "Heian Shodan is the most accessible of the five Heian katas. It combines five basic techniques: downward blocks, stepping straight punches to the middle level, rising blocks, knife-hand blocks and a hammer-fist strike. In Shotokan, it is now the first kata taught to beginners, although Heian Nidan originally came first and still does in some styles. The change is generally explained as a way to introduce technical difficulty more gradually. The book offers two possible explanations for the earlier sequence: Itosu may have believed that practising the simpler kata was more beneficial after mastering the harder second one, or Heian Nidan may have been a revised form of Kushanku.",
+  description:
+    "Heian Shodan is the most accessible of the five Heian katas. It combines five basic techniques: downward blocks, stepping straight punches to the middle level, rising blocks, knife-hand blocks and a hammer-fist strike. In Shotokan, it is now the first kata taught to beginners, although Heian Nidan originally came first and still does in some styles. The change is generally explained as a way to introduce technical difficulty more gradually. The book offers two possible explanations for the earlier sequence: Itosu may have believed that practising the simpler kata was more beneficial after mastering the harder second one, or Heian Nidan may have been a revised form of Kushanku.",
   techniques: [
     {
       position: Position.HACHIJI,
@@ -11,9 +12,9 @@ export const HEIAN_SHODAN: Kata = {
       techniques: [
         {
           name: "yoi",
-          type: Type.KAMAE
-        }
-      ]
+          type: Type.KAMAE,
+        },
+      ],
     },
     {
       index: "1",
@@ -24,10 +25,10 @@ export const HEIAN_SHODAN: Kata = {
           name: "gedan-barai",
           target: Target.GEDAN,
           type: Type.BLOCK,
-          side: Side.HIDARI
-        }
+          side: Side.HIDARI,
+        },
       ],
-      orientation: Orientation.W
+      orientation: Orientation.W,
     },
     {
       index: "2",
@@ -38,10 +39,10 @@ export const HEIAN_SHODAN: Kata = {
           name: "oi-zuki",
           target: Target.CHUDAN,
           type: Type.HATEMI,
-          side: Side.MIGI
-        }
+          side: Side.MIGI,
+        },
       ],
-      orientation: Orientation.W
+      orientation: Orientation.W,
     },
     {
       index: "3",
@@ -52,10 +53,10 @@ export const HEIAN_SHODAN: Kata = {
           name: "gedan-barai",
           target: Target.GEDAN,
           type: Type.BLOCK,
-          side: Side.MIGI
-        }
+          side: Side.MIGI,
+        },
       ],
-      orientation: Orientation.E
+      orientation: Orientation.E,
     },
     {
       index: "4",
@@ -65,10 +66,10 @@ export const HEIAN_SHODAN: Kata = {
         {
           name: "tate-mawashi tettsui-uchi",
           type: Type.HATEMI,
-          side: Side.MIGI
-        }
+          side: Side.MIGI,
+        },
       ],
-      orientation: Orientation.E
+      orientation: Orientation.E,
     },
     {
       index: "5",
@@ -79,10 +80,10 @@ export const HEIAN_SHODAN: Kata = {
           name: "oi-zuki",
           target: Target.CHUDAN,
           type: Type.HATEMI,
-          side: Side.HIDARI
-        }
+          side: Side.HIDARI,
+        },
       ],
-      orientation: Orientation.E
+      orientation: Orientation.E,
     },
     {
       index: "6",
@@ -93,10 +94,10 @@ export const HEIAN_SHODAN: Kata = {
           name: "gedan-barai",
           target: Target.GEDAN,
           type: Type.BLOCK,
-          side: Side.HIDARI
-        }
+          side: Side.HIDARI,
+        },
       ],
-      orientation: Orientation.N
+      orientation: Orientation.N,
     },
     {
       index: "7",
@@ -107,10 +108,10 @@ export const HEIAN_SHODAN: Kata = {
           name: "age-uke",
           target: Target.JODAN,
           type: Type.BLOCK,
-          side: Side.MIGI
-        }
+          side: Side.MIGI,
+        },
       ],
-      orientation: Orientation.N
+      orientation: Orientation.N,
     },
     {
       index: "8",
@@ -121,10 +122,10 @@ export const HEIAN_SHODAN: Kata = {
           name: "age-uke",
           target: Target.JODAN,
           type: Type.BLOCK,
-          side: Side.HIDARI
-        }
+          side: Side.HIDARI,
+        },
       ],
-      orientation: Orientation.N
+      orientation: Orientation.N,
     },
     {
       index: "9",
@@ -136,10 +137,10 @@ export const HEIAN_SHODAN: Kata = {
           name: "age-uke",
           target: Target.JODAN,
           type: Type.BLOCK,
-          side: Side.MIGI
-        }
+          side: Side.MIGI,
+        },
       ],
-      orientation: Orientation.N
+      orientation: Orientation.N,
     },
     {
       index: "10",
@@ -150,10 +151,10 @@ export const HEIAN_SHODAN: Kata = {
           name: "gedan-barai",
           target: Target.GEDAN,
           type: Type.BLOCK,
-          side: Side.HIDARI
-        }
+          side: Side.HIDARI,
+        },
       ],
-      orientation: Orientation.E
+      orientation: Orientation.E,
     },
     {
       index: "11",
@@ -164,10 +165,10 @@ export const HEIAN_SHODAN: Kata = {
           name: "oi-zuki",
           target: Target.CHUDAN,
           type: Type.HATEMI,
-          side: Side.MIGI
-        }
+          side: Side.MIGI,
+        },
       ],
-      orientation: Orientation.E
+      orientation: Orientation.E,
     },
     {
       index: "12",
@@ -178,10 +179,10 @@ export const HEIAN_SHODAN: Kata = {
           name: "gedan-barai",
           target: Target.GEDAN,
           type: Type.BLOCK,
-          side: Side.MIGI
-        }
+          side: Side.MIGI,
+        },
       ],
-      orientation: Orientation.W
+      orientation: Orientation.W,
     },
     {
       index: "13",
@@ -192,10 +193,10 @@ export const HEIAN_SHODAN: Kata = {
           name: "oi-zuki",
           target: Target.CHUDAN,
           type: Type.HATEMI,
-          side: Side.HIDARI
-        }
+          side: Side.HIDARI,
+        },
       ],
-      orientation: Orientation.W
+      orientation: Orientation.W,
     },
     {
       index: "14",
@@ -207,10 +208,10 @@ export const HEIAN_SHODAN: Kata = {
           name: "gedan-barai",
           target: Target.GEDAN,
           type: Type.BLOCK,
-          side: Side.HIDARI
-        }
+          side: Side.HIDARI,
+        },
       ],
-      orientation: Orientation.S
+      orientation: Orientation.S,
     },
     {
       index: "15",
@@ -222,10 +223,10 @@ export const HEIAN_SHODAN: Kata = {
           name: "oi-zuki",
           target: Target.CHUDAN,
           type: Type.HATEMI,
-          side: Side.MIGI
-        }
+          side: Side.MIGI,
+        },
       ],
-      orientation: Orientation.S
+      orientation: Orientation.S,
     },
     {
       index: "16",
@@ -236,10 +237,10 @@ export const HEIAN_SHODAN: Kata = {
           name: "oi-zuki",
           target: Target.CHUDAN,
           type: Type.HATEMI,
-          side: Side.HIDARI
-        }
+          side: Side.HIDARI,
+        },
       ],
-      orientation: Orientation.S
+      orientation: Orientation.S,
     },
     {
       index: "17",
@@ -252,10 +253,10 @@ export const HEIAN_SHODAN: Kata = {
           name: "oi-zuki",
           target: Target.CHUDAN,
           type: Type.HATEMI,
-          side: Side.MIGI
-        }
+          side: Side.MIGI,
+        },
       ],
-      orientation: Orientation.S
+      orientation: Orientation.S,
     },
     {
       index: "18",
@@ -266,10 +267,10 @@ export const HEIAN_SHODAN: Kata = {
           name: "shuto-uke",
           target: Target.CHUDAN,
           type: Type.BLOCK,
-          side: Side.HIDARI
-        }
+          side: Side.HIDARI,
+        },
       ],
-      orientation: Orientation.W
+      orientation: Orientation.W,
     },
     {
       index: "19",
@@ -280,10 +281,10 @@ export const HEIAN_SHODAN: Kata = {
           name: "shuto-uke",
           target: Target.CHUDAN,
           type: Type.BLOCK,
-          side: Side.MIGI
-        }
+          side: Side.MIGI,
+        },
       ],
-      orientation: Orientation.NW
+      orientation: Orientation.NW,
     },
     {
       index: "20",
@@ -294,10 +295,10 @@ export const HEIAN_SHODAN: Kata = {
           name: "shuto-uke",
           target: Target.CHUDAN,
           type: Type.BLOCK,
-          side: Side.MIGI
-        }
+          side: Side.MIGI,
+        },
       ],
-      orientation: Orientation.E
+      orientation: Orientation.E,
     },
     {
       index: "21",
@@ -308,10 +309,10 @@ export const HEIAN_SHODAN: Kata = {
           name: "shuto-uke",
           target: Target.CHUDAN,
           type: Type.BLOCK,
-          side: Side.HIDARI
-        }
+          side: Side.HIDARI,
+        },
       ],
-      orientation: Orientation.NE
+      orientation: Orientation.NE,
     },
     {
       position: Position.HACHIJI,
@@ -319,9 +320,9 @@ export const HEIAN_SHODAN: Kata = {
       techniques: [
         {
           name: "yame",
-          type: Type.KAMAE
-        }
-      ]
-    }
+          type: Type.KAMAE,
+        },
+      ],
+    },
   ],
 };
