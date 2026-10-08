@@ -1,19 +1,28 @@
+'use client'
+
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { Item, ItemMedia, ItemContent, ItemTitle, ItemDescription, ItemActions } from "@/components/ui/item";
-import { Motion, Position, Side } from "@/type";
+import { Motion, Position, Side, Technique } from "@/type";
 import Image from 'next/image'
 import { Badge } from "@/components/ui/badge";
 import { getKata } from "@/app/data/get-kata";
-import { notFound } from "next/navigation";
+import { notFound, useParams } from "next/navigation";
+import { Button } from "@/components/ui/button";
+import { useState } from "react";
+import { Switch } from "@/components/ui/switch";
+import { Label } from "@/components/ui/label";
+import { createColumnHelper, tableFeatures, useTable } from "@tanstack/react-table";
+import { Table, TableHeader } from "@/components/ui/table";
+import TechniquesTables from "@/components/ui/techniques-table";
 
 const getMotionName = (motion: Motion) => {
     const nameItems: string[] = []
-    const name  = motion.technique.name;
+    const name  = motion.techniques[0].name;
     if (!!motion.index) {
         nameItems.push(`${motion.index} - `)
     }
-    const target = motion.technique.target
+    const target = motion.techniques[0].target
     if (!!target) {
         nameItems.push(target)
     }
@@ -30,26 +39,27 @@ const getPositionName = (position: Position) => {
     }
 }
 
-const getSideName = (side: Side) => {
-    switch (side) {
-        case Side.HIDARI: 
-            return `${side} (left)`
-        case Side.MIGI: 
-            return `${side} (right)`
-    }
+const getPictureName = (motion: Motion, isBack?: boolean) => {
+    const nameItems: (string | undefined)[] = [
+        motion.position,
+        ...motion.techniques.map(technique => `${technique.side}_${technique.target}_${technique.name}`),
+        motion.orientation,
+        ...(isBack ? ['back'] : [])
+    ]
+    return `/${nameItems.join('_')}.png`
 }
 
-const getPictureName = (motion: Motion) => {
-    return `/${motion.position}_${motion.technique.side}_${motion.technique.target}_${motion.technique.name}_${motion.technique.orientation}.png`
-}
 
-export default async function Page({
-  params
-}: Readonly<{
-  params: Promise<{kataId: string}>
-}>) {
-    const kataId = (await params).kataId;
-    const kata = getKata(kataId);
+export default function Page() {
+    const [showBackPicture, setShowBackPicture] = useState<boolean>(false)
+
+    const {kataId} = useParams();
+    const kata = getKata(typeof kataId === 'string' ? kataId : '');
+
+    const isBackPictureDisplayed = (motion: Motion) => motion.hasBackPicture && showBackPicture
+    const isBackPictureSwitchDisplayed = (motion: Motion) => motion.hasBackPicture || showBackPicture
+    const isTableDisplayed = (motion: Motion) => !['yoi', 'yame'].includes(motion.techniques[0].name)
+
     if (!kata) {
         notFound()
     }
@@ -64,40 +74,51 @@ export default async function Page({
                 <CardHeader>
                     <CardTitle><h2 className="text-xl font-semibold capitalize">{getMotionName(motion)}</h2></CardTitle>
                 </CardHeader>
-                <CardContent className="flex flex-col gap-2">
+                <CardContent className="flex flex-col gap-4">
                     <div className="relative">
                         {motion.kiai && (<Badge variant="destructive" className="absolute top-2 right-2 font-bold">Kiai!</Badge>)}
-                        <Image src={getPictureName(motion)} alt={getMotionName(motion)} width={385} height={500}/>
+                        <Image src={getPictureName(motion, motion.hasBackPicture && showBackPicture)} alt={getMotionName(motion)} width={385} height={500}/>
+                        {isBackPictureDisplayed(motion) && (<Badge variant="secondary" className="absolute bottom-2 right-2 font-bold">Back</Badge>)}
                     </div>
+                    {isBackPictureSwitchDisplayed(motion) && 
+                        (<div className="flex items-center space-x-2">
+                            <Switch checked={showBackPicture} onCheckedChange={(isChecked) => setShowBackPicture(isChecked)}/>
+                            <Label htmlFor="airplane-mode">Show back picture</Label>
+                        </div>
+                        )
+                    }
+                    {isTableDisplayed(motion) && (<TechniquesTables motion={motion} />)}
                     <div className="grid grid-cols-2">
-                        <Item className="items-start">
-                            <ItemContent>
-                                <ItemTitle>Technique</ItemTitle>
-                                <ItemDescription className="first-letter:uppercase">{motion.technique.name}{motion.kiai && (<span className="font-bold"> + kiai</span>)}</ItemDescription>
-                            </ItemContent>
-                        </Item>
-                        { motion.technique.target &&
-                            (<Item className="items-start">
+                        {!isTableDisplayed(motion) && (<>
+                            <Item className="items-start">
                                 <ItemContent>
-                                    <ItemTitle>Target</ItemTitle>
-                                    <ItemDescription className="first-letter:uppercase">{motion.technique.target}</ItemDescription>
+                                    <ItemTitle>Technique</ItemTitle>
+                                    <ItemDescription className="first-letter:uppercase">{motion.techniques[0].name}{motion.kiai && (<span className="font-bold"> + kiai</span>)}</ItemDescription>
                                 </ItemContent>
-                            </Item>)
-                        }
+                            </Item>
+                            {/* { motion.techniques[0].target &&
+                                (<Item className="items-start">
+                                    <ItemContent>
+                                        <ItemTitle>Target</ItemTitle>
+                                        <ItemDescription className="first-letter:uppercase">{motion.techniques[0].target}</ItemDescription>
+                                    </ItemContent>
+                                </Item>)
+                            }
+                            { motion.techniques[0].side &&
+                                (<Item className="items-start">
+                                    <ItemContent>
+                                        <ItemTitle>Side</ItemTitle>
+                                        <ItemDescription className="first-letter:uppercase">{getSideName(motion.techniques[0].side)}</ItemDescription>
+                                    </ItemContent>
+                                </Item>)
+                            } */}
+                        </>)}
                         <Item className="items-start">
                             <ItemContent>
                                 <ItemTitle>Position</ItemTitle>
                                 <ItemDescription className="first-letter:uppercase">{getPositionName(motion.position)}</ItemDescription>
                             </ItemContent>
                         </Item>
-                        { motion.technique.side &&
-                            (<Item className="items-start">
-                                <ItemContent>
-                                    <ItemTitle>Side</ItemTitle>
-                                    <ItemDescription className="first-letter:uppercase">{getSideName(motion.technique.side)}</ItemDescription>
-                                </ItemContent>
-                            </Item>)
-                        }
                         { motion.note &&
                             (<Item className="col-span-2 items-start">
                                 <ItemContent>

@@ -12,7 +12,7 @@ export interface Kata {
 // The title is usually structured this way: Index) Position / Side Target Name (yoi and yame are exceptions to this structure)
 export interface Motion {
     position: Position // extract position from the title (as indicated previously) and match it to one of the Position enum (remove dachi from the end, it means `position` in japonese and turn it to lowercase letters). If you cannot find a match, prompt me, maybe the enum needs to be enriched. For Yoi and Yame, it's almost always hachiji (unless told differently)
-    technique: Technique
+    techniques: Technique[] // most of the time there is only one, on rare occasion they are two, which is why it's an array
     kiai?: boolean // if underneath the picture of this motion there is a bang operator, then true, undefined otherwise.
     // Describe the transition between the previous and current stance.
     // Include the pivot foot whenever the practitioner turns:
@@ -34,29 +34,9 @@ export interface Motion {
     //
     // If the pivot foot or the intended rotation is unclear, ask me.
     note?: string 
-    index?: string // the index of the motion in the kata, use the one from the book. yoi and yame have no index
+    index?: string // the index of the motion in the kata, use the one from the book but concatenate numbers and letters (remove the dash) and make the letter lowercase. yoi and yame have no index
     hasBackPicture?: boolean // true if a back picture was extracted from the technique too
     hasSidePicture?: boolean // true if a side picture was extracted from the technique too
-}
-
-export enum Position {
-    HACHIJI = 'hachiji',
-    ZENKUTSU = 'zenkutsu',
-    KOKUTSU = 'kokutsu',
-    KIBA = 'kiba',
-    FUDO = 'fudo',
-    HANGETSU = 'hangetsu',
-    NEKO = 'neko',
-    MUSTSUBI = 'mutsubi',
-    RENOJI = 'renoji',
-    TSURU_ASHI = 'tsuru-ashi',
-}
-
-export interface Technique {
-    name: string // extract name from the title (as indicated previously) make it lower case, yoi for yoi, yame for yame
-    target?: Target // extract target from the title (as indicated previously) and match it to one of the Target enum (sometimes there is no target, if you cannot find a match, prompt me to ask me if it should remain undefined, it's always undefined for Yoi and Yame)
-    type?: Type // technique suffixed by uke are blocks, techniques suffixed by kamae are kamae (guard), others are usually hatemi. Gedan barai is a block though. Yoi and Yame are always kamae
-    side?: Side, // extract side from the title (as indicated previously) and match it to one of the Side enum. Undefined for Yoi and Yame.
     // The orientation is the direction the practitioner faces in a fixed
     // coordinate system for the kata, not the camera angle or the rotation
     // of the head, shoulders or hips.
@@ -80,6 +60,27 @@ export interface Technique {
     // If the available information does not establish the direction clearly,
     // ask me rather than guessing.
     orientation?: Orientation
+}
+
+export enum Position {
+    HACHIJI = 'hachiji',
+    ZENKUTSU = 'zenkutsu',
+    KOKUTSU = 'kokutsu',
+    KIBA = 'kiba',
+    FUDO = 'fudo',
+    HANGETSU = 'hangetsu',
+    NEKO = 'neko',
+    MUSTSUBI = 'mutsubi',
+    RENOJI = 'renoji',
+    TSURU_ASHI = 'tsuru-ashi',
+    HEISOKU = 'heisoku'
+}
+
+export interface Technique {
+    name: string // extract name from the title (as indicated previously) make it lower case, yoi for yoi, yame for yame
+    target?: Target // extract target from the title (as indicated previously) and match it to one of the Target enum (sometimes there is no target, if you cannot find a match, prompt me to ask me if it should remain undefined, it's always undefined for Yoi and Yame)
+    type?: Type // technique suffixed by uke are blocks, techniques suffixed by kamae are kamae (guard), others are usually hatemi. Gedan barai is a block though. Yoi and Yame are always kamae
+    side?: Side, // extract side from the title (as indicated previously) and match it to one of the Side enum. Undefined for Yoi and Yame.
 }
 
 export enum Target {

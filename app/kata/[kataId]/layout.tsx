@@ -18,7 +18,7 @@ export default function Layout({
     return (
       <div className='w-full md:w-[460px] h-full flex flex-col gap-4 items-center m-auto'>
         <h1 className="text-2xl font-semibold">{kata.name}</h1>
-        <Tabs defaultValue={pathName.includes('description') ? 'description' : 'motions'} className="flex-none">
+        <Tabs value={pathName.includes('description') ? 'description' : 'motions'} className="flex-none">
           <TabsList>
             <TabsTrigger value="description"><Link href={`/kata/${kataId}/description`}>Description</Link></TabsTrigger>
             <TabsTrigger value="motions"><Link href={`/kata/${kataId}/motions`}>Motions</Link></TabsTrigger>

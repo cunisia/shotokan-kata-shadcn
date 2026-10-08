@@ -1,407 +1,469 @@
 import { Kata, Position, Side, Target, Type, Orientation } from "@/type";
 
 export const HEIAN_NIDAN: Kata = {
-  id: 'heian-nidan',
+  id: "heian-nidan",
   name: "Heian Nidan (Heian N° 2)",
   description: "Heian Nidan adds several fundamentals not found in Heian Shodan: inside-to-outside forearm blocks, close-range punches, snapping side kicks paired with a backfist strike, and snapping front kicks. Its greater use of knife-hand blocks in back stance gives it a particularly characteristic kata structure.",
   techniques: [
-    // Yoi
     {
       position: Position.HACHIJI,
-      technique: {
-        name: "yoi",
-        type: Type.KAMAE,
-      },
+      techniques: [
+        {
+          name: "yoi",
+          type: Type.KAMAE
+        }
+      ]
     },
-    // 1
     {
       index: "1",
       position: Position.KOKUTSU,
-      technique: {
-        name: "uchi haiwan-uke",
-        target: Target.JODAN,
-        type: Type.BLOCK,
-        side: Side.HIDARI,
-        orientation: Orientation.W,
-      },
-      note: "rotate 90 degrees left and step left; raise the right arm in support",
+      note: "rotate 90 degrees left and step left",
+      techniques: [
+        {
+          name: "uchi haiwan-uke",
+          target: Target.JODAN,
+          type: Type.BLOCK,
+          side: Side.HIDARI
+        },
+        {
+          name: "ude soete",
+          type: Type.KAMAE,
+          side: Side.MIGI
+        }
+      ],
+      orientation: Orientation.W
     },
-    // 2-A
     {
-      index: "2-A",
+      index: "2a",
       position: Position.KOKUTSU,
-      technique: {
-        name: "ude-uke",
-        type: Type.BLOCK,
-        side: Side.HIDARI,
-        orientation: Orientation.W,
-      },
-      note: "stay where you are; bring the left fist toward the right shoulder and strike high with the right hammer-fist while turning the hips left",
+      note: "stay where you are and turn the hips left",
+      techniques: [
+        {
+          name: "ude-uke",
+          type: Type.BLOCK,
+          side: Side.HIDARI
+        },
+        {
+          name: "tettsui-uchi",
+          type: Type.HATEMI,
+          side: Side.MIGI,
+          target: Target.JODAN
+        }
+      ],
+      orientation: Orientation.W
     },
-    // 2
     {
       index: "2",
       position: Position.KOKUTSU,
-      technique: {
-        name: "zuki",
-        target: Target.CHUDAN,
-        type: Type.HATEMI,
-        side: Side.HIDARI,
-        orientation: Orientation.W,
-      },
       note: "stay where you are",
+      techniques: [
+        {
+          name: "zuki",
+          target: Target.CHUDAN,
+          type: Type.HATEMI,
+          side: Side.HIDARI
+        }
+      ],
+      orientation: Orientation.W
     },
-    // 3
     {
       index: "3",
       position: Position.KOKUTSU,
-      technique: {
-        name: "uchi haiwan-uke",
-        target: Target.JODAN,
-        type: Type.BLOCK,
-        side: Side.MIGI,
-        orientation: Orientation.E,
-      },
-      note: "rotate 180 degrees right in place and transfer weight onto the left leg; raise the left arm in support",
+      note: "rotate 180 degrees right in place and transfer weight onto the left leg",
+      techniques: [
+        {
+          name: "uchi haiwan-uke",
+          target: Target.JODAN,
+          type: Type.BLOCK,
+          side: Side.MIGI
+        },
+        {
+          name: "ude soete",
+          type: Type.KAMAE,
+          side: Side.HIDARI
+        }
+      ],
+      orientation: Orientation.E
     },
-    // 4-A
     {
-      index: "4-A",
+      index: "4a",
       position: Position.KOKUTSU,
-      technique: {
-        name: "ude-uke",
-        type: Type.BLOCK,
-        side: Side.MIGI,
-        orientation: Orientation.E,
-      },
-      note: "stay where you are; bring the right fist toward the left shoulder and strike high with the left hammer-fist",
+      note: "stay where you are",
+      techniques: [
+        {
+          name: "ude-uke",
+          type: Type.BLOCK,
+          side: Side.MIGI
+        },
+        {
+          name: "tettsui-uchi",
+          type: Type.HATEMI,
+          side: Side.HIDARI,
+          target: Target.JODAN
+        }
+      ],
+      orientation: Orientation.E
     },
-    // 4
     {
       index: "4",
       position: Position.KOKUTSU,
-      technique: {
-        name: "zuki",
-        target: Target.CHUDAN,
-        type: Type.HATEMI,
-        side: Side.MIGI,
-        orientation: Orientation.E,
-      },
       note: "stay where you are",
+      techniques: [
+        {
+          name: "zuki",
+          target: Target.CHUDAN,
+          type: Type.HATEMI,
+          side: Side.MIGI
+        }
+      ],
+      orientation: Orientation.E
     },
-    // 5-A
     {
-      index: "5-A",
+      index: "5a",
       position: Position.KOKUTSU,
-      technique: {
-        name: "koshi-gamae",
-        type: Type.KAMAE,
-        orientation: Orientation.S,
-      },
       note: "turn 90 degrees right on the right foot and bring the left foot halfway toward it; chamber both fists on the left side",
+      techniques: [
+        {
+          name: "koshi-gamae",
+          type: Type.KAMAE
+        }
+      ],
+      orientation: Orientation.S
     },
-    // 5-B
     {
-      index: "5-B",
+      index: "5b",
       position: Position.TSURU_ASHI,
-      technique: {
-        name: "yoko ke-age",
-        type: Type.HATEMI,
-        side: Side.MIGI,
-        orientation: Orientation.S,
-      },
       hasBackPicture: true,
-      note: "perform a right snapping side kick and a simultaneous right backfist strike",
+      techniques: [
+        {
+          name: "yoko ke-age",
+          type: Type.HATEMI,
+          side: Side.MIGI
+        },
+        {
+          name: "yoko-mawashi uraken-uchi",
+          type: Type.HATEMI,
+          side: Side.MIGI
+        }
+      ],
+      orientation: Orientation.S
     },
-    // 5
     {
       index: "5",
       position: Position.KOKUTSU,
-      technique: {
-        name: "shuto-uke",
-        target: Target.CHUDAN,
-        type: Type.BLOCK,
-        side: Side.HIDARI,
-        orientation: Orientation.N,
-      },
       note: "retract the kicking leg, rotate 180 degrees left on the supporting left foot and place the right foot backward",
+      techniques: [
+        {
+          name: "shuto-uke",
+          target: Target.CHUDAN,
+          type: Type.BLOCK,
+          side: Side.HIDARI
+        }
+      ],
+      orientation: Orientation.N
     },
-    // 6
     {
       index: "6",
       position: Position.KOKUTSU,
-      technique: {
-        name: "shuto-uke",
-        target: Target.CHUDAN,
-        type: Type.BLOCK,
-        side: Side.MIGI,
-        orientation: Orientation.N,
-      },
       note: "step forward",
+      techniques: [
+        {
+          name: "shuto-uke",
+          target: Target.CHUDAN,
+          type: Type.BLOCK,
+          side: Side.MIGI
+        }
+      ],
+      orientation: Orientation.N
     },
-    // 7
     {
       index: "7",
       position: Position.KOKUTSU,
-      technique: {
-        name: "shuto-uke",
-        target: Target.CHUDAN,
-        type: Type.BLOCK,
-        side: Side.HIDARI,
-        orientation: Orientation.N,
-      },
       note: "step forward",
+      techniques: [
+        {
+          name: "shuto-uke",
+          target: Target.CHUDAN,
+          type: Type.BLOCK,
+          side: Side.HIDARI
+        }
+      ],
+      orientation: Orientation.N
     },
-    // 8
     {
       index: "8",
       position: Position.ZENKUTSU,
-      technique: {
-        name: "shihon-nukite",
-        target: Target.CHUDAN,
-        type: Type.HATEMI,
-        side: Side.MIGI,
-        orientation: Orientation.N,
-      },
       kiai: true,
       note: "step forward",
+      techniques: [
+        {
+          name: "shihon-nukite",
+          target: Target.CHUDAN,
+          type: Type.HATEMI,
+          side: Side.MIGI
+        },
+        {
+          name: "osae-uke",
+          type: Type.BLOCK,
+          side: Side.HIDARI
+        }
+      ],
+      orientation: Orientation.N
     },
-    // 9
     {
       index: "9",
       position: Position.KOKUTSU,
-      technique: {
-        name: "shuto-uke",
-        target: Target.CHUDAN,
-        type: Type.BLOCK,
-        side: Side.HIDARI,
-        orientation: Orientation.E,
-      },
       note: "rotate 90 degrees right around front foot",
+      techniques: [
+        {
+          name: "shuto-uke",
+          target: Target.CHUDAN,
+          type: Type.BLOCK,
+          side: Side.HIDARI
+        }
+      ],
+      orientation: Orientation.E
     },
-    // 10
     {
       index: "10",
       position: Position.KOKUTSU,
-      technique: {
-        name: "shuto-uke",
-        target: Target.CHUDAN,
-        type: Type.BLOCK,
-        side: Side.MIGI,
-        orientation: Orientation.SE,
-      },
       note: "rotate 45 degrees right around front foot and step forward",
+      techniques: [
+        {
+          name: "shuto-uke",
+          target: Target.CHUDAN,
+          type: Type.BLOCK,
+          side: Side.MIGI
+        }
+      ],
+      orientation: Orientation.SE
     },
-    // 11
     {
       index: "11",
       position: Position.KOKUTSU,
-      technique: {
-        name: "shuto-uke",
-        target: Target.CHUDAN,
-        type: Type.BLOCK,
-        side: Side.MIGI,
-        orientation: Orientation.W,
-      },
       note: "rotate 135 degrees right around rear foot",
+      techniques: [
+        {
+          name: "shuto-uke",
+          target: Target.CHUDAN,
+          type: Type.BLOCK,
+          side: Side.MIGI
+        }
+      ],
+      orientation: Orientation.W
     },
-    // 12
     {
       index: "12",
       position: Position.KOKUTSU,
-      technique: {
-        name: "shuto-uke",
-        target: Target.CHUDAN,
-        type: Type.BLOCK,
-        side: Side.HIDARI,
-        orientation: Orientation.SW,
-      },
       hasBackPicture: true,
       note: "rotate 45 degrees left around front foot and step forward",
+      techniques: [
+        {
+          name: "shuto-uke",
+          target: Target.CHUDAN,
+          type: Type.BLOCK,
+          side: Side.HIDARI
+        }
+      ],
+      orientation: Orientation.SW
     },
-    // 13
     {
       index: "13",
       position: Position.ZENKUTSU,
-      technique: {
-        name: "gyaku uchi-uke",
-        target: Target.CHUDAN,
-        type: Type.BLOCK,
-        side: Side.MIGI,
-        orientation: Orientation.S,
-      },
       hasBackPicture: true,
       note: "rotate 45 degrees left around rear foot and move the left foot left",
+      techniques: [
+        {
+          name: "gyaku uchi-uke",
+          target: Target.CHUDAN,
+          type: Type.BLOCK,
+          side: Side.MIGI
+        }
+      ],
+      orientation: Orientation.S
     },
-    // 14-A
     {
-      index: "14-A",
+      index: "14a",
       position: Position.ZENKUTSU,
-      technique: {
-        name: "mae-geri",
-        type: Type.HATEMI,
-        side: Side.MIGI,
-        orientation: Orientation.S,
-      },
       hasBackPicture: true,
       note: "perform a right snapping front kick without moving the arms",
+      techniques: [
+        {
+          name: "mae-geri",
+          type: Type.HATEMI,
+          side: Side.MIGI
+        }
+      ],
+      orientation: Orientation.S
     },
-    // 14
     {
       index: "14",
       position: Position.ZENKUTSU,
-      technique: {
-        name: "gyaku-zuki",
-        target: Target.CHUDAN,
-        type: Type.HATEMI,
-        side: Side.HIDARI,
-        orientation: Orientation.S,
-      },
       hasBackPicture: true,
       note: "retract the kicking leg, then place the right foot forward",
+      techniques: [
+        {
+          name: "gyaku-zuki",
+          target: Target.CHUDAN,
+          type: Type.HATEMI,
+          side: Side.HIDARI
+        }
+      ],
+      orientation: Orientation.S
     },
-    // 15
     {
       index: "15",
       position: Position.ZENKUTSU,
-      technique: {
-        name: "gyaku uchi-uke",
-        target: Target.CHUDAN,
-        type: Type.BLOCK,
-        side: Side.HIDARI,
-        orientation: Orientation.S,
-      },
       hasBackPicture: true,
       note: "stay where you are and draw the front foot back slightly while rotating the hips",
+      techniques: [
+        {
+          name: "gyaku uchi-uke",
+          target: Target.CHUDAN,
+          type: Type.BLOCK,
+          side: Side.HIDARI
+        }
+      ],
+      orientation: Orientation.S
     },
-    // 16-A
     {
-      index: "16-A",
+      index: "16a",
       position: Position.ZENKUTSU,
-      technique: {
-        name: "mae-geri",
-        type: Type.HATEMI,
-        side: Side.HIDARI,
-        orientation: Orientation.S,
-      },
       hasBackPicture: true,
       note: "perform a left snapping front kick without moving the arms",
+      techniques: [
+        {
+          name: "mae-geri",
+          type: Type.HATEMI,
+          side: Side.HIDARI
+        }
+      ],
+      orientation: Orientation.S
     },
-    // 16
     {
       index: "16",
       position: Position.ZENKUTSU,
-      technique: {
-        name: "gyaku-zuki",
-        target: Target.CHUDAN,
-        type: Type.HATEMI,
-        side: Side.MIGI,
-        orientation: Orientation.S,
-      },
       hasBackPicture: true,
       note: "place the left foot forward after the kick",
+      techniques: [
+        {
+          name: "gyaku-zuki",
+          target: Target.CHUDAN,
+          type: Type.HATEMI,
+          side: Side.MIGI
+        }
+      ],
+      orientation: Orientation.S
     },
-    // 17
     {
       index: "17",
       position: Position.ZENKUTSU,
-      technique: {
-        name: "morote-uke",
-        target: Target.CHUDAN,
-        type: Type.BLOCK,
-        side: Side.MIGI,
-        orientation: Orientation.S,
-      },
       hasBackPicture: true,
       note: "step forward",
+      techniques: [
+        {
+          name: "morote-uke",
+          target: Target.CHUDAN,
+          type: Type.BLOCK,
+          side: Side.MIGI
+        }
+      ],
+      orientation: Orientation.S
     },
-    // 18
     {
       index: "18",
       position: Position.ZENKUTSU,
-      technique: {
-        name: "gedan-barai",
-        target: Target.GEDAN,
-        type: Type.BLOCK,
-        side: Side.HIDARI,
-        orientation: Orientation.W,
-      },
       note: "rotate 90 degrees right around front foot",
+      techniques: [
+        {
+          name: "gedan-barai",
+          target: Target.GEDAN,
+          type: Type.BLOCK,
+          side: Side.HIDARI
+        }
+      ],
+      orientation: Orientation.W
     },
-    // 19-A
     {
-      index: "19-A",
+      index: "19a",
       position: Position.ZENKUTSU,
-      technique: {
-        name: "age-uke-arm",
-        type: Type.KAMAE,
-        side: Side.MIGI,
-        target: Target.JODAN,
-        orientation: Orientation.NW,
-      },
       note: "rotate 45 degrees right around front foot and step forward; raise the open left hand to prepare the right rising block",
+      techniques: [
+        {
+          name: "age-uke-arm",
+          type: Type.KAMAE,
+          side: Side.MIGI,
+          target: Target.JODAN
+        }
+      ],
+      orientation: Orientation.NW
     },
-    // 19
     {
       index: "19",
       position: Position.ZENKUTSU,
-      technique: {
-        name: "age-uke",
-        target: Target.JODAN,
-        type: Type.BLOCK,
-        side: Side.MIGI,
-        orientation: Orientation.NW,
-      },
       note: "stay where you are and complete the right rising block",
+      techniques: [
+        {
+          name: "age-uke",
+          target: Target.JODAN,
+          type: Type.BLOCK,
+          side: Side.MIGI
+        }
+      ],
+      orientation: Orientation.NW
     },
-    // 20
     {
       index: "20",
       position: Position.ZENKUTSU,
-      technique: {
-        name: "gedan-barai",
-        target: Target.GEDAN,
-        type: Type.BLOCK,
-        side: Side.MIGI,
-        orientation: Orientation.E,
-      },
       note: "rotate 135 degrees right around rear foot",
+      techniques: [
+        {
+          name: "gedan-barai",
+          target: Target.GEDAN,
+          type: Type.BLOCK,
+          side: Side.MIGI
+        }
+      ],
+      orientation: Orientation.E
     },
-    // 21-A
     {
-      index: "21-A",
+      index: "21a",
       position: Position.ZENKUTSU,
-      technique: {
-        name: "age-uke-arm",
-        type: Type.KAMAE,
-        side: Side.HIDARI,
-        target: Target.JODAN,
-        orientation: Orientation.NE,
-      },
       note: "rotate 45 degrees left around front foot and step forward; raise the open right hand to prepare the left rising block",
+      techniques: [
+        {
+          name: "age-uke-arm",
+          type: Type.KAMAE,
+          side: Side.HIDARI,
+          target: Target.JODAN
+        }
+      ],
+      orientation: Orientation.NE
     },
-    // 21
     {
       index: "21",
       position: Position.ZENKUTSU,
-      technique: {
-        name: "age-uke",
-        target: Target.JODAN,
-        type: Type.BLOCK,
-        side: Side.HIDARI,
-        orientation: Orientation.NE,
-      },
       kiai: true,
       note: "stay where you are and complete the left rising block",
+      techniques: [
+        {
+          name: "age-uke",
+          target: Target.JODAN,
+          type: Type.BLOCK,
+          side: Side.HIDARI
+        }
+      ],
+      orientation: Orientation.NE
     },
-    // Yame
     {
       position: Position.HACHIJI,
-      technique: {
-        name: "yame",
-        type: Type.KAMAE,
-      },
       note: "bring the left foot beside the right and return to the ready stance",
-    },
+      techniques: [
+        {
+          name: "yame",
+          type: Type.KAMAE
+        }
+      ]
+    }
   ],
 };
