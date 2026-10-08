@@ -1,11 +1,22 @@
-import { type Kata, Orientation, Position, Side, Target, Type } from "@/type";
+import {
+  type Kata,
+  Level,
+  Orientation,
+  Position,
+  Side,
+  Target,
+  Type,
+} from "@/type";
 
 export const HEIAN_NIDAN: Kata = {
   id: "heian-nidan",
-  name: "Heian Nidan (Heian N° 2)",
+  name: "Heian Nidan",
+  meaning: "Heian N° 2",
+  level: Level.BEGINNER,
   description:
     "Heian Nidan adds several fundamentals not found in Heian Shodan: inside-to-outside forearm blocks, close-range punches, snapping side kicks paired with a backfist strike, and snapping front kicks. Its greater use of knife-hand blocks in back stance gives it a particularly characteristic kata structure.",
-  techniques: [
+  videoId: "6Hc1NMdjU9U",
+  motions: [
     {
       position: Position.HACHIJI,
       techniques: [

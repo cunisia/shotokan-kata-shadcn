@@ -1,11 +1,22 @@
-import { type Kata, Orientation, Position, Side, Target, Type } from "@/type";
+import {
+  type Kata,
+  Level,
+  Orientation,
+  Position,
+  Side,
+  Target,
+  Type,
+} from "@/type";
 
 export const HEIAN_SHODAN: Kata = {
   id: "heian-shodan",
-  name: "Heian Shodan (Heian N° 1)",
+  name: "Heian Shodan",
+  meaning: "Heian N° 1",
+  level: Level.BEGINNER,
   description:
     "Heian Shodan is the most accessible of the five Heian katas. It combines five basic techniques: downward blocks, stepping straight punches to the middle level, rising blocks, knife-hand blocks and a hammer-fist strike. In Shotokan, it is now the first kata taught to beginners, although Heian Nidan originally came first and still does in some styles. The change is generally explained as a way to introduce technical difficulty more gradually. The book offers two possible explanations for the earlier sequence: Itosu may have believed that practising the simpler kata was more beneficial after mastering the harder second one, or Heian Nidan may have been a revised form of Kushanku.",
-  techniques: [
+  videoId: "9D2yOzDsW8k",
+  motions: [
     {
       position: Position.HACHIJI,
       note: "Take the ready stance with feet turned outward and fists in front of the hips.",

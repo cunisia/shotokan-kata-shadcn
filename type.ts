@@ -1,11 +1,14 @@
 export interface Kata {
   id: string; // generate it from the title in japonese (lowercase, replace all spaces by dash)
   name: string; // title of the kata, at the top of the first page, capital letters, underlined
+  meaning?: string;
   description: string; // text underneath the title on the book. Please rephrase it from the original text and translate it to english
+  videoId?: string;
+  level: Level;
   // There are represented on the page by photographies and a text attached to each of them (using some kind of index to link both: yoi, 1, 1-A, for instances)
   // I'm only interested in the first one (labelled Yoi) and all the following ones that use a number as index and the last one called Yame
   // (so for instanced 1 and not 1-A, 2 and not 2-A)
-  techniques: Motion[];
+  motions: Motion[];
 }
 
 // Here is how to fill one Motion. Each of them has a title in bold next to the index. It's from this title that we extract most of the information
@@ -74,6 +77,7 @@ export enum Position {
   RENOJI = "renoji",
   TSURU_ASHI = "tsuru-ashi",
   HEISOKU = "heisoku",
+  KOSA = "kosa",
 }
 
 export interface Technique {
@@ -93,6 +97,12 @@ export enum Type {
   HATEMI = "hatemi",
   BLOCK = "block",
   KAMAE = "kamae",
+}
+
+export enum Level {
+  BEGINNER = "beginner",
+  INTERMEDIATE = "intermediate",
+  ADVANCED = "advanced",
 }
 
 export enum Side {

@@ -2,8 +2,14 @@ import type { Kata } from "@/type";
 import { HEIAN_NIDAN } from "./heian-nidan";
 import { HEIAN_SANDAN } from "./heian-sandan";
 import { HEIAN_SHODAN } from "./heian-shodan";
+import { HEIAN_YONDAN } from "./heian-yondan";
 
-const ALL_KATA: Kata[] = [HEIAN_SHODAN, HEIAN_NIDAN, HEIAN_SANDAN];
+const ALL_KATA: Kata[] = [
+  HEIAN_SHODAN,
+  HEIAN_NIDAN,
+  HEIAN_SANDAN,
+  HEIAN_YONDAN,
+];
 
 export function getKata(kataId: string): Kata | undefined {
   return ALL_KATA.find((kata) => kata.id === kataId);

@@ -5,10 +5,25 @@ import { notFound, useParams, usePathname } from "next/navigation";
 import { getKata } from "@/app/data/get-kata";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
+const useCurrentPath = () => {
+  const pathName = usePathname();
+
+  if (pathName.includes("info")) {
+    return "info";
+  }
+  if (pathName.includes("motions")) {
+    return "motions";
+  }
+  if (pathName.includes("map")) {
+    return "map";
+  }
+  return undefined;
+};
+
 export default function Layout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
-  const pathName = usePathname();
+  const currentPath = useCurrentPath();
   const { kataId } = useParams();
   const kata = getKata(typeof kataId === "string" ? kataId : "");
   if (!kata) {
@@ -17,17 +32,16 @@ export default function Layout({
 
   return (
     <div className="w-full md:w-[460px] h-full flex flex-col gap-4 items-center m-auto">
-      <h1 className="text-2xl font-semibold">{kata.name}</h1>
-      <Tabs
-        value={pathName.includes("description") ? "description" : "motions"}
-        className="flex-none"
-      >
+      <Tabs value={currentPath} className="flex-none">
         <TabsList>
-          <TabsTrigger value="description">
-            <Link href={`/kata/${kataId}/description`}>Description</Link>
+          <TabsTrigger value="info">
+            <Link href={`/kata/${kataId}/info`}>Info</Link>
           </TabsTrigger>
           <TabsTrigger value="motions">
             <Link href={`/kata/${kataId}/motions`}>Motions</Link>
+          </TabsTrigger>
+          <TabsTrigger value="map">
+            <Link href={`/kata/${kataId}/map`}>Map</Link>
           </TabsTrigger>
         </TabsList>
       </Tabs>

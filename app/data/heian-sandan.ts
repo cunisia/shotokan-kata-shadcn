@@ -1,18 +1,30 @@
-import { Kata, Position, Side, Target, Type, Orientation } from "@/type";
+import {
+  type Kata,
+  Level,
+  Orientation,
+  Position,
+  Side,
+  Target,
+  Type,
+} from "@/type";
 
 export const HEIAN_SANDAN: Kata = {
   id: "heian-sandan",
-  name: "Heian Sandan (Heian N° 3)",
-  description: "Heian Sandan develops a varied set of techniques, including inward-to-outward forearm blocks and simultaneous crossed blocks combining a middle-level block with a downward block. A spear-hand attack is followed by a wrist-grab escape that uses a full-body turn and a counterstrike. The final sequence combines a backward elbow strike with a vertical punch over the shoulder against an opponent holding the practitioner from behind.",
-  techniques: [
+  name: "Heian Sandan",
+  meaning: "Heian N° 3",
+  level: Level.BEGINNER,
+  description:
+    "Heian Sandan develops a varied set of techniques, including inward-to-outward forearm blocks and simultaneous crossed blocks combining a middle-level block with a downward block. A spear-hand attack is followed by a wrist-grab escape that uses a full-body turn and a counterstrike. The final sequence combines a backward elbow strike with a vertical punch over the shoulder against an opponent holding the practitioner from behind.",
+  videoId: "8OI-FTV3-4o",
+  motions: [
     {
       position: Position.HACHIJI,
       techniques: [
         {
           name: "yoi",
-          type: Type.KAMAE
-        }
-      ]
+          type: Type.KAMAE,
+        },
+      ],
     },
     {
       position: Position.KOKUTSU,
@@ -24,10 +36,10 @@ export const HEIAN_SANDAN: Kata = {
           name: "uchi-uke",
           type: Type.BLOCK,
           side: Side.HIDARI,
-          target: Target.CHUDAN
-        }
+          target: Target.CHUDAN,
+        },
       ],
-      orientation: Orientation.W
+      orientation: Orientation.W,
     },
     {
       position: Position.HEISOKU,
@@ -38,10 +50,10 @@ export const HEIAN_SANDAN: Kata = {
         {
           name: "kosa-uke-arm",
           type: Type.KAMAE,
-          side: Side.HIDARI
-        }
+          side: Side.HIDARI,
+        },
       ],
-      orientation: Orientation.W
+      orientation: Orientation.W,
     },
     {
       position: Position.HEISOKU,
@@ -52,16 +64,16 @@ export const HEIAN_SANDAN: Kata = {
         {
           name: "uchi-uke",
           type: Type.BLOCK,
-          side: Side.MIGI
+          side: Side.MIGI,
         },
         {
           name: "gedan-barai",
           type: Type.BLOCK,
           side: Side.HIDARI,
-          target: Target.GEDAN
-        }
+          target: Target.GEDAN,
+        },
       ],
-      orientation: Orientation.W
+      orientation: Orientation.W,
     },
     {
       position: Position.HEISOKU,
@@ -71,10 +83,10 @@ export const HEIAN_SANDAN: Kata = {
         {
           name: "kosa-uke-arm",
           type: Type.KAMAE,
-          side: Side.MIGI
-        }
+          side: Side.MIGI,
+        },
       ],
-      orientation: Orientation.W
+      orientation: Orientation.W,
     },
     {
       position: Position.HEISOKU,
@@ -85,16 +97,16 @@ export const HEIAN_SANDAN: Kata = {
         {
           name: "uchi-uke",
           type: Type.BLOCK,
-          side: Side.HIDARI
+          side: Side.HIDARI,
         },
         {
           name: "gedan-barai",
           type: Type.BLOCK,
           side: Side.MIGI,
-          target: Target.GEDAN
-        }
+          target: Target.GEDAN,
+        },
       ],
-      orientation: Orientation.W
+      orientation: Orientation.W,
     },
     {
       position: Position.KOKUTSU,
@@ -105,10 +117,10 @@ export const HEIAN_SANDAN: Kata = {
           name: "uchi-uke",
           type: Type.BLOCK,
           side: Side.MIGI,
-          target: Target.CHUDAN
-        }
+          target: Target.CHUDAN,
+        },
       ],
-      orientation: Orientation.E
+      orientation: Orientation.E,
     },
     {
       position: Position.HEISOKU,
@@ -118,10 +130,10 @@ export const HEIAN_SANDAN: Kata = {
         {
           name: "kosa-uke-arm",
           type: Type.KAMAE,
-          side: Side.MIGI
-        }
+          side: Side.MIGI,
+        },
       ],
-      orientation: Orientation.E
+      orientation: Orientation.E,
     },
     {
       position: Position.HEISOKU,
@@ -131,16 +143,16 @@ export const HEIAN_SANDAN: Kata = {
         {
           name: "uchi-uke",
           type: Type.BLOCK,
-          side: Side.HIDARI
+          side: Side.HIDARI,
         },
         {
           name: "gedan-barai",
           type: Type.BLOCK,
           side: Side.MIGI,
-          target: Target.GEDAN
-        }
+          target: Target.GEDAN,
+        },
       ],
-      orientation: Orientation.E
+      orientation: Orientation.E,
     },
     {
       position: Position.HEISOKU,
@@ -150,10 +162,10 @@ export const HEIAN_SANDAN: Kata = {
         {
           name: "kosa-uke-arm",
           type: Type.KAMAE,
-          side: Side.HIDARI
-        }
+          side: Side.HIDARI,
+        },
       ],
-      orientation: Orientation.E
+      orientation: Orientation.E,
     },
     {
       position: Position.HEISOKU,
@@ -163,16 +175,16 @@ export const HEIAN_SANDAN: Kata = {
         {
           name: "uchi-uke",
           type: Type.BLOCK,
-          side: Side.MIGI
+          side: Side.MIGI,
         },
         {
           name: "gedan-barai",
           type: Type.BLOCK,
           side: Side.HIDARI,
-          target: Target.GEDAN
-        }
+          target: Target.GEDAN,
+        },
       ],
-      orientation: Orientation.E
+      orientation: Orientation.E,
     },
     {
       position: Position.KOKUTSU,
@@ -183,10 +195,10 @@ export const HEIAN_SANDAN: Kata = {
           name: "morote-uke",
           type: Type.BLOCK,
           side: Side.HIDARI,
-          target: Target.CHUDAN
-        }
+          target: Target.CHUDAN,
+        },
       ],
-      orientation: Orientation.N
+      orientation: Orientation.N,
     },
     {
       position: Position.ZENKUTSU,
@@ -198,15 +210,15 @@ export const HEIAN_SANDAN: Kata = {
           name: "shihon-nukite",
           type: Type.HATEMI,
           side: Side.MIGI,
-          target: Target.CHUDAN
+          target: Target.CHUDAN,
         },
         {
           name: "osae-uke",
           type: Type.BLOCK,
-          side: Side.HIDARI
-        }
+          side: Side.HIDARI,
+        },
       ],
-      orientation: Orientation.N
+      orientation: Orientation.N,
     },
     {
       position: Position.KIBA,
@@ -215,10 +227,10 @@ export const HEIAN_SANDAN: Kata = {
       techniques: [
         {
           name: "tettsui-uchi-arm",
-          type: Type.KAMAE
-        }
+          type: Type.KAMAE,
+        },
       ],
-      orientation: Orientation.S
+      orientation: Orientation.S,
     },
     {
       position: Position.KIBA,
@@ -230,10 +242,10 @@ export const HEIAN_SANDAN: Kata = {
           name: "tettsui-uchi",
           type: Type.HATEMI,
           side: Side.HIDARI,
-          target: Target.CHUDAN
-        }
+          target: Target.CHUDAN,
+        },
       ],
-      orientation: Orientation.N
+      orientation: Orientation.N,
     },
     {
       position: Position.ZENKUTSU,
@@ -246,10 +258,10 @@ export const HEIAN_SANDAN: Kata = {
           name: "oi-zuki",
           type: Type.HATEMI,
           side: Side.MIGI,
-          target: Target.CHUDAN
-        }
+          target: Target.CHUDAN,
+        },
       ],
-      orientation: Orientation.N
+      orientation: Orientation.N,
     },
     {
       position: Position.HEISOKU,
@@ -258,10 +270,10 @@ export const HEIAN_SANDAN: Kata = {
       techniques: [
         {
           name: "ryoken koshi-gamae",
-          type: Type.KAMAE
-        }
+          type: Type.KAMAE,
+        },
       ],
-      orientation: Orientation.S
+      orientation: Orientation.S,
     },
     {
       position: Position.HEISOKU,
@@ -272,10 +284,10 @@ export const HEIAN_SANDAN: Kata = {
         {
           name: "fumikomi-arm",
           type: Type.KAMAE,
-          side: Side.MIGI
-        }
+          side: Side.MIGI,
+        },
       ],
-      orientation: Orientation.S
+      orientation: Orientation.S,
     },
     {
       position: Position.KIBA,
@@ -286,15 +298,15 @@ export const HEIAN_SANDAN: Kata = {
         {
           name: "empi-uke",
           type: Type.BLOCK,
-          side: Side.MIGI
+          side: Side.MIGI,
         },
         {
           name: "fumikomi",
           type: Type.HATEMI,
-          side: Side.MIGI
-        }
+          side: Side.MIGI,
+        },
       ],
-      orientation: Orientation.S
+      orientation: Orientation.S,
     },
     {
       position: Position.KIBA,
@@ -307,10 +319,10 @@ export const HEIAN_SANDAN: Kata = {
           name: "uraken-uchi",
           type: Type.HATEMI,
           side: Side.MIGI,
-          target: Target.JODAN
-        }
+          target: Target.JODAN,
+        },
       ],
-      orientation: Orientation.S
+      orientation: Orientation.S,
     },
     {
       position: Position.KIBA,
@@ -321,10 +333,10 @@ export const HEIAN_SANDAN: Kata = {
       techniques: [
         {
           name: "ryoken koshi-gamae",
-          type: Type.KAMAE
-        }
+          type: Type.KAMAE,
+        },
       ],
-      orientation: Orientation.S
+      orientation: Orientation.S,
     },
     {
       position: Position.KIBA,
@@ -335,10 +347,10 @@ export const HEIAN_SANDAN: Kata = {
         {
           name: "fumikomi-arm",
           type: Type.KAMAE,
-          side: Side.HIDARI
-        }
+          side: Side.HIDARI,
+        },
       ],
-      orientation: Orientation.S
+      orientation: Orientation.S,
     },
     {
       position: Position.KIBA,
@@ -348,15 +360,15 @@ export const HEIAN_SANDAN: Kata = {
         {
           name: "empi-uke",
           type: Type.BLOCK,
-          side: Side.HIDARI
+          side: Side.HIDARI,
         },
         {
           name: "fumikomi",
           type: Type.HATEMI,
-          side: Side.HIDARI
-        }
+          side: Side.HIDARI,
+        },
       ],
-      orientation: Orientation.S
+      orientation: Orientation.S,
     },
     {
       position: Position.KIBA,
@@ -368,10 +380,10 @@ export const HEIAN_SANDAN: Kata = {
           name: "uraken-uchi",
           type: Type.HATEMI,
           side: Side.HIDARI,
-          target: Target.JODAN
-        }
+          target: Target.JODAN,
+        },
       ],
-      orientation: Orientation.S
+      orientation: Orientation.S,
     },
     {
       position: Position.KIBA,
@@ -380,10 +392,10 @@ export const HEIAN_SANDAN: Kata = {
       techniques: [
         {
           name: "ryoken koshi-gamae",
-          type: Type.KAMAE
-        }
+          type: Type.KAMAE,
+        },
       ],
-      orientation: Orientation.S
+      orientation: Orientation.S,
     },
     {
       position: Position.KIBA,
@@ -393,10 +405,10 @@ export const HEIAN_SANDAN: Kata = {
         {
           name: "fumikomi-arm",
           type: Type.KAMAE,
-          side: Side.MIGI
-        }
+          side: Side.MIGI,
+        },
       ],
-      orientation: Orientation.S
+      orientation: Orientation.S,
     },
     {
       position: Position.KIBA,
@@ -406,15 +418,15 @@ export const HEIAN_SANDAN: Kata = {
         {
           name: "empi-uke",
           type: Type.BLOCK,
-          side: Side.MIGI
+          side: Side.MIGI,
         },
         {
           name: "fumikomi",
           type: Type.HATEMI,
-          side: Side.MIGI
-        }
+          side: Side.MIGI,
+        },
       ],
-      orientation: Orientation.S
+      orientation: Orientation.S,
     },
     {
       position: Position.KIBA,
@@ -427,10 +439,10 @@ export const HEIAN_SANDAN: Kata = {
           name: "uraken-uchi",
           type: Type.HATEMI,
           side: Side.MIGI,
-          target: Target.JODAN
-        }
+          target: Target.JODAN,
+        },
       ],
-      orientation: Orientation.S
+      orientation: Orientation.S,
     },
     {
       position: Position.KIBA,
@@ -440,10 +452,10 @@ export const HEIAN_SANDAN: Kata = {
       techniques: [
         {
           name: "ryoken koshi-gamae",
-          type: Type.KAMAE
-        }
+          type: Type.KAMAE,
+        },
       ],
-      orientation: Orientation.S
+      orientation: Orientation.S,
     },
     {
       position: Position.KIBA,
@@ -456,10 +468,10 @@ export const HEIAN_SANDAN: Kata = {
           name: "tate shuto-gamae",
           type: Type.KAMAE,
           side: Side.MIGI,
-          target: Target.CHUDAN
-        }
+          target: Target.CHUDAN,
+        },
       ],
-      orientation: Orientation.S
+      orientation: Orientation.S,
     },
     {
       position: Position.ZENKUTSU,
@@ -471,10 +483,10 @@ export const HEIAN_SANDAN: Kata = {
           name: "oi-zuki",
           type: Type.HATEMI,
           side: Side.HIDARI,
-          target: Target.CHUDAN
-        }
+          target: Target.CHUDAN,
+        },
       ],
-      orientation: Orientation.S
+      orientation: Orientation.S,
     },
     {
       position: Position.KIBA,
@@ -484,15 +496,15 @@ export const HEIAN_SANDAN: Kata = {
         {
           name: "tate-zuki",
           type: Type.HATEMI,
-          side: Side.MIGI
+          side: Side.MIGI,
         },
         {
           name: "ushiro empi-uchi",
           type: Type.HATEMI,
-          side: Side.HIDARI
-        }
+          side: Side.HIDARI,
+        },
       ],
-      orientation: Orientation.N
+      orientation: Orientation.N,
     },
     {
       position: Position.KIBA,
@@ -503,15 +515,15 @@ export const HEIAN_SANDAN: Kata = {
         {
           name: "tate-zuki",
           type: Type.HATEMI,
-          side: Side.HIDARI
+          side: Side.HIDARI,
         },
         {
           name: "ushiro empi-uchi",
           type: Type.HATEMI,
-          side: Side.MIGI
-        }
+          side: Side.MIGI,
+        },
       ],
-      orientation: Orientation.N
+      orientation: Orientation.N,
     },
     {
       position: Position.HACHIJI,
@@ -519,9 +531,9 @@ export const HEIAN_SANDAN: Kata = {
       techniques: [
         {
           name: "yame",
-          type: Type.KAMAE
-        }
-      ]
-    }
-  ]
+          type: Type.KAMAE,
+        },
+      ],
+    },
+  ],
 };

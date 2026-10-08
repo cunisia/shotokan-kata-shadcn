@@ -4,6 +4,7 @@ import Image from "next/image";
 import { notFound, useParams } from "next/navigation";
 import { useState } from "react";
 import { getKata } from "@/app/data/get-kata";
+import TechniquesTables from "@/components/custom/techniques-table";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
@@ -21,7 +22,6 @@ import {
 } from "@/components/ui/item";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
-import TechniquesTables from "@/components/ui/techniques-table";
 import { type Motion, Position } from "@/type";
 
 const getMotionName = (motion: Motion) => {
@@ -56,7 +56,7 @@ const getPictureName = (motion: Motion, isBack?: boolean) => {
     motion.orientation,
     ...(isBack ? ["back"] : []),
   ];
-  return `/${nameItems.join("_")}.png`;
+  return `/motions/${nameItems.join("_")}.png`;
 };
 
 const getMotionId = (motion: Motion) => {
@@ -86,7 +86,7 @@ export default function Page() {
   return (
     <Carousel className="w-full">
       <CarouselContent>
-        {kata.techniques.map((motion) => (
+        {kata.motions.map((motion) => (
           <CarouselItem key={getMotionId(motion)}>
             <div className="p-1">
               <Card>
@@ -183,7 +183,7 @@ export default function Page() {
                       <Item className="col-span-2 items-start">
                         <ItemContent>
                           <ItemTitle>Note</ItemTitle>
-                          <ItemDescription className="first-letter:uppercase">
+                          <ItemDescription className="first-letter:uppercase line-clamp-none">
                             {motion.note}
                           </ItemDescription>
                         </ItemContent>
