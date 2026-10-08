@@ -1,5 +1,3 @@
-'use client'
-
 import { Geist, Geist_Mono, Inter } from "next/font/google"
 
 import "./globals.css"
@@ -7,7 +5,7 @@ import { ThemeProvider } from "@/components/theme-provider"
 import { cn } from "@/lib/utils";
 import { Sidebar, SidebarContent, SidebarGroup, SidebarGroupContent, SidebarGroupLabel, SidebarInset, SidebarMenu, SidebarMenuButton, SidebarMenuItem, SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { getKataList } from "./data/get-kata";
-import { useParams, usePathname } from "next/navigation";
+import { Metadata } from "next";
 
 const inter = Inter({subsets:['latin'],variable:'--font-sans'})
 
@@ -16,13 +14,21 @@ const fontMono = Geist_Mono({
   variable: "--font-mono",
 })
 
-export default function RootLayout({
+export const metadata: Metadata = {
+  title: "Shotokan Kata",
+  description:
+    "Explore Shotokan karate katas, techniques, and step-by-step sequences to support your practice.",
+};
+
+export default async function RootLayout({
   children,
+  params
 }: Readonly<{
   children: React.ReactNode
-}>) {
+  params: Promise<{ kataId: string }> }
+>) {
   const katas = getKataList()
-  const { kataId } = useParams()
+  const kataId = (await params).kataId
 
   return (
     <html
