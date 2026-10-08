@@ -36,7 +36,7 @@ export default async function RootLayout({
       )}
     >
       <body>
-        <ThemeProvider>
+        <ThemeProvider forcedTheme="dark">
           <AppLayout>{children}</AppLayout>
         </ThemeProvider>
       </body>
