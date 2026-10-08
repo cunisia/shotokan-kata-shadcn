@@ -67,16 +67,18 @@ export default function AppLayout({
         </SidebarContent>
       </Sidebar>
       <SidebarInset>
-        <div className="relative py-2">
-          <SidebarTrigger
-            size="icon-lg"
-            className="[&_svg]:size-5! absolute left-1 top-1/2 -translate-y-1/2"
-          />
-          <h1 className="text-center text-2xl font-semibold">
-            {getPageTitle(kataId)}
-          </h1>
+        <div className="h-svh flex flex-col">
+          <header className="relative py-2 shrink-0">
+            <SidebarTrigger
+              size="icon-lg"
+              className="[&_svg]:size-5! absolute left-1 top-1/2 -translate-y-1/2"
+            />
+            <h1 className="text-center text-2xl font-semibold">
+              {getPageTitle(kataId)}
+            </h1>
+          </header>
+          <div className="flex flex-col flex-1 min-h-0">{children}</div>
         </div>
-        {children}
       </SidebarInset>
     </SidebarProvider>
   );

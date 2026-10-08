@@ -20,7 +20,7 @@ export default function Page() {
 
   return (
     <Card>
-      <CardContent className="flex flex-col gap-2">
+      <CardContent className="flex flex-col gap-2 overflow-hidden">
         <ZoomableImage
           src={getMapImageName(kata)}
           alt={`${kata?.name} map`}

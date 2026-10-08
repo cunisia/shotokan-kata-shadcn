@@ -31,7 +31,7 @@ export default function Layout({
   }
 
   return (
-    <div className="w-full md:w-[460px] h-full flex flex-col gap-4 items-center m-auto">
+    <div className="w-full md:w-[460px] flex-1 min-h-0 flex flex-col gap-4 items-center m-auto">
       <Tabs value={currentPath} className="flex-none">
         <TabsList>
           <TabsTrigger value="info">
@@ -45,7 +45,7 @@ export default function Layout({
           </TabsTrigger>
         </TabsList>
       </Tabs>
-      <div className="flex w-full flex-col items-centerflex w-full flex-col items-center px-4">
+      <div className="flex w-full flex-col items-center flex-1 min-h-0 px-4">
         {children}
       </div>
     </div>

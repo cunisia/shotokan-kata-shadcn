@@ -84,47 +84,48 @@ export default function Page() {
   }
 
   return (
-    <Carousel className="w-full">
-      <CarouselContent>
+    <Carousel className="w-full flex-1 min-h-0 [&>[data-slot=carousel-content]]:h-full">
+      <CarouselContent className="h-full">
         {kata.motions.map((motion) => (
           <CarouselItem key={getMotionId(motion)}>
-            <div className="p-1">
-              <Card>
-                <CardHeader>
-                  <CardTitle>
-                    <h2 className="text-xl font-semibold capitalize">
-                      {getMotionName(motion)}
-                    </h2>
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="flex flex-col gap-4">
-                  <div className="relative">
-                    {motion.kiai && (
-                      <Badge
-                        variant="destructive"
-                        className="absolute top-2 right-2 font-bold"
-                      >
-                        Kiai!
-                      </Badge>
+            <Card className="h-full">
+              <CardHeader>
+                <CardTitle>
+                  <h2 className="text-xl font-semibold capitalize">
+                    {getMotionName(motion)}
+                  </h2>
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="flex flex-col flex-1 min-h-0 gap-4">
+                <div className="relative bg-white h-6/10">
+                  {motion.kiai && (
+                    <Badge
+                      variant="destructive"
+                      className="absolute top-2 right-2 font-bold"
+                    >
+                      Kiai!
+                    </Badge>
+                  )}
+                  <Image
+                    src={getPictureName(
+                      motion,
+                      motion.hasBackPicture && showBackPicture,
                     )}
-                    <Image
-                      src={getPictureName(
-                        motion,
-                        motion.hasBackPicture && showBackPicture,
-                      )}
-                      alt={getMotionName(motion)}
-                      width={385}
-                      height={500}
-                    />
-                    {isBackPictureDisplayed(motion) && (
-                      <Badge
-                        variant="secondary"
-                        className="absolute bottom-2 right-2 font-bold"
-                      >
-                        Back
-                      </Badge>
-                    )}
-                  </div>
+                    alt={getMotionName(motion)}
+                    width={385}
+                    height={500}
+                    className="h-full w-auto max-w-none m-auto"
+                  />
+                  {isBackPictureDisplayed(motion) && (
+                    <Badge
+                      variant="secondary"
+                      className="absolute bottom-2 right-2 font-bold"
+                    >
+                      Back
+                    </Badge>
+                  )}
+                </div>
+                <div className="flex flex-col gap-4">
                   {isBackPictureSwitchDisplayed(motion) && (
                     <div className="flex items-center space-x-2">
                       <Switch
@@ -190,9 +191,9 @@ export default function Page() {
                       </Item>
                     )}
                   </div>
-                </CardContent>
-              </Card>
-            </div>
+                </div>
+              </CardContent>
+            </Card>
           </CarouselItem>
         ))}
       </CarouselContent>

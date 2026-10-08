@@ -23,14 +23,14 @@ export function ZoomableImage({ src, alt, width, height }: ZoomableImageProps) {
         type="button"
         onClick={() => setOpen(true)}
         aria-label={`Enlarge: ${alt}`}
-        className="block cursor-zoom-in"
+        className="block cursor-zoom-in h-full"
       >
         <Image
           src={src}
           alt={alt}
           width={width}
           height={height}
-          className="h-auto w-full"
+          className="h-full w-auto m-auto"
         />
       </button>
 

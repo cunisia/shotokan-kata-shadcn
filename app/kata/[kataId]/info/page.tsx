@@ -55,7 +55,7 @@ export default async function Page({
   }
   return (
     <Card>
-      <CardContent className="flex flex-col gap-2">
+      <CardContent className="flex flex-col gap-2 overflow-auto">
         <div className="grid grid-cols-2">
           {kata.meaning && (
             <Item className="items-start">
