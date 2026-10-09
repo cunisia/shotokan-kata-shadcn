@@ -1,14 +1,23 @@
 "use client";
 
+import { Undo2 } from "lucide-react";
 import Image from "next/image";
-import { notFound, useParams } from "next/navigation";
-import { useState } from "react";
+import {
+  notFound,
+  useParams,
+  usePathname,
+  useRouter,
+  useSearchParams,
+} from "next/navigation";
+import { useEffect, useEffectEvent, useState } from "react";
 import { getKata } from "@/app/data/get-kata";
 import TechniquesTables from "@/components/custom/techniques-table";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   Carousel,
+  type CarouselApi,
   CarouselContent,
   CarouselItem,
   CarouselNext,
@@ -67,6 +76,10 @@ const getMotionId = (motion: Motion) => {
 };
 
 export default function Page() {
+  const searchParams = useSearchParams();
+  const pathName = usePathname();
+  const { replace } = useRouter();
+
   const [showBackPicture, setShowBackPicture] = useState<boolean>(false);
 
   const { kataId } = useParams();
@@ -74,26 +87,73 @@ export default function Page() {
 
   const isBackPictureDisplayed = (motion: Motion) =>
     motion.hasBackPicture && showBackPicture;
+
   const isBackPictureSwitchDisplayed = (motion: Motion) =>
     motion.hasBackPicture || showBackPicture;
+
   const isTableDisplayed = (motion: Motion) =>
     !["yoi", "yame"].includes(motion.techniques[0].name);
+
+  const [api, setApi] = useState<CarouselApi>();
+
+  const goBackToYoi = () => api?.scrollTo(0);
+
+  const [initialIndex] = useState(() => {
+    const value = Number(searchParams.get("index") ?? "0");
+
+    return Number.isSafeInteger(value) && value >= 0 ? value : 0;
+  });
+
+  const onNavigate = useEffectEvent((_api: CarouselApi) => {
+    const params = new URLSearchParams(searchParams);
+    const index = _api?.selectedScrollSnap();
+    if (index !== undefined) {
+      params.set("index", `${index}`);
+    } else {
+      params.delete("index");
+    }
+    replace(`${pathName}?${params.toString()}`);
+  });
+
+  useEffect(() => {
+    if (!api) return;
+
+    api.on("select", onNavigate);
+
+    return () => {
+      api.off("select", onNavigate);
+    };
+  }, [api]);
 
   if (!kata) {
     notFound();
   }
 
   return (
-    <Carousel className="w-full flex-1 min-h-0 [&>[data-slot=carousel-content]]:h-full">
+    <Carousel
+      className="w-full flex-1 min-h-0 [&>[data-slot=carousel-content]]:h-full"
+      setApi={setApi}
+      opts={{ startIndex: initialIndex }}
+    >
       <CarouselContent className="h-full">
-        {kata.motions.map((motion) => (
+        {kata.motions.map((motion, index) => (
           <CarouselItem key={getMotionId(motion)}>
             <Card className="h-full">
               <CardHeader>
-                <CardTitle>
-                  <h2 className="text-xl font-semibold capitalize">
+                <CardTitle className="flex flex-row items-center justify-center">
+                  <h2 className="text-xl font-semibold capitalize flex-1">
                     {getMotionName(motion)}
                   </h2>
+                  {index !== 0 && (
+                    <Button
+                      variant="outline"
+                      size="icon"
+                      aria-label="Back to beginning"
+                      onClick={goBackToYoi}
+                    >
+                      <Undo2 />
+                    </Button>
+                  )}
                 </CardTitle>
               </CardHeader>
               <CardContent className="flex flex-col flex-1 min-h-0 gap-4">
