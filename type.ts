@@ -1,10 +1,10 @@
 export interface Kata {
   id: string; // generate it from the title in japonese (lowercase, replace all spaces by dash)
   name: string; // title of the kata, at the top of the first page, capital letters, underlined
-  meaning?: string;
+  meaning?: string; // not something the agent can infer, prompt the user
   description: string; // text underneath the title on the book. Please rephrase it from the original text and translate it to english
-  videoId?: string;
-  level: Level;
+  videoId?: string; // not something the agent can infer, prompt the user
+  level: Level; // not something the agent can infer, prompt the user
   // There are represented on the page by photographies and a text attached to each of them (using some kind of index to link both: yoi, 1, 1-A, for instances)
   // I'm only interested in the first one (labelled Yoi) and all the following ones that use a number as index and the last one called Yame
   // (so for instanced 1 and not 1-A, 2 and not 2-A)
@@ -14,7 +14,7 @@ export interface Kata {
 // Here is how to fill one Motion. Each of them has a title in bold next to the index. It's from this title that we extract most of the information
 // The title is usually structured this way: Index) Position / Side Target Name (yoi and yame are exceptions to this structure)
 export interface Motion {
-  position: Position; // extract position from the title (as indicated previously) and match it to one of the Position enum (remove dachi from the end, it means `position` in japonese and turn it to lowercase letters). If you cannot find a match, prompt me, maybe the enum needs to be enriched. For Yoi and Yame, it's almost always hachiji (unless told differently)
+  position?: Position; // extract position from the title (as indicated previously) and match it to one of the Position enum (remove dachi from the end, it means `position` in japonese and turn it to lowercase letters). If you cannot find a match, prompt me, maybe the enum needs to be enriched. For Yoi and Yame, it's almost always hachiji (unless told differently)
   techniques: Technique[]; // most of the time there is only one, on rare occasion they are two, which is why it's an array
   kiai?: boolean; // if underneath the picture of this motion there is a bang operator, then true, undefined otherwise.
   // Describe the transition between the previous and current stance.
@@ -63,6 +63,7 @@ export interface Motion {
   // If the available information does not establish the direction clearly,
   // ask me rather than guessing.
   orientation?: Orientation;
+  isSlow?: boolean // true if there is an empty oval under the motion's picture
 }
 
 export enum Position {

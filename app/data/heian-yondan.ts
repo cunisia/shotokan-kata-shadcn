@@ -38,6 +38,7 @@ export const HEIAN_YONDAN: Kata = {
       index: "1",
       orientation: Orientation.W,
       note: "rotate 90 degrees left and step left",
+      isSlow: true
     },
     {
       position: Position.KOKUTSU,
@@ -51,6 +52,7 @@ export const HEIAN_YONDAN: Kata = {
       index: "2",
       orientation: Orientation.E,
       note: "rotate 180 degrees right by transferring your weight to the left leg",
+      isSlow: true
     },
     {
       position: Position.ZENKUTSU,
@@ -336,6 +338,7 @@ export const HEIAN_YONDAN: Kata = {
       orientation: Orientation.SE,
       note: "extend the left leg diagonally behind to the right and rotate 225 degrees left around the right foot into back stance",
       hasBackPicture: true,
+      isSlow: true
     },
     {
       position: Position.TSURU_ASHI,
@@ -395,6 +398,7 @@ export const HEIAN_YONDAN: Kata = {
       orientation: Orientation.SW,
       note: "rotate 90 degrees right; bring the right foot toward the left, then step diagonally right into back stance",
       hasBackPicture: true,
+      isSlow: true
     },
     {
       position: Position.TSURU_ASHI,

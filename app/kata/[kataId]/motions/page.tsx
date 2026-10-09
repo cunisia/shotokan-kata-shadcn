@@ -106,6 +106,11 @@ export default function Page() {
                       Kiai!
                     </Badge>
                   )}
+                  {motion.isSlow && (
+                    <Badge className="absolute top-2 right-2 font-bold bg-blue-50 text-blue-700 dark:bg-blue-950 dark:text-blue-300">
+                      Slow
+                    </Badge>
+                  )}
                   <Image
                     src={getPictureName(
                       motion,
@@ -172,14 +177,16 @@ export default function Page() {
                             } */}
                       </>
                     )}
-                    <Item className="items-start">
-                      <ItemContent>
-                        <ItemTitle>Position</ItemTitle>
-                        <ItemDescription className="first-letter:uppercase">
-                          {getPositionName(motion.position)}
-                        </ItemDescription>
-                      </ItemContent>
-                    </Item>
+                    {motion.position && (
+                      <Item className="items-start">
+                        <ItemContent>
+                          <ItemTitle>Position</ItemTitle>
+                          <ItemDescription className="first-letter:uppercase">
+                            {getPositionName(motion.position)}
+                          </ItemDescription>
+                        </ItemContent>
+                      </Item>
+                    )}
                     {motion.note && (
                       <Item className="col-span-2 items-start">
                         <ItemContent>
