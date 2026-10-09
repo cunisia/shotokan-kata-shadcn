@@ -49,7 +49,7 @@ const getPositionName = (position: Position) => {
 
 const getPictureName = (motion: Motion, isBack?: boolean) => {
   const nameItems: (string | undefined)[] = [
-    motion.position,
+    `${motion.position}`,
     ...motion.techniques.map(
       (technique) => `${technique.side}_${technique.target}_${technique.name}`,
     ),

@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 import AppLayout from "@/components/custom/app-layout";
 import { ThemeProvider } from "@/components/theme-provider";
 import { cn } from "@/lib/utils";
+import { Analytics } from "@vercel/analytics/next";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -36,6 +37,7 @@ export default async function RootLayout({
       )}
     >
       <body>
+        <Analytics />
         <ThemeProvider forcedTheme="dark">
           <AppLayout>{children}</AppLayout>
         </ThemeProvider>
