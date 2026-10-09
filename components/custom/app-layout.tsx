@@ -36,10 +36,6 @@ export default function AppLayout({
 
   const { kataId: kataIdValue } = useParams();
   const kataId = getParamValueAsString(kataIdValue);
-  const kata = getKata(kataId);
-  if (!kata) {
-    notFound();
-  }
 
   return (
     <SidebarProvider>
