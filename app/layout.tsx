@@ -18,6 +18,7 @@ export const metadata: Metadata = {
   title: "Shotokan Kata",
   description:
     "Explore Shotokan karate katas, techniques, and step-by-step sequences to support your practice.",
+  keywords: "shotokan, kata, karate, jka, kwf",
 };
 
 export default async function RootLayout({
