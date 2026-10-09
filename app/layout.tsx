@@ -1,11 +1,11 @@
 import { Geist_Mono, Inter } from "next/font/google";
 
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/next";
 import type { Metadata } from "next";
 import AppLayout from "@/components/custom/app-layout";
 import { ThemeProvider } from "@/components/theme-provider";
 import { cn } from "@/lib/utils";
-import { Analytics } from "@vercel/analytics/next";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 

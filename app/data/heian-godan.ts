@@ -1,12 +1,21 @@
-import { Kata, Position, Side, Target, Type, Orientation, Level } from "@/type";
+import {
+  type Kata,
+  Level,
+  Orientation,
+  Position,
+  Side,
+  Target,
+  Type,
+} from "@/type";
 
 export const HEIAN_GODAN: Kata = {
   id: "heian-godan",
   name: "Heian Godan",
   meaning: "Heian N° 5",
   level: Level.BEGINNER,
-  videoId: 'dBFe54glhTs',
-  description: "The final Heian kata introduces a broad range of advanced techniques. Its opening sequence combines an inward-to-outward block and a reverse punch in a back stance, followed by a flowing-water guard with the feet together. It also features low and high cross blocks, a crescent kick, a forward elbow strike, a reinforced rear uppercut, downward spear-hand strikes and simultaneous high and low blocks. A jump avoids a low staff attack, followed by a counter to the shin on landing.",
+  videoId: "dBFe54glhTs",
+  description:
+    "The final Heian kata introduces a broad range of advanced techniques. Its opening sequence combines an inward-to-outward block and a reverse punch in a back stance, followed by a flowing-water guard with the feet together. It also features low and high cross blocks, a crescent kick, a forward elbow strike, a reinforced rear uppercut, downward spear-hand strikes and simultaneous high and low blocks. A jump avoids a low staff attack, followed by a counter to the shin on landing.",
   motions: [
     {
       position: Position.HACHIJI,
@@ -100,7 +109,7 @@ export const HEIAN_GODAN: Kata = {
       ],
       orientation: Orientation.N,
       note: "Bring the left foot beside the right and turn your head 90 degrees left.",
-      isSlow: true
+      isSlow: true,
     },
     {
       index: "7",
@@ -265,7 +274,7 @@ export const HEIAN_GODAN: Kata = {
       ],
       orientation: Orientation.E,
       note: "Stay in the same stance and complete the left back-of-hand block.",
-      isSlow: true
+      isSlow: true,
     },
     {
       index: "13a",
@@ -409,7 +418,7 @@ export const HEIAN_GODAN: Kata = {
       ],
       orientation: Orientation.E,
       note: "Bring the left foot beside the right without changing the arm positions.",
-      isSlow: true
+      isSlow: true,
     },
     {
       index: "20a",

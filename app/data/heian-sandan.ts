@@ -473,7 +473,7 @@ export const HEIAN_SANDAN: Kata = {
         },
       ],
       orientation: Orientation.S,
-      isSlow: true
+      isSlow: true,
     },
     {
       position: Position.ZENKUTSU,

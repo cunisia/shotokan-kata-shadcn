@@ -63,7 +63,7 @@ export interface Motion {
   // If the available information does not establish the direction clearly,
   // ask me rather than guessing.
   orientation?: Orientation;
-  isSlow?: boolean // true if there is an empty oval under the motion's picture
+  isSlow?: boolean; // true if there is an empty oval under the motion's picture
 }
 
 export enum Position {

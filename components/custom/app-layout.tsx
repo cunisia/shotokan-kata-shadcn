@@ -1,7 +1,7 @@
 "use client";
 
 import type { ParamValue } from "next/dist/server/request/params";
-import { notFound, useParams } from "next/navigation";
+import { useParams } from "next/navigation";
 import { getKata, getKataList } from "@/app/data/get-kata";
 import {
   Sidebar,
