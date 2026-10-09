@@ -43,6 +43,18 @@ const getLevelClassNames = (level: Level) => {
   }
 };
 
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ kataId: string }>;
+}) {
+  const { kataId } = await params;
+  const kata = await getKata(kataId);
+  return {
+    title: kata?.name,
+  };
+}
+
 export default async function Page({
   params,
 }: Readonly<{

@@ -1,6 +1,4 @@
-"use client";
-
-import { notFound, useParams } from "next/navigation";
+import { notFound } from "next/navigation";
 import { getKata } from "@/app/data/get-kata";
 import { ZoomableImage } from "@/components/custom/zoomable-image";
 import { Card, CardContent } from "@/components/ui/card";
@@ -10,10 +8,25 @@ const getMapImageName = (kata: Kata) => {
   return `/maps/${kata.id}.png`;
 };
 
-export default function Page() {
-  const { kataId } = useParams();
-  const kata = getKata(typeof kataId === "string" ? kataId : "");
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ kataId: string }>;
+}) {
+  const { kataId } = await params;
+  const kata = getKata(kataId);
+  return {
+    title: kata?.name,
+  };
+}
 
+export default async function Page({
+  params,
+}: Readonly<{
+  params: Promise<{ kataId: string }>;
+}>) {
+  const kataId = (await params).kataId;
+  const kata = getKata(kataId);
   if (!kata) {
     notFound();
   }

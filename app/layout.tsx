@@ -15,10 +15,14 @@ const fontMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Shotokan Kata",
+  title: {
+    default: "Shotokan Kata",
+    template: "%s | Shotokan Kata",
+  },
   description:
     "Explore Shotokan karate katas, techniques, and step-by-step sequences to support your practice.",
   keywords: "shotokan, kata, karate, jka, kwf",
+  metadataBase: new URL("https://shotokan-kata.org"),
 };
 
 export default async function RootLayout({
