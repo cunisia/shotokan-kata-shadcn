@@ -39,7 +39,8 @@ export const HEIAN_NIDAN: Kata = {
         },
         {
           name: "ude soete",
-          type: Type.KAMAE,
+          target: Target.JODAN,
+          type: Type.BLOCK,
           side: Side.MIGI,
         },
       ],
@@ -48,7 +49,7 @@ export const HEIAN_NIDAN: Kata = {
     {
       index: "2a",
       position: Position.KOKUTSU,
-      note: "stay where you are and turn the hips left",
+      note: "stay where you are and close the hips.",
       techniques: [
         {
           name: "ude-uke",
@@ -67,7 +68,7 @@ export const HEIAN_NIDAN: Kata = {
     {
       index: "2",
       position: Position.KOKUTSU,
-      note: "stay where you are",
+      note: "stay where you are and open the hips.",
       techniques: [
         {
           name: "zuki",
@@ -91,7 +92,8 @@ export const HEIAN_NIDAN: Kata = {
         },
         {
           name: "ude soete",
-          type: Type.KAMAE,
+          target: Target.JODAN,
+          type: Type.BLOCK,
           side: Side.HIDARI,
         },
       ],
@@ -100,7 +102,7 @@ export const HEIAN_NIDAN: Kata = {
     {
       index: "4a",
       position: Position.KOKUTSU,
-      note: "stay where you are",
+      note: "stay where you are and close the hips.",
       techniques: [
         {
           name: "ude-uke",
@@ -119,7 +121,7 @@ export const HEIAN_NIDAN: Kata = {
     {
       index: "4",
       position: Position.KOKUTSU,
-      note: "stay where you are",
+      note: "stay where you are and open the hips",
       techniques: [
         {
           name: "zuki",
@@ -133,7 +135,7 @@ export const HEIAN_NIDAN: Kata = {
     {
       index: "5a",
       position: Position.KOKUTSU,
-      note: "turn 90 degrees right on the right foot and bring the left foot halfway toward it; chamber both fists on the left side",
+      note: "turn 90 degrees right on the left foot and bring the right foot halfway toward it; chamber both fists on the left side",
       techniques: [
         {
           name: "koshi-gamae",
@@ -151,11 +153,13 @@ export const HEIAN_NIDAN: Kata = {
           name: "yoko ke-age",
           type: Type.HATEMI,
           side: Side.MIGI,
+          target: Target.CHUDAN
         },
         {
           name: "yoko-mawashi uraken-uchi",
           type: Type.HATEMI,
           side: Side.MIGI,
+          target: Target.CHUDAN
         },
       ],
       orientation: Orientation.S,
@@ -163,7 +167,7 @@ export const HEIAN_NIDAN: Kata = {
     {
       index: "5",
       position: Position.KOKUTSU,
-      note: "retract the kicking leg, rotate 180 degrees left on the supporting left foot and place the right foot backward",
+      note: "retract the kicking leg, rotate 180 degrees right on the supporting left foot and place the right foot backward",
       techniques: [
         {
           name: "shuto-uke",
@@ -177,7 +181,7 @@ export const HEIAN_NIDAN: Kata = {
     {
       index: "6",
       position: Position.KOKUTSU,
-      note: "step forward",
+      note: "step forward from previous position",
       techniques: [
         {
           name: "shuto-uke",
@@ -191,7 +195,7 @@ export const HEIAN_NIDAN: Kata = {
     {
       index: "7",
       position: Position.KOKUTSU,
-      note: "step forward",
+      note: "step forward from previous position",
       techniques: [
         {
           name: "shuto-uke",
@@ -206,7 +210,7 @@ export const HEIAN_NIDAN: Kata = {
       index: "8",
       position: Position.ZENKUTSU,
       kiai: true,
-      note: "step forward",
+      note: "step forward from previous position",
       techniques: [
         {
           name: "shihon-nukite",
@@ -302,6 +306,7 @@ export const HEIAN_NIDAN: Kata = {
       techniques: [
         {
           name: "mae-geri",
+          target: Target.CHUDAN,
           type: Type.HATEMI,
           side: Side.MIGI,
         },
@@ -346,6 +351,7 @@ export const HEIAN_NIDAN: Kata = {
       techniques: [
         {
           name: "mae-geri",
+          target: Target.CHUDAN,
           type: Type.HATEMI,
           side: Side.HIDARI,
         },
@@ -371,7 +377,7 @@ export const HEIAN_NIDAN: Kata = {
       index: "17",
       position: Position.ZENKUTSU,
       hasBackPicture: true,
-      note: "step forward",
+      note: "step forward from previous position",
       techniques: [
         {
           name: "morote-uke",
@@ -385,7 +391,7 @@ export const HEIAN_NIDAN: Kata = {
     {
       index: "18",
       position: Position.ZENKUTSU,
-      note: "rotate 90 degrees right around front foot",
+      note: "rotate 90 degrees right around front foot, both feet should be one the same line",
       techniques: [
         {
           name: "gedan-barai",
