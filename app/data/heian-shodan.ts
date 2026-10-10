@@ -30,7 +30,7 @@ export const HEIAN_SHODAN: Kata = {
     {
       index: "1",
       position: Position.ZENKUTSU,
-      note: "Rotate 90 degrees left.",
+      note: "Rotate 90 degrees left from previous position.",
       techniques: [
         {
           name: "gedan-barai",
@@ -44,7 +44,7 @@ export const HEIAN_SHODAN: Kata = {
     {
       index: "2",
       position: Position.ZENKUTSU,
-      note: "Step forward.",
+      note: "Step forward from previous position.",
       techniques: [
         {
           name: "oi-zuki",
@@ -58,7 +58,7 @@ export const HEIAN_SHODAN: Kata = {
     {
       index: "3",
       position: Position.ZENKUTSU,
-      note: "Rotate 180 degrees right.",
+      note: "Rotate 180 degrees right from previous position.",
       techniques: [
         {
           name: "gedan-barai",
@@ -85,7 +85,7 @@ export const HEIAN_SHODAN: Kata = {
     {
       index: "5",
       position: Position.ZENKUTSU,
-      note: "Step forward.",
+      note: "Step forward from previous position.",
       techniques: [
         {
           name: "oi-zuki",
@@ -99,7 +99,7 @@ export const HEIAN_SHODAN: Kata = {
     {
       index: "6",
       position: Position.ZENKUTSU,
-      note: "Rotate 90 degrees left.",
+      note: "Rotate 90 degrees left from previous position.",
       techniques: [
         {
           name: "gedan-barai",
@@ -113,7 +113,7 @@ export const HEIAN_SHODAN: Kata = {
     {
       index: "7",
       position: Position.ZENKUTSU,
-      note: "Step forward.",
+      note: "Step forward from previous position.",
       techniques: [
         {
           name: "age-uke",
@@ -127,7 +127,7 @@ export const HEIAN_SHODAN: Kata = {
     {
       index: "8",
       position: Position.ZENKUTSU,
-      note: "Step forward.",
+      note: "Step forward from previous position.",
       techniques: [
         {
           name: "age-uke",
@@ -142,7 +142,7 @@ export const HEIAN_SHODAN: Kata = {
       index: "9",
       position: Position.ZENKUTSU,
       kiai: true,
-      note: "Step forward.",
+      note: "Step forward from previous position.",
       techniques: [
         {
           name: "age-uke",
@@ -156,7 +156,7 @@ export const HEIAN_SHODAN: Kata = {
     {
       index: "10",
       position: Position.ZENKUTSU,
-      note: "rotate 90 degrees right around front foot",
+      note: "rotate 90 degrees right around front foot from previous position.",
       techniques: [
         {
           name: "gedan-barai",
@@ -170,7 +170,7 @@ export const HEIAN_SHODAN: Kata = {
     {
       index: "11",
       position: Position.ZENKUTSU,
-      note: "Step forward.",
+      note: "Step forward from previous position.",
       techniques: [
         {
           name: "oi-zuki",
@@ -184,7 +184,7 @@ export const HEIAN_SHODAN: Kata = {
     {
       index: "12",
       position: Position.ZENKUTSU,
-      note: "Rotate 180 degrees right.",
+      note: "Rotate 180 degrees right from previous position.",
       techniques: [
         {
           name: "gedan-barai",
@@ -198,7 +198,7 @@ export const HEIAN_SHODAN: Kata = {
     {
       index: "13",
       position: Position.ZENKUTSU,
-      note: "Step forward.",
+      note: "Step forward from previous position.",
       techniques: [
         {
           name: "oi-zuki",
@@ -213,7 +213,7 @@ export const HEIAN_SHODAN: Kata = {
       index: "14",
       position: Position.ZENKUTSU,
       hasBackPicture: true,
-      note: "Rotate 90 degrees left.",
+      note: "Rotate 90 degrees left from previous position.",
       techniques: [
         {
           name: "gedan-barai",
@@ -228,7 +228,7 @@ export const HEIAN_SHODAN: Kata = {
       index: "15",
       position: Position.ZENKUTSU,
       hasBackPicture: true,
-      note: "Step forward.",
+      note: "Step forward from previous position.",
       techniques: [
         {
           name: "oi-zuki",
@@ -242,7 +242,8 @@ export const HEIAN_SHODAN: Kata = {
     {
       index: "16",
       position: Position.ZENKUTSU,
-      note: "Step forward.",
+      hasBackPicture: true,
+      note: "Step forward from previous position.",
       techniques: [
         {
           name: "oi-zuki",
@@ -258,7 +259,7 @@ export const HEIAN_SHODAN: Kata = {
       position: Position.ZENKUTSU,
       hasBackPicture: true,
       kiai: true,
-      note: "Step forward.",
+      note: "Step forward from previous position.",
       techniques: [
         {
           name: "oi-zuki",
@@ -272,7 +273,7 @@ export const HEIAN_SHODAN: Kata = {
     {
       index: "18",
       position: Position.KOKUTSU,
-      note: "rotate 90 degrees right around front foot",
+      note: "Rotate 90 degrees right around front foot from previous position.",
       techniques: [
         {
           name: "shuto-uke",

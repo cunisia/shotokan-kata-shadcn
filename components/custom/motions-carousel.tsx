@@ -198,7 +198,9 @@ export default function MotionsCarousel() {
                           setShowBackPicture(isChecked)
                         }
                       />
-                      <Label htmlFor="airplane-mode">Show back picture</Label>
+                      <Label htmlFor="airplane-mode">
+                        Always show front picture
+                      </Label>
                     </div>
                   )}
                   {isTableDisplayed(motion) && (
