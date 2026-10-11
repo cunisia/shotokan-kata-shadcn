@@ -23,6 +23,16 @@ export const metadata: Metadata = {
     "Explore Shotokan karate katas, techniques, and step-by-step sequences to support your practice.",
   keywords: "shotokan, kata, karate, jka, kwf",
   metadataBase: new URL("https://shotokan-kata.org"),
+  openGraph: {
+    images: [
+      {
+        url: "/opengraph-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Shotokan Kata",
+      },
+    ],
+  },
 };
 
 export default async function RootLayout({
