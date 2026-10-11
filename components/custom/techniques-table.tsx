@@ -58,7 +58,7 @@ export default function TechniquesTables({ motion }: { motion: Motion }) {
           <TableRow key={headerGroup.id}>
             {headerGroup.headers.map((header) => {
               return (
-                <TableHead key={header.id}>
+                <TableHead key={header.id} className="text-muted-foreground">
                   {header.isPlaceholder ? null : (
                     <table.FlexRender header={header} />
                   )}

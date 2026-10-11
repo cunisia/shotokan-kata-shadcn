@@ -211,8 +211,10 @@ export default function MotionsCarousel() {
                       <>
                         <Item className="items-start">
                           <ItemContent>
-                            <ItemTitle>Technique</ItemTitle>
-                            <ItemDescription className="first-letter:uppercase">
+                            <ItemTitle className="text-muted-foreground">
+                              Technique
+                            </ItemTitle>
+                            <ItemDescription className="first-letter:uppercase text-foreground">
                               {motion.techniques[0].name}
                               {motion.kiai && (
                                 <span className="font-bold"> + kiai</span>
@@ -223,16 +225,16 @@ export default function MotionsCarousel() {
                         {/* { motion.techniques[0].target &&
                                 (<Item className="items-start">
                                     <ItemContent>
-                                        <ItemTitle>Target</ItemTitle>
-                                        <ItemDescription className="first-letter:uppercase">{motion.techniques[0].target}</ItemDescription>
+                                        <ItemTitle className="text-muted-foreground">Target</ItemTitle>
+                                        <ItemDescription className="first-letter:uppercase text-foreground">{motion.techniques[0].target}</ItemDescription>
                                     </ItemContent>
                                 </Item>)
                             }
                             { motion.techniques[0].side &&
                                 (<Item className="items-start">
                                     <ItemContent>
-                                        <ItemTitle>Side</ItemTitle>
-                                        <ItemDescription className="first-letter:uppercase">{getSideName(motion.techniques[0].side)}</ItemDescription>
+                                        <ItemTitle className="text-muted-foreground">Side</ItemTitle>
+                                        <ItemDescription className="first-letter:uppercase text-foreground">{getSideName(motion.techniques[0].side)}</ItemDescription>
                                     </ItemContent>
                                 </Item>)
                             } */}
@@ -241,8 +243,10 @@ export default function MotionsCarousel() {
                     {motion.position && (
                       <Item className="items-start">
                         <ItemContent>
-                          <ItemTitle>Position</ItemTitle>
-                          <ItemDescription className="first-letter:uppercase">
+                          <ItemTitle className="text-muted-foreground">
+                            Position
+                          </ItemTitle>
+                          <ItemDescription className="first-letter:uppercase text-foreground">
                             {getPositionName(motion.position)}
                           </ItemDescription>
                         </ItemContent>
@@ -251,8 +255,10 @@ export default function MotionsCarousel() {
                     {motion.note && (
                       <Item className="col-span-2 items-start">
                         <ItemContent>
-                          <ItemTitle>Note</ItemTitle>
-                          <ItemDescription className="first-letter:uppercase line-clamp-none">
+                          <ItemTitle className="text-muted-foreground">
+                            Note
+                          </ItemTitle>
+                          <ItemDescription className="first-letter:uppercase line-clamp-none text-foreground">
                             {motion.note}
                           </ItemDescription>
                         </ItemContent>
