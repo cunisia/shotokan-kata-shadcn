@@ -284,6 +284,7 @@ export const HEIAN_GODAN: Kata = {
           name: "mikazuki-geri",
           side: Side.MIGI,
           type: Type.HATEMI,
+          target: Target.CHUDAN
         },
       ],
       orientation: Orientation.N,
