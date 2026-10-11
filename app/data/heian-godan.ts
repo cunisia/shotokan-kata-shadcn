@@ -136,7 +136,7 @@ export const HEIAN_GODAN: Kata = {
         },
       ],
       orientation: Orientation.N,
-      note: "Step forward with the left foot and cross the fists above the left hip, right fist on top.",
+      note: "Step forward with the left foot and cross the fists above the right hip, right fist on top.",
       hasSidePicture: true,
     },
     {
@@ -232,15 +232,15 @@ export const HEIAN_GODAN: Kata = {
       position: Position.KIBA,
       techniques: [
         {
-          name: "fumikomi",
-          side: Side.MIGI,
-          type: Type.HATEMI,
-        },
-        {
           name: "sokumen gedan-barai",
           side: Side.MIGI,
           target: Target.GEDAN,
           type: Type.BLOCK,
+        },
+        {
+          name: "fumikomi",
+          side: Side.HIDARI,
+          type: Type.KAMAE,
         },
       ],
       orientation: Orientation.E,
@@ -297,6 +297,7 @@ export const HEIAN_GODAN: Kata = {
           name: "mae empi-uchi",
           side: Side.MIGI,
           type: Type.HATEMI,
+          target: Target.CHUDAN
         },
       ],
       orientation: Orientation.W,
@@ -324,6 +325,7 @@ export const HEIAN_GODAN: Kata = {
           name: "koho tsuki-age",
           side: Side.MIGI,
           type: Type.HATEMI,
+          target: Target.JODAN,
         },
       ],
       orientation: Orientation.E,
@@ -375,6 +377,7 @@ export const HEIAN_GODAN: Kata = {
         {
           name: "nagashi-uke",
           side: Side.HIDARI,
+          target: Target.JODAN,
           type: Type.BLOCK,
         },
         {
@@ -463,6 +466,7 @@ export const HEIAN_GODAN: Kata = {
         {
           name: "nagashi-uke",
           side: Side.MIGI,
+          target: Target.JODAN,
           type: Type.BLOCK,
         },
         {
