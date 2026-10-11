@@ -153,13 +153,13 @@ export const HEIAN_NIDAN: Kata = {
           name: "yoko ke-age",
           type: Type.HATEMI,
           side: Side.MIGI,
-          target: Target.CHUDAN
+          target: Target.CHUDAN,
         },
         {
           name: "yoko-mawashi uraken-uchi",
           type: Type.HATEMI,
           side: Side.MIGI,
-          target: Target.CHUDAN
+          target: Target.CHUDAN,
         },
       ],
       orientation: Orientation.S,

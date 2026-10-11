@@ -304,7 +304,7 @@ export const HEIAN_SANDAN: Kata = {
           name: "empi-uke",
           type: Type.BLOCK,
           side: Side.MIGI,
-          target: Target.CHUDAN
+          target: Target.CHUDAN,
         },
         {
           name: "fumikomi",
@@ -368,7 +368,7 @@ export const HEIAN_SANDAN: Kata = {
           name: "empi-uke",
           type: Type.BLOCK,
           side: Side.HIDARI,
-          target: Target.CHUDAN
+          target: Target.CHUDAN,
         },
         {
           name: "fumikomi",
@@ -428,7 +428,7 @@ export const HEIAN_SANDAN: Kata = {
           name: "empi-uke",
           type: Type.BLOCK,
           side: Side.MIGI,
-          target: Target.CHUDAN
+          target: Target.CHUDAN,
         },
         {
           name: "fumikomi",
@@ -498,7 +498,7 @@ export const HEIAN_SANDAN: Kata = {
         },
       ],
       orientation: Orientation.S,
-      hasBackPicture: true
+      hasBackPicture: true,
     },
     {
       position: Position.KIBA,
@@ -509,13 +509,13 @@ export const HEIAN_SANDAN: Kata = {
           name: "tate-zuki",
           type: Type.HATEMI,
           side: Side.MIGI,
-          target: Target.JODAN
+          target: Target.JODAN,
         },
         {
           name: "ushiro empi-uchi",
           type: Type.HATEMI,
           side: Side.HIDARI,
-          target: Target.CHUDAN
+          target: Target.CHUDAN,
         },
       ],
       orientation: Orientation.N,
@@ -530,13 +530,13 @@ export const HEIAN_SANDAN: Kata = {
           name: "tate-zuki",
           type: Type.HATEMI,
           side: Side.HIDARI,
-          target: Target.JODAN
+          target: Target.JODAN,
         },
         {
           name: "ushiro empi-uchi",
           type: Type.HATEMI,
           side: Side.MIGI,
-          target: Target.CHUDAN
+          target: Target.CHUDAN,
         },
       ],
       orientation: Orientation.N,
