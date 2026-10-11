@@ -16,6 +16,8 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar";
+import { groupBy } from "es-toolkit";
+import { Level } from "@/type";
 
 const getPageTitle = (kataId: string | undefined) => {
   if (!kataId) {
@@ -23,6 +25,15 @@ const getPageTitle = (kataId: string | undefined) => {
   }
   return getKata(kataId)?.name ?? "";
 };
+
+const LEVEL_TO_VALUE: Record<Level, number> = {
+  [Level.BEGINNER]: 0,
+  [Level.INTERMEDIATE]: 2,
+  [Level.ADVANCED]: 3,
+};
+
+const sortLevel = (l1: Level, l2: Level) =>
+  LEVEL_TO_VALUE[l1] - LEVEL_TO_VALUE[l2];
 
 const getParamValueAsString = (value: ParamValue): string =>
   typeof value === "string" ? value : "";
@@ -37,29 +48,37 @@ export default function AppLayout({
   const { kataId: kataIdValue } = useParams();
   const kataId = getParamValueAsString(kataIdValue);
 
+  const kataByLevel = groupBy(katas, (kata) => kata.level);
+
   return (
     <SidebarProvider>
       <Sidebar>
         <SidebarContent>
-          <SidebarGroup>
-            <SidebarGroupLabel>Katas</SidebarGroupLabel>
-            <SidebarGroupContent>
-              {katas.map((kata) => (
-                <SidebarMenu key={kata.id}>
-                  <SidebarMenuItem key={kata.id}>
-                    <SidebarMenuButton isActive={kata.id === kataId}>
-                      <a
-                        className={kata.id === kataId ? "text-bold" : ""}
-                        href={`/kata/${kata.id}/motions`}
-                      >
-                        {kata.name}
-                      </a>
-                    </SidebarMenuButton>
-                  </SidebarMenuItem>
-                </SidebarMenu>
-              ))}
-            </SidebarGroupContent>
-          </SidebarGroup>
+          {Object.values(Level)
+            .sort(sortLevel)
+            .map((level) => (
+              <SidebarGroup key={level}>
+                <SidebarGroupLabel className="capitalize">
+                  {level}
+                </SidebarGroupLabel>
+                <SidebarGroupContent>
+                  {(kataByLevel[level] ?? []).map((kata) => (
+                    <SidebarMenu key={kata.id}>
+                      <SidebarMenuItem>
+                        <SidebarMenuButton>
+                          <a
+                            className={kata.id === kataId ? "text-bold" : ""}
+                            href={`/kata/${kata.id}/motions`}
+                          >
+                            {kata.name}
+                          </a>
+                        </SidebarMenuButton>
+                      </SidebarMenuItem>
+                    </SidebarMenu>
+                  ))}
+                </SidebarGroupContent>
+              </SidebarGroup>
+            ))}
         </SidebarContent>
       </Sidebar>
       <SidebarInset>
