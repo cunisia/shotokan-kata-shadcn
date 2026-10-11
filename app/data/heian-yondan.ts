@@ -38,7 +38,7 @@ export const HEIAN_YONDAN: Kata = {
       ],
       index: "1",
       orientation: Orientation.W,
-      note: "rotate 90 degrees left and move left foot forward",
+      note: "rotate 90 degrees left and move left foot forward.",
       isSlow: true,
     },
     {
@@ -53,7 +53,7 @@ export const HEIAN_YONDAN: Kata = {
       ],
       index: "2",
       orientation: Orientation.E,
-      note: "rotate 180 degrees right by transferring your weight to the left leg. Foot stay where they are",
+      note: "rotate 180 degrees right by transferring your weight to the left leg. Foot stay where they are.",
       isSlow: true,
     },
     {
@@ -67,7 +67,7 @@ export const HEIAN_YONDAN: Kata = {
       ],
       index: "3",
       orientation: Orientation.N,
-      note: "rotate 90 degrees left and step forward with the left foot",
+      note: "rotate 90 degrees left and step forward with the left foot.",
     },
     {
       position: Position.KOKUTSU,
@@ -81,7 +81,7 @@ export const HEIAN_YONDAN: Kata = {
       ],
       index: "4",
       orientation: Orientation.N,
-      note: "step forward with the right foot",
+      note: "step forward with the right foot.",
     },
     {
       position: Position.HEISOKU,
@@ -93,7 +93,7 @@ export const HEIAN_YONDAN: Kata = {
       ],
       index: "5",
       orientation: Orientation.W,
-      note: "turn left and bring the left foot beside the right; place both fists above the right hip",
+      note: "turn left and bring the left foot beside the right; place both fists above the right hip.",
     },
     {
       position: Position.TSURU_ASHI,
@@ -106,7 +106,7 @@ export const HEIAN_YONDAN: Kata = {
       ],
       index: "6a",
       orientation: Orientation.W,
-      note: "raise the left foot above the right knee",
+      note: "raise the left foot above the right knee.",
     },
     {
       position: Position.TSURU_ASHI,
@@ -126,7 +126,7 @@ export const HEIAN_YONDAN: Kata = {
       ],
       index: "6b",
       orientation: Orientation.W,
-      note: "stay on the right leg; kick left and strike with the left backfist simultaneously",
+      note: "stay on the right leg; kick left and strike with the left backfist simultaneously.",
     },
     {
       position: Position.TSURU_ASHI,
@@ -144,7 +144,7 @@ export const HEIAN_YONDAN: Kata = {
       ],
       index: "6c",
       orientation: Orientation.W,
-      note: "retract the left foot above the right knee",
+      note: "retract the left foot above the right knee.",
     },
     {
       position: Position.ZENKUTSU,
@@ -158,7 +158,7 @@ export const HEIAN_YONDAN: Kata = {
       ],
       index: "6",
       orientation: Orientation.W,
-      note: "step forward with the left foot in the direction of the kick",
+      note: "step forward with the left foot in the direction of the kick.",
     },
     {
       position: Position.HEISOKU,
@@ -170,7 +170,7 @@ export const HEIAN_YONDAN: Kata = {
       ],
       index: "7",
       orientation: Orientation.E,
-      note: "turn right and bring the right foot beside the left; place both fists above the left hip",
+      note: "turn right and bring the right foot beside the left; place both fists above the left hip.",
     },
     {
       position: Position.TSURU_ASHI,
@@ -183,7 +183,7 @@ export const HEIAN_YONDAN: Kata = {
       ],
       index: "8a",
       orientation: Orientation.E,
-      note: "raise the right foot above the left knee",
+      note: "raise the right foot above the left knee.",
     },
     {
       position: Position.TSURU_ASHI,
@@ -203,7 +203,7 @@ export const HEIAN_YONDAN: Kata = {
       ],
       index: "8b",
       orientation: Orientation.E,
-      note: "stay on the left leg; kick right and strike with the right backfist simultaneously",
+      note: "stay on the left leg; kick right and strike with the right backfist simultaneously.",
     },
     {
       position: Position.TSURU_ASHI,
@@ -221,7 +221,7 @@ export const HEIAN_YONDAN: Kata = {
       ],
       index: "8c",
       orientation: Orientation.E,
-      note: "retract the right foot above the left knee",
+      note: "retract the right foot above the left knee.",
     },
     {
       position: Position.ZENKUTSU,
@@ -235,7 +235,7 @@ export const HEIAN_YONDAN: Kata = {
       ],
       index: "8",
       orientation: Orientation.E,
-      note: "step forward with the right foot in the direction of the kick",
+      note: "step forward with the right foot in the direction of the kick.",
     },
     {
       position: Position.ZENKUTSU,
@@ -249,7 +249,7 @@ export const HEIAN_YONDAN: Kata = {
       ],
       index: "9",
       orientation: Orientation.N,
-      note: "stay in the same stance; turn the head left and lower the left hand while drawing the right elbow behind the head",
+      note: "stay in the same stance; turn the head left and lower the left hand while drawing the right elbow behind the head.",
     },
     {
       position: Position.ZENKUTSU,
@@ -269,7 +269,7 @@ export const HEIAN_YONDAN: Kata = {
       ],
       index: "10",
       orientation: Orientation.N,
-      note: "stay in the same stance; rotate the hips left into gyaku-hanmi",
+      note: "stay in the same stance; rotate the hips left into gyaku-hanmi.",
     },
     {
       position: Position.TSURU_ASHI,
@@ -283,7 +283,7 @@ export const HEIAN_YONDAN: Kata = {
       ],
       index: "11a",
       orientation: Orientation.N,
-      note: "kick forward with the right foot without changing the upper-body position",
+      note: "kick forward with the right foot without changing the upper-body position.",
     },
     {
       position: Position.TSURU_ASHI,
@@ -296,7 +296,7 @@ export const HEIAN_YONDAN: Kata = {
       ],
       index: "11b",
       orientation: Orientation.N,
-      note: "retract the right foot; draw the right hand to the chest and extend the left hand",
+      note: "retract the right foot; draw the right hand to the chest and extend the left hand.",
     },
     {
       position: Position.TSURU_ASHI,
@@ -315,7 +315,7 @@ export const HEIAN_YONDAN: Kata = {
       ],
       index: "11c",
       orientation: Orientation.N,
-      note: "push forward from the left foot; lower the left hand and raise the right fist above the head",
+      note: "push forward from the left foot; lower the left hand and raise the right fist above the head.",
     },
     {
       position: Position.KOSA,
@@ -329,7 +329,7 @@ export const HEIAN_YONDAN: Kata = {
       ],
       index: "11",
       orientation: Orientation.N,
-      note: "land on the right foot and cross the left leg behind it",
+      note: "land on the right foot and cross the left leg behind it.",
       hasBackPicture: true,
       kiai: true,
     },
@@ -344,7 +344,7 @@ export const HEIAN_YONDAN: Kata = {
       ],
       index: "12",
       orientation: Orientation.SE,
-      note: "extend the left leg diagonally behind to the right and rotate 225 degrees left around the right foot into back stance",
+      note: "extend the left leg diagonally behind to the right and rotate 225 degrees left around the right foot into back stance.",
       hasBackPicture: true,
       isSlow: true,
     },
@@ -360,7 +360,7 @@ export const HEIAN_YONDAN: Kata = {
       ],
       index: "13a",
       orientation: Orientation.SE,
-      note: "kick forward with the right foot without changing the arm position",
+      note: "kick forward with the right foot without changing the arm position.",
       hasBackPicture: true,
     },
     {
@@ -375,7 +375,7 @@ export const HEIAN_YONDAN: Kata = {
       ],
       index: "13c",
       orientation: Orientation.SE,
-      note: "land forward on the right foot",
+      note: "land forward on the right foot.",
       hasBackPicture: true,
     },
     {
@@ -390,7 +390,7 @@ export const HEIAN_YONDAN: Kata = {
       ],
       index: "13",
       orientation: Orientation.SE,
-      note: "stay in the same stance",
+      note: "stay in the same stance.",
       hasBackPicture: true,
     },
     {
@@ -404,7 +404,7 @@ export const HEIAN_YONDAN: Kata = {
       ],
       index: "14",
       orientation: Orientation.SW,
-      note: "rotate 90 degrees right; bring the right foot toward the left, then step diagonally right into back stance",
+      note: "rotate 90 degrees right; bring the right foot toward the left, then step diagonally right into back stance.",
       hasBackPicture: true,
       isSlow: true,
     },
@@ -420,7 +420,7 @@ export const HEIAN_YONDAN: Kata = {
       ],
       index: "15a",
       orientation: Orientation.SW,
-      note: "kick forward with the left foot without changing the arm position",
+      note: "kick forward with the left foot without changing the arm position.",
       hasBackPicture: true,
     },
     {
@@ -435,7 +435,7 @@ export const HEIAN_YONDAN: Kata = {
       ],
       index: "15b",
       orientation: Orientation.SW,
-      note: "land forward on the left foot",
+      note: "land forward on the left foot.",
       hasBackPicture: true,
     },
     {
@@ -450,7 +450,7 @@ export const HEIAN_YONDAN: Kata = {
       ],
       index: "15",
       orientation: Orientation.SW,
-      note: "stay in the same stance",
+      note: "stay in the same stance.",
       hasBackPicture: true,
     },
     {
@@ -465,7 +465,7 @@ export const HEIAN_YONDAN: Kata = {
       ],
       index: "16",
       orientation: Orientation.S,
-      note: "rotate 45 degrees left; transfer weight to the right leg and slide the left foot left",
+      note: "rotate 45 degrees left; transfer weight to the right leg and slide the left foot left.",
       hasBackPicture: true,
     },
     {
@@ -480,7 +480,7 @@ export const HEIAN_YONDAN: Kata = {
       ],
       index: "17",
       orientation: Orientation.S,
-      note: "step forward with the right foot",
+      note: "step forward with the right foot.",
       hasBackPicture: true,
     },
     {
@@ -495,7 +495,7 @@ export const HEIAN_YONDAN: Kata = {
       ],
       index: "18",
       orientation: Orientation.S,
-      note: "step forward with the left foot",
+      note: "step forward with the left foot.",
       hasBackPicture: true,
     },
     {
@@ -509,7 +509,7 @@ export const HEIAN_YONDAN: Kata = {
       ],
       index: "19",
       orientation: Orientation.S,
-      note: "slide the left foot forward and slightly left; extend both hands to seize the head",
+      note: "slide the left foot forward and slightly left; extend both hands to seize the head.",
       hasBackPicture: true,
     },
     {
@@ -523,7 +523,7 @@ export const HEIAN_YONDAN: Kata = {
       ],
       index: "20a",
       orientation: Orientation.S,
-      note: "raise the right knee sharply and pull both hands down beside it",
+      note: "raise the right knee sharply and pull both hands down beside it.",
       hasBackPicture: true,
       kiai: true,
     },
@@ -539,7 +539,7 @@ export const HEIAN_YONDAN: Kata = {
       ],
       index: "20",
       orientation: Orientation.N,
-      note: "rotate 180 degrees left around the supporting left foot and place the right foot behind",
+      note: "rotate 180 degrees left around the supporting left foot and place the right foot behind.",
     },
     {
       position: Position.KOKUTSU,
@@ -553,7 +553,7 @@ export const HEIAN_YONDAN: Kata = {
       ],
       index: "21",
       orientation: Orientation.N,
-      note: "step forward with the right foot",
+      note: "step forward with the right foot.",
     },
     {
       position: Position.HACHIJI,
@@ -563,7 +563,7 @@ export const HEIAN_YONDAN: Kata = {
           type: Type.KAMAE,
         },
       ],
-      note: "bring the right foot beside the left, hip-width apart, and return to the ready stance",
+      note: "bring the right foot beside the left, hip-width apart, and return to the ready stance.",
     },
   ],
 };

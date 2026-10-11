@@ -30,7 +30,7 @@ export const HEIAN_SANDAN: Kata = {
       position: Position.KOKUTSU,
       index: "1",
       hasSidePicture: true,
-      note: "rotate 90 degrees left and step left",
+      note: "rotate 90 degrees left and step left.",
       techniques: [
         {
           name: "uchi-uke",
@@ -45,7 +45,7 @@ export const HEIAN_SANDAN: Kata = {
       position: Position.HEISOKU,
       index: "2a",
       hasSidePicture: true,
-      note: "bring the right foot beside the left; raise the left fist toward the right shoulder and lower the right fist diagonally",
+      note: "bring the right foot beside the left; raise the left fist toward the right shoulder and lower the right fist diagonally.",
       techniques: [
         {
           name: "kosa-uke-arm",
@@ -59,7 +59,7 @@ export const HEIAN_SANDAN: Kata = {
       position: Position.HEISOKU,
       index: "2",
       hasSidePicture: true,
-      note: "stay where you are",
+      note: "stay where you are.",
       techniques: [
         {
           name: "uchi-uke",
@@ -79,7 +79,7 @@ export const HEIAN_SANDAN: Kata = {
     {
       position: Position.HEISOKU,
       index: "3a",
-      note: "stay where you are; raise the right fist toward the left shoulder and lower the left fist diagonally",
+      note: "stay where you are; raise the right fist toward the left shoulder and lower the left fist diagonally.",
       techniques: [
         {
           name: "kosa-uke-arm",
@@ -93,7 +93,7 @@ export const HEIAN_SANDAN: Kata = {
       position: Position.HEISOKU,
       index: "3",
       hasSidePicture: true,
-      note: "stay where you are",
+      note: "stay where you are.",
       techniques: [
         {
           name: "uchi-uke",
@@ -113,7 +113,7 @@ export const HEIAN_SANDAN: Kata = {
     {
       position: Position.KOKUTSU,
       index: "4",
-      note: "rotate 180 degrees right and move the right foot forward",
+      note: "rotate 180 degrees right and move the right foot forward.",
       techniques: [
         {
           name: "uchi-uke",
@@ -127,7 +127,7 @@ export const HEIAN_SANDAN: Kata = {
     {
       position: Position.HEISOKU,
       index: "5a",
-      note: "bring the left foot beside the right; raise the right fist toward the left shoulder and lower the left fist to the right",
+      note: "bring the left foot beside the right; raise the right fist toward the left shoulder and lower the left fist to the right.",
       techniques: [
         {
           name: "kosa-uke-arm",
@@ -140,7 +140,7 @@ export const HEIAN_SANDAN: Kata = {
     {
       position: Position.HEISOKU,
       index: "5",
-      note: "stay where you are",
+      note: "stay where you are.",
       techniques: [
         {
           name: "uchi-uke",
@@ -160,7 +160,7 @@ export const HEIAN_SANDAN: Kata = {
     {
       position: Position.HEISOKU,
       index: "6a",
-      note: "stay where you are; raise the left fist toward the right shoulder and lower the right fist to the left",
+      note: "stay where you are; raise the left fist toward the right shoulder and lower the right fist to the left.",
       techniques: [
         {
           name: "kosa-uke-arm",
@@ -173,7 +173,7 @@ export const HEIAN_SANDAN: Kata = {
     {
       position: Position.HEISOKU,
       index: "6",
-      note: "stay where you are",
+      note: "stay where you are.",
       techniques: [
         {
           name: "uchi-uke",
@@ -193,7 +193,7 @@ export const HEIAN_SANDAN: Kata = {
     {
       position: Position.KOKUTSU,
       index: "7",
-      note: "rotate 90 degrees left and step left",
+      note: "rotate 90 degrees left and step left.",
       techniques: [
         {
           name: "morote-uke",
@@ -208,7 +208,7 @@ export const HEIAN_SANDAN: Kata = {
       position: Position.ZENKUTSU,
       index: "8",
       hasSidePicture: true,
-      note: "step forward from previous position",
+      note: "step forward from previous position.",
       techniques: [
         {
           name: "shihon-nukite",
@@ -227,7 +227,7 @@ export const HEIAN_SANDAN: Kata = {
     {
       position: Position.KIBA,
       index: "9b",
-      note: "continue rotating left on the right foot, cross the left foot behind the right and bring the right hand behind the back, palm outward",
+      note: "continue rotating left on the right foot, cross the left foot behind the right and bring the right hand behind the back, palm outward.",
       techniques: [
         {
           name: "tettsui-uchi-arm",
@@ -240,7 +240,7 @@ export const HEIAN_SANDAN: Kata = {
       position: Position.KIBA,
       index: "9",
       hasSidePicture: true,
-      note: "continue rotating left and place the left foot outward; complete the full turn and strike with the left hammer-fist",
+      note: "continue rotating left and place the left foot outward; complete the full turn and strike with the left hammer-fist.",
       techniques: [
         {
           name: "tettsui-uchi",
@@ -255,7 +255,7 @@ export const HEIAN_SANDAN: Kata = {
       position: Position.ZENKUTSU,
       index: "10",
       hasSidePicture: true,
-      note: "step forward from previous position",
+      note: "step forward from previous position.",
       kiai: true,
       techniques: [
         {
@@ -270,7 +270,7 @@ export const HEIAN_SANDAN: Kata = {
     {
       position: Position.HEISOKU,
       index: "11",
-      note: "rotate 180 degrees left around the right foot, bring the left foot beside it and place both fists above the hips",
+      note: "rotate 180 degrees left around the right foot, bring the left foot beside it and place both fists above the hips.",
       techniques: [
         {
           name: "ryoken koshi-gamae",
@@ -284,7 +284,7 @@ export const HEIAN_SANDAN: Kata = {
       position: Position.HEISOKU,
       index: "12a",
       hasBackPicture: true,
-      note: "raise the right knee sharply in front of you",
+      note: "raise the right knee sharply in front of you.",
       techniques: [
         {
           name: "fumikomi-arm",
@@ -298,7 +298,7 @@ export const HEIAN_SANDAN: Kata = {
       position: Position.KIBA,
       index: "12",
       hasSidePicture: true,
-      note: "stamp down into horse stance",
+      note: "stamp down into horse stance.",
       techniques: [
         {
           name: "empi-uke",
@@ -319,7 +319,7 @@ export const HEIAN_SANDAN: Kata = {
       index: "13b",
       hasBackPicture: true,
       hasSidePicture: true,
-      note: "stay where you are; strike with the right backfist using a snapping elbow and wrist action",
+      note: "stay where you are; strike with the right backfist using a snapping elbow and wrist action.",
       techniques: [
         {
           name: "uraken-uchi",
@@ -335,7 +335,7 @@ export const HEIAN_SANDAN: Kata = {
       index: "13",
       hasBackPicture: true,
       hasSidePicture: true,
-      note: "stay where you are and return the right fist above the right hip",
+      note: "stay where you are and return the right fist above the right hip.",
       techniques: [
         {
           name: "ryoken koshi-gamae",
@@ -349,7 +349,7 @@ export const HEIAN_SANDAN: Kata = {
       position: Position.KIBA,
       index: "14a",
       hasBackPicture: true,
-      note: "raise the left knee sharply in front of you",
+      note: "raise the left knee sharply in front of you.",
       techniques: [
         {
           name: "fumikomi-arm",
@@ -362,7 +362,7 @@ export const HEIAN_SANDAN: Kata = {
     {
       position: Position.KIBA,
       index: "14",
-      note: "stamp down into horse stance",
+      note: "stamp down into horse stance.",
       techniques: [
         {
           name: "empi-uke",
@@ -382,7 +382,7 @@ export const HEIAN_SANDAN: Kata = {
       position: Position.KIBA,
       index: "15b",
       hasBackPicture: true,
-      note: "stay where you are; strike with the left backfist using a snapping elbow and wrist action",
+      note: "stay where you are; strike with the left backfist using a snapping elbow and wrist action.",
       techniques: [
         {
           name: "uraken-uchi",
@@ -396,7 +396,7 @@ export const HEIAN_SANDAN: Kata = {
     {
       position: Position.KIBA,
       index: "15",
-      note: "stay where you are and return the left fist above the left hip",
+      note: "stay where you are and return the left fist above the left hip.",
       techniques: [
         {
           name: "ryoken koshi-gamae",
@@ -409,7 +409,7 @@ export const HEIAN_SANDAN: Kata = {
     {
       position: Position.KIBA,
       index: "16a",
-      note: "raise the right knee sharply in front of you",
+      note: "raise the right knee sharply in front of you.",
       techniques: [
         {
           name: "fumikomi-arm",
@@ -422,7 +422,7 @@ export const HEIAN_SANDAN: Kata = {
     {
       position: Position.KIBA,
       index: "16",
-      note: "stamp down into horse stance",
+      note: "stamp down into horse stance.",
       techniques: [
         {
           name: "empi-uke",
@@ -443,7 +443,7 @@ export const HEIAN_SANDAN: Kata = {
       index: "17b",
       hasBackPicture: true,
       hasSidePicture: true,
-      note: "stay where you are; repeat the right backfist strike from motion 13b",
+      note: "stay where you are; repeat the right backfist strike from motion 13b.",
       techniques: [
         {
           name: "uraken-uchi",
@@ -458,7 +458,7 @@ export const HEIAN_SANDAN: Kata = {
       position: Position.KIBA,
       index: "17",
       hasSidePicture: true,
-      note: "stay where you are and return the right fist above the right hip",
+      note: "stay where you are and return the right fist above the right hip.",
       techniques: [
         {
           name: "ryoken koshi-gamae",
@@ -472,7 +472,7 @@ export const HEIAN_SANDAN: Kata = {
       index: "18",
       hasBackPicture: true,
       hasSidePicture: true,
-      note: "stay where you are; extend the open right hand sideways and draw the left elbow back",
+      note: "stay where you are; extend the open right hand sideways and draw the left elbow back.",
       techniques: [
         {
           name: "tate shuto-gamae",
@@ -487,7 +487,7 @@ export const HEIAN_SANDAN: Kata = {
     {
       position: Position.ZENKUTSU,
       index: "19",
-      note: "step forward in the direction indicated by the right hand",
+      note: "step forward in the direction indicated by the right hand.",
       kiai: true,
       techniques: [
         {
@@ -503,7 +503,7 @@ export const HEIAN_SANDAN: Kata = {
     {
       position: Position.KIBA,
       index: "20",
-      note: "bring the right foot level with the left, then cross the left foot behind it and rotate 180 degrees left",
+      note: "bring the right foot level with the left, then cross the left foot behind it and rotate 180 degrees left.",
       techniques: [
         {
           name: "tate-zuki",
@@ -523,7 +523,7 @@ export const HEIAN_SANDAN: Kata = {
     {
       position: Position.KIBA,
       index: "21",
-      note: "push off the left foot and shift sideways to the right",
+      note: "push off the left foot and shift sideways to the right.",
       kiai: true,
       techniques: [
         {
@@ -543,7 +543,7 @@ export const HEIAN_SANDAN: Kata = {
     },
     {
       position: Position.HACHIJI,
-      note: "bring the right foot inward toward the left and return to the ready stance",
+      note: "bring the right foot inward toward the left and return to the ready stance.",
       techniques: [
         {
           name: "yame",

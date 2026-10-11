@@ -29,7 +29,7 @@ export const HEIAN_NIDAN: Kata = {
     {
       index: "1",
       position: Position.KOKUTSU,
-      note: "rotate 90 degrees left and step left",
+      note: "rotate 90 degrees left and step left.",
       techniques: [
         {
           name: "uchi haiwan-uke",
@@ -82,7 +82,7 @@ export const HEIAN_NIDAN: Kata = {
     {
       index: "3",
       position: Position.KOKUTSU,
-      note: "rotate 180 degrees right in place and transfer weight onto the left leg",
+      note: "rotate 180 degrees right in place and transfer weight onto the left leg.",
       techniques: [
         {
           name: "uchi haiwan-uke",
@@ -121,7 +121,7 @@ export const HEIAN_NIDAN: Kata = {
     {
       index: "4",
       position: Position.KOKUTSU,
-      note: "stay where you are and open the hips",
+      note: "stay where you are and open the hips.",
       techniques: [
         {
           name: "zuki",
@@ -135,7 +135,7 @@ export const HEIAN_NIDAN: Kata = {
     {
       index: "5a",
       position: Position.KOKUTSU,
-      note: "turn 90 degrees right on the left foot and bring the right foot halfway toward it; chamber both fists on the left side",
+      note: "turn 90 degrees right on the left foot and bring the right foot halfway toward it; chamber both fists on the left side.",
       techniques: [
         {
           name: "koshi-gamae",
@@ -167,7 +167,7 @@ export const HEIAN_NIDAN: Kata = {
     {
       index: "5",
       position: Position.KOKUTSU,
-      note: "retract the kicking leg, rotate 180 degrees right on the supporting left foot and place the right foot backward",
+      note: "retract the kicking leg, rotate 180 degrees right on the supporting left foot and place the right foot backward.",
       techniques: [
         {
           name: "shuto-uke",
@@ -181,7 +181,7 @@ export const HEIAN_NIDAN: Kata = {
     {
       index: "6",
       position: Position.KOKUTSU,
-      note: "step forward from previous position",
+      note: "step forward from previous position.",
       techniques: [
         {
           name: "shuto-uke",
@@ -195,7 +195,7 @@ export const HEIAN_NIDAN: Kata = {
     {
       index: "7",
       position: Position.KOKUTSU,
-      note: "step forward from previous position",
+      note: "step forward from previous position.",
       techniques: [
         {
           name: "shuto-uke",
@@ -210,7 +210,7 @@ export const HEIAN_NIDAN: Kata = {
       index: "8",
       position: Position.ZENKUTSU,
       kiai: true,
-      note: "step forward from previous position",
+      note: "step forward from previous position.",
       techniques: [
         {
           name: "shihon-nukite",
@@ -229,7 +229,7 @@ export const HEIAN_NIDAN: Kata = {
     {
       index: "9",
       position: Position.KOKUTSU,
-      note: "rotate 90 degrees right around front foot",
+      note: "rotate 90 degrees right around front foot.",
       techniques: [
         {
           name: "shuto-uke",
@@ -243,7 +243,7 @@ export const HEIAN_NIDAN: Kata = {
     {
       index: "10",
       position: Position.KOKUTSU,
-      note: "rotate 45 degrees right around front foot and step forward",
+      note: "rotate 45 degrees right around front foot and step forward.",
       techniques: [
         {
           name: "shuto-uke",
@@ -257,7 +257,7 @@ export const HEIAN_NIDAN: Kata = {
     {
       index: "11",
       position: Position.KOKUTSU,
-      note: "rotate 135 degrees right around rear foot",
+      note: "rotate 135 degrees right around rear foot.",
       techniques: [
         {
           name: "shuto-uke",
@@ -272,7 +272,7 @@ export const HEIAN_NIDAN: Kata = {
       index: "12",
       position: Position.KOKUTSU,
       hasBackPicture: true,
-      note: "rotate 45 degrees left around front foot and step forward",
+      note: "rotate 45 degrees left around front foot and step forward.",
       techniques: [
         {
           name: "shuto-uke",
@@ -287,7 +287,7 @@ export const HEIAN_NIDAN: Kata = {
       index: "13",
       position: Position.ZENKUTSU,
       hasBackPicture: true,
-      note: "rotate 45 degrees left around rear foot and move the left foot left",
+      note: "rotate 45 degrees left around rear foot and move the left foot left.",
       techniques: [
         {
           name: "gyaku uchi-uke",
@@ -302,7 +302,7 @@ export const HEIAN_NIDAN: Kata = {
       index: "14a",
       position: Position.ZENKUTSU,
       hasBackPicture: true,
-      note: "perform a right snapping front kick without moving the arms",
+      note: "perform a right snapping front kick without moving the arms.",
       techniques: [
         {
           name: "mae-geri",
@@ -317,7 +317,7 @@ export const HEIAN_NIDAN: Kata = {
       index: "14",
       position: Position.ZENKUTSU,
       hasBackPicture: true,
-      note: "retract the kicking leg, then place the right foot forward",
+      note: "retract the kicking leg, then place the right foot forward.",
       techniques: [
         {
           name: "gyaku-zuki",
@@ -332,7 +332,7 @@ export const HEIAN_NIDAN: Kata = {
       index: "15",
       position: Position.ZENKUTSU,
       hasBackPicture: true,
-      note: "stay where you are and draw the front foot back slightly while rotating the hips",
+      note: "stay where you are and draw the front foot back slightly while rotating the hips.",
       techniques: [
         {
           name: "gyaku uchi-uke",
@@ -347,7 +347,7 @@ export const HEIAN_NIDAN: Kata = {
       index: "16a",
       position: Position.ZENKUTSU,
       hasBackPicture: true,
-      note: "perform a left snapping front kick without moving the arms",
+      note: "perform a left snapping front kick without moving the arms.",
       techniques: [
         {
           name: "mae-geri",
@@ -362,7 +362,7 @@ export const HEIAN_NIDAN: Kata = {
       index: "16",
       position: Position.ZENKUTSU,
       hasBackPicture: true,
-      note: "place the left foot forward after the kick",
+      note: "place the left foot forward after the kick.",
       techniques: [
         {
           name: "gyaku-zuki",
@@ -377,7 +377,7 @@ export const HEIAN_NIDAN: Kata = {
       index: "17",
       position: Position.ZENKUTSU,
       hasBackPicture: true,
-      note: "step forward from previous position",
+      note: "step forward from previous position.",
       techniques: [
         {
           name: "morote-uke",
@@ -391,7 +391,7 @@ export const HEIAN_NIDAN: Kata = {
     {
       index: "18",
       position: Position.ZENKUTSU,
-      note: "rotate 90 degrees right around front foot, both feet should be one the same line",
+      note: "rotate 90 degrees right around front foot, both feet should be one the same line.",
       techniques: [
         {
           name: "gedan-barai",
@@ -405,7 +405,7 @@ export const HEIAN_NIDAN: Kata = {
     {
       index: "19a",
       position: Position.ZENKUTSU,
-      note: "rotate 45 degrees right around front foot and step forward; raise the open left hand to prepare the right rising block",
+      note: "rotate 45 degrees right around front foot and step forward; raise the open left hand to prepare the right rising block.",
       techniques: [
         {
           name: "age-uke-arm",
@@ -419,7 +419,7 @@ export const HEIAN_NIDAN: Kata = {
     {
       index: "19",
       position: Position.ZENKUTSU,
-      note: "stay where you are and complete the right rising block",
+      note: "stay where you are and complete the right rising block.",
       techniques: [
         {
           name: "age-uke",
@@ -433,7 +433,7 @@ export const HEIAN_NIDAN: Kata = {
     {
       index: "20",
       position: Position.ZENKUTSU,
-      note: "rotate 135 degrees right around rear foot",
+      note: "rotate 135 degrees right around rear foot.",
       techniques: [
         {
           name: "gedan-barai",
@@ -447,7 +447,7 @@ export const HEIAN_NIDAN: Kata = {
     {
       index: "21a",
       position: Position.ZENKUTSU,
-      note: "rotate 45 degrees left around front foot and step forward; raise the open right hand to prepare the left rising block",
+      note: "rotate 45 degrees left around front foot and step forward; raise the open right hand to prepare the left rising block.",
       techniques: [
         {
           name: "age-uke-arm",
@@ -462,7 +462,7 @@ export const HEIAN_NIDAN: Kata = {
       index: "21",
       position: Position.ZENKUTSU,
       kiai: true,
-      note: "stay where you are and complete the left rising block",
+      note: "stay where you are and complete the left rising block.",
       techniques: [
         {
           name: "age-uke",
@@ -475,7 +475,7 @@ export const HEIAN_NIDAN: Kata = {
     },
     {
       position: Position.HACHIJI,
-      note: "bring the left foot beside the right and return to the ready stance",
+      note: "bring the left foot beside the right and return to the ready stance.",
       techniques: [
         {
           name: "yame",
