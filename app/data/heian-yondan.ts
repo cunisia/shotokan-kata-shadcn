@@ -53,7 +53,7 @@ export const HEIAN_YONDAN: Kata = {
       ],
       index: "2",
       orientation: Orientation.E,
-      note: "rotate 180 degrees right by transferring your weight to the left leg",
+      note: "rotate 180 degrees right by transferring your weight to the left leg. Foot stay where they are",
       isSlow: true,
     },
     {
@@ -504,6 +504,7 @@ export const HEIAN_YONDAN: Kata = {
         {
           name: "morote kubi-osae",
           type: Type.KAMAE,
+          target: Target.JODAN
         },
       ],
       index: "19",
