@@ -1,12 +1,4 @@
-import {
-  type Kata,
-  Level,
-  Orientation,
-  Position,
-  Side,
-  Target,
-  Type,
-} from "@/type";
+import { Kata, Position, Side, Target, Type, Orientation, Level } from "@/type";
 
 export const TEKKI_SHODAN: Kata = {
   id: "tekki-shodan",
@@ -14,8 +6,7 @@ export const TEKKI_SHODAN: Kata = {
   meaning: "Tekki n1",
   videoId: "VAkA5zAosC4",
   level: Level.INTERMEDIATE,
-  description:
-    "Funakoshi renamed this kata Tekki; it was previously known as Naihanchi. The book presents Tekki Shodan as a foundational kata of Shuri-te, comparable in importance to the Heian series in Itosu's teaching and Sanchin in Higaonna's Naha-te. Traditions surrounding Choki Motobu associate its practice with a deep understanding of karate, while its apparent simplicity makes mastery demanding. All three Tekki katas follow a straight lateral embusen, moving left and right. Their characteristic stance varies between styles; Shotokan uses the horse stance, whose form has evolved over time. The book stresses regular practice as a way to develop and demonstrate sound karate fundamentals, and recalls the traditional claim that the kata should be repeated at least ten thousand times before being demonstrated.",
+  description: "Funakoshi renamed this kata Tekki; it was previously known as Naihanchi. The book presents Tekki Shodan as a foundational kata of Shuri-te, comparable in importance to the Heian series in Itosu's teaching and Sanchin in Higaonna's Naha-te. Traditions surrounding Choki Motobu associate its practice with a deep understanding of karate, while its apparent simplicity makes mastery demanding. All three Tekki katas follow a straight lateral embusen, moving left and right. Their characteristic stance varies between styles; Shotokan uses the horse stance, whose form has evolved over time. The book stresses regular practice as a way to develop and demonstrate sound karate fundamentals, and recalls the traditional claim that the kata should be repeated at least ten thousand times before being demonstrated.",
   motions: [
     {
       position: Position.HEISOKU,
@@ -41,15 +32,16 @@ export const TEKKI_SHODAN: Kata = {
       note: "Look right, lower the hips and cross the left foot in front of the right, placing it beyond the right foot.",
     },
     {
-      position: Position.TSURU_ASHI,
+      position: Position.KIBA,
       techniques: [
+        {
+          name: "kosa-uke-arm",
+          type: Type.KAMAE,
+          side: Side.HIDARI,
+        },
         {
           name: "fumikomi-arm",
           side: Side.MIGI,
-          type: Type.KAMAE,
-        },
-        {
-          name: "kosa-uke-arm",
           type: Type.KAMAE,
         },
       ],
@@ -61,15 +53,15 @@ export const TEKKI_SHODAN: Kata = {
       position: Position.KIBA,
       techniques: [
         {
-          name: "fumikomi",
-          side: Side.MIGI,
-          type: Type.HATEMI,
-        },
-        {
           name: "haishu-uke",
           side: Side.MIGI,
           target: Target.CHUDAN,
           type: Type.BLOCK,
+        },
+        {
+          name: "fumikomi",
+          side: Side.MIGI,
+          type: Type.HATEMI,
         },
       ],
       index: "2",
@@ -83,6 +75,7 @@ export const TEKKI_SHODAN: Kata = {
           name: "sokumen empi-uchi",
           side: Side.HIDARI,
           type: Type.HATEMI,
+          target: Target.CHUDAN,
         },
       ],
       index: "3",
@@ -134,7 +127,7 @@ export const TEKKI_SHODAN: Kata = {
       position: Position.KOSA,
       techniques: [
         {
-          name: "kagi-zuki-arm",
+          name: "kagi-zuki step",
           side: Side.MIGI,
           target: Target.CHUDAN,
           type: Type.KAMAE,
@@ -146,16 +139,16 @@ export const TEKKI_SHODAN: Kata = {
       isSlow: true,
     },
     {
-      position: Position.TSURU_ASHI,
+      position: Position.KIBA,
       techniques: [
-        {
-          name: "fumikomi-arm",
-          side: Side.HIDARI,
-          type: Type.KAMAE,
-        },
         {
           name: "uchi-uke-arm",
           side: Side.MIGI,
+          type: Type.KAMAE,
+        },
+        {
+          name: "fumikomi-arm",
+          side: Side.HIDARI,
           type: Type.KAMAE,
         },
       ],
@@ -167,15 +160,15 @@ export const TEKKI_SHODAN: Kata = {
       position: Position.KIBA,
       techniques: [
         {
-          name: "fumikomi",
-          side: Side.HIDARI,
-          type: Type.HATEMI,
-        },
-        {
           name: "uchi-uke",
           side: Side.MIGI,
           target: Target.CHUDAN,
           type: Type.BLOCK,
+        },
+        {
+          name: "fumikomi",
+          side: Side.HIDARI,
+          type: Type.HATEMI,
         },
       ],
       index: "8",
@@ -195,6 +188,7 @@ export const TEKKI_SHODAN: Kata = {
           name: "uke-zuki",
           side: Side.MIGI,
           type: Type.BLOCK,
+          target: Target.CHUDAN,
         },
       ],
       index: "9b",
@@ -221,7 +215,7 @@ export const TEKKI_SHODAN: Kata = {
         {
           name: "uraken-uchi-arm",
           side: Side.HIDARI,
-          target: Target.JODAN,
+          target: Target.CHUDAN,
           type: Type.KAMAE,
         },
       ],
@@ -230,12 +224,13 @@ export const TEKKI_SHODAN: Kata = {
       note: "Keep the stance and arms unchanged; look left.",
     },
     {
-      position: Position.TSURU_ASHI,
+      position: Position.KIBA,
       techniques: [
         {
           name: "nami-gaeshi",
           side: Side.HIDARI,
           type: Type.HATEMI,
+          target: Target.GEDAN,
         },
         {
           name: "uraken-uchi-arm",
@@ -255,6 +250,7 @@ export const TEKKI_SHODAN: Kata = {
           name: "sokumen-uke",
           side: Side.HIDARI,
           type: Type.BLOCK,
+          target: Target.CHUDAN,
         },
       ],
       index: "10",
@@ -268,6 +264,7 @@ export const TEKKI_SHODAN: Kata = {
           name: "sokumen-uke-arm",
           side: Side.HIDARI,
           type: Type.KAMAE,
+          target: Target.CHUDAN,
         },
       ],
       index: "11a",
@@ -275,12 +272,13 @@ export const TEKKI_SHODAN: Kata = {
       note: "Keep the stance and arms unchanged; look right.",
     },
     {
-      position: Position.TSURU_ASHI,
+      position: Position.KIBA,
       techniques: [
         {
           name: "nami-gaeshi",
           side: Side.MIGI,
           type: Type.HATEMI,
+          target: Target.GEDAN,
         },
         {
           name: "sokumen-uke-arm",
@@ -299,6 +297,7 @@ export const TEKKI_SHODAN: Kata = {
           name: "gyaku sokumen-uke",
           side: Side.HIDARI,
           type: Type.BLOCK,
+          target: Target.CHUDAN,
         },
       ],
       index: "11",
@@ -325,6 +324,7 @@ export const TEKKI_SHODAN: Kata = {
           name: "morote-zuki",
           type: Type.HATEMI,
           side: Side.HIDARI,
+          target: Target.CHUDAN,
         },
       ],
       index: "13",
@@ -367,6 +367,7 @@ export const TEKKI_SHODAN: Kata = {
           name: "sokumen empi-uchi",
           side: Side.MIGI,
           type: Type.HATEMI,
+          target: Target.CHUDAN,
         },
       ],
       index: "15",
@@ -418,7 +419,7 @@ export const TEKKI_SHODAN: Kata = {
       position: Position.KOSA,
       techniques: [
         {
-          name: "kagi-zuki-arm",
+          name: "kagi-zuki step",
           side: Side.HIDARI,
           target: Target.CHUDAN,
           type: Type.KAMAE,
@@ -430,16 +431,16 @@ export const TEKKI_SHODAN: Kata = {
       isSlow: true,
     },
     {
-      position: Position.TSURU_ASHI,
+      position: Position.KIBA,
       techniques: [
-        {
-          name: "fumikomi-arm",
-          side: Side.MIGI,
-          type: Type.KAMAE,
-        },
         {
           name: "uchi-uke-arm",
           side: Side.HIDARI,
+          type: Type.KAMAE,
+        },
+        {
+          name: "fumikomi-arm",
+          side: Side.MIGI,
           type: Type.KAMAE,
         },
       ],
@@ -451,15 +452,15 @@ export const TEKKI_SHODAN: Kata = {
       position: Position.KIBA,
       techniques: [
         {
-          name: "fumikomi",
-          side: Side.MIGI,
-          type: Type.HATEMI,
-        },
-        {
           name: "uchi-uke",
           side: Side.HIDARI,
           target: Target.CHUDAN,
           type: Type.BLOCK,
+        },
+        {
+          name: "fumikomi",
+          side: Side.MIGI,
+          type: Type.HATEMI,
         },
       ],
       index: "20",
@@ -470,7 +471,7 @@ export const TEKKI_SHODAN: Kata = {
       position: Position.KIBA,
       techniques: [
         {
-          name: "kosa-uke-arm",
+          name: "nagashi-uke arm",
           type: Type.KAMAE,
         },
       ],
@@ -491,6 +492,7 @@ export const TEKKI_SHODAN: Kata = {
           name: "uke-zuki",
           side: Side.HIDARI,
           type: Type.BLOCK,
+          target: Target.CHUDAN,
         },
       ],
       index: "21b",
@@ -517,7 +519,7 @@ export const TEKKI_SHODAN: Kata = {
         {
           name: "uraken-uchi-arm",
           side: Side.MIGI,
-          target: Target.JODAN,
+          target: Target.CHUDAN,
           type: Type.KAMAE,
         },
       ],
@@ -526,12 +528,13 @@ export const TEKKI_SHODAN: Kata = {
       note: "Keep the stance and arms unchanged; look right.",
     },
     {
-      position: Position.TSURU_ASHI,
+      position: Position.KIBA,
       techniques: [
         {
           name: "nami-gaeshi",
           side: Side.MIGI,
           type: Type.HATEMI,
+          target: Target.GEDAN,
         },
         {
           name: "uraken-uchi-arm",
@@ -551,6 +554,7 @@ export const TEKKI_SHODAN: Kata = {
           name: "sokumen-uke",
           side: Side.MIGI,
           type: Type.BLOCK,
+          target: Target.CHUDAN,
         },
       ],
       index: "22",
@@ -571,12 +575,13 @@ export const TEKKI_SHODAN: Kata = {
       note: "Keep the stance and arms unchanged; look left.",
     },
     {
-      position: Position.TSURU_ASHI,
+      position: Position.KIBA,
       techniques: [
         {
           name: "nami-gaeshi",
           side: Side.HIDARI,
           type: Type.HATEMI,
+          target: Target.GEDAN,
         },
         {
           name: "sokumen-uke-arm",
@@ -595,6 +600,7 @@ export const TEKKI_SHODAN: Kata = {
           name: "gyaku sokumen-uke",
           side: Side.MIGI,
           type: Type.BLOCK,
+          target: Target.CHUDAN,
         },
       ],
       index: "23",
@@ -621,6 +627,7 @@ export const TEKKI_SHODAN: Kata = {
           name: "morote-zuki",
           type: Type.HATEMI,
           side: Side.MIGI,
+          target: Target.CHUDAN,
         },
       ],
       index: "25",
