@@ -72,8 +72,10 @@ export default async function Page({
           {kata.meaning && (
             <Item className="items-start">
               <ItemContent>
-                <ItemTitle>Meaning</ItemTitle>
-                <ItemDescription>{kata.meaning}</ItemDescription>
+                <ItemTitle className="text-muted-foreground">Meaning</ItemTitle>
+                <ItemDescription className="text-foreground">
+                  {kata.meaning}
+                </ItemDescription>
               </ItemContent>
             </Item>
           )}
@@ -86,41 +88,59 @@ export default async function Page({
           </Item>
           <Item className="items-start col-span-2">
             <ItemContent>
-              <ItemTitle>Description</ItemTitle>
-              <ItemDescription className="line-clamp-none">
+              <ItemTitle className="text-muted-foreground">
+                Description
+              </ItemTitle>
+              <ItemDescription className="line-clamp-none text-foreground">
                 {kata.description}
               </ItemDescription>
             </ItemContent>
           </Item>
           <Item className="items-start">
             <ItemContent>
-              <ItemTitle>Number of counts</ItemTitle>
-              <ItemDescription>{getKataNumberOfCounts(kata)}</ItemDescription>
+              <ItemTitle className="text-muted-foreground">
+                Number of counts
+              </ItemTitle>
+              <ItemDescription className="text-foreground">
+                {getKataNumberOfCounts(kata)}
+              </ItemDescription>
             </ItemContent>
           </Item>
           <Item className="items-start">
             <ItemContent>
-              <ItemTitle>Number of kiais</ItemTitle>
-              <ItemDescription>{getKataNumberOfKiai(kata)}</ItemDescription>
+              <ItemTitle className="text-muted-foreground">
+                Number of kiais
+              </ItemTitle>
+              <ItemDescription className="text-foreground">
+                {getKataNumberOfKiai(kata)}
+              </ItemDescription>
             </ItemContent>
           </Item>
           <Item className="items-start">
             <ItemContent>
-              <ItemTitle>Number of attacks</ItemTitle>
-              <ItemDescription>{getKataNumberOfAttacks(kata)}</ItemDescription>
+              <ItemTitle className="text-muted-foreground">
+                Number of attacks
+              </ItemTitle>
+              <ItemDescription className="text-foreground">
+                {getKataNumberOfAttacks(kata)}
+              </ItemDescription>
             </ItemContent>
           </Item>
           <Item className="items-start">
             <ItemContent>
-              <ItemTitle>Number of blocks</ItemTitle>
-              <ItemDescription>{getKataNumberOfBlocks(kata)}</ItemDescription>
+              <ItemTitle className="text-muted-foreground">
+                Number of blocks
+              </ItemTitle>
+              <ItemDescription className="text-foreground">
+                {getKataNumberOfBlocks(kata)}
+              </ItemDescription>
             </ItemContent>
           </Item>
         </div>
         {kata.videoId && (
           <Item className="items-start">
             <ItemContent>
-              <ItemTitle>Video</ItemTitle>
+              <ItemTitle className="text-muted-foreground">Video</ItemTitle>
               <div className="w-full shrink-0 mt-2">
                 <YouTubeEmbed
                   videoid={kata.videoId}
