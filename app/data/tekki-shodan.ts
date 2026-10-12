@@ -1,21 +1,12 @@
-import {
-  type Kata,
-  Level,
-  Orientation,
-  Position,
-  Side,
-  Target,
-  Type,
-} from "@/type";
+import { Kata, Position, Side, Target, Type, Orientation, Level } from "@/type";
 
 export const TEKKI_SHODAN: Kata = {
   id: "tekki-shodan",
   name: "Tekki Shodan",
-  meaning: "Tekki N° 1",
+  meaning: "Tekki n1",
   videoId: "VAkA5zAosC4",
   level: Level.INTERMEDIATE,
-  description:
-    "Funakoshi renamed this kata Tekki; it was previously known as Naihanchi. The book presents Tekki Shodan as a foundational kata of Shuri-te, comparable in importance to the Heian series in Itosu's teaching and Sanchin in Higaonna's Naha-te. Traditions surrounding Choki Motobu associate its practice with a deep understanding of karate, while its apparent simplicity makes mastery demanding. All three Tekki katas follow a straight lateral embusen, moving left and right. Their characteristic stance varies between styles; Shotokan uses the horse stance, whose form has evolved over time. The book stresses regular practice as a way to develop and demonstrate sound karate fundamentals, and recalls the traditional claim that the kata should be repeated at least ten thousand times before being demonstrated.",
+  description: "Funakoshi renamed this kata Tekki; it was previously known as Naihanchi. The book presents Tekki Shodan as a foundational kata of Shuri-te, comparable in importance to the Heian series in Itosu's teaching and Sanchin in Higaonna's Naha-te. Traditions surrounding Choki Motobu associate its practice with a deep understanding of karate, while its apparent simplicity makes mastery demanding. All three Tekki katas follow a straight lateral embusen, moving left and right. Their characteristic stance varies between styles; Shotokan uses the horse stance, whose form has evolved over time. The book stresses regular practice as a way to develop and demonstrate sound karate fundamentals, and recalls the traditional claim that the kata should be repeated at least ten thousand times before being demonstrated.",
   motions: [
     {
       position: Position.HEISOKU,
