@@ -1,5 +1,6 @@
 "use client";
 
+import { groupBy } from "es-toolkit";
 import type { ParamValue } from "next/dist/server/request/params";
 import { useParams } from "next/navigation";
 import { getKata, getKataList } from "@/app/data/get-kata";
@@ -16,7 +17,6 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar";
-import { groupBy } from "es-toolkit";
 import { Level } from "@/type";
 
 const getPageTitle = (kataId: string | undefined) => {

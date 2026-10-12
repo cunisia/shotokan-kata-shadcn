@@ -12,7 +12,7 @@ const ALL_KATA: Kata[] = [
   HEIAN_SANDAN,
   HEIAN_YONDAN,
   HEIAN_GODAN,
-  TEKKI_SHODAN
+  TEKKI_SHODAN,
 ];
 
 export function getKata(kataId: string): Kata | undefined {

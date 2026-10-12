@@ -153,7 +153,7 @@ export const HEIAN_YONDAN: Kata = {
           name: "mae empi-uchi",
           type: Type.HATEMI,
           side: Side.MIGI,
-          target: Target.CHUDAN
+          target: Target.CHUDAN,
         },
       ],
       index: "6",
@@ -230,7 +230,7 @@ export const HEIAN_YONDAN: Kata = {
           name: "mae empi-uchi",
           type: Type.HATEMI,
           side: Side.HIDARI,
-          target: Target.CHUDAN
+          target: Target.CHUDAN,
         },
       ],
       index: "8",
@@ -504,7 +504,7 @@ export const HEIAN_YONDAN: Kata = {
         {
           name: "morote kubi-osae",
           type: Type.KAMAE,
-          target: Target.JODAN
+          target: Target.JODAN,
         },
       ],
       index: "19",

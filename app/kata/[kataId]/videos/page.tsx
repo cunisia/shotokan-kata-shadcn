@@ -1,7 +1,7 @@
-import { getKata } from "@/app/data/get-kata";
-import { Card, CardContent } from "@/components/ui/card";
 import { YouTubeEmbed } from "@next/third-parties/google";
 import { notFound } from "next/navigation";
+import { getKata } from "@/app/data/get-kata";
+import { Card, CardContent } from "@/components/ui/card";
 
 export async function generateMetadata({
   params,
