@@ -2,8 +2,8 @@ import { Card, CardContent } from "@/components/ui/card";
 
 export default function Page() {
   return (
-    <Card>
-      <CardContent className="flex flex-col gap-2 overflow-auto">
+    <Card className="mt-8">
+      <CardContent className="flex flex-col gap-4 overflow-auto">
         <p>
           Kata are taught at the dojo by our sensei. Then often, we try to
           repeat them at home, either in real, or mentally. During that process,
@@ -23,6 +23,7 @@ export default function Page() {
           nor your sensei, just to help you in your day to day practise to study
           your katas.{" "}
         </p>
+        <p>Osu</p>
       </CardContent>
     </Card>
   );

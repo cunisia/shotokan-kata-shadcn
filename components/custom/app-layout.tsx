@@ -2,7 +2,7 @@
 
 import { groupBy } from "es-toolkit";
 import type { ParamValue } from "next/dist/server/request/params";
-import { useParams } from "next/navigation";
+import { useParams, usePathname } from "next/navigation";
 import { getKata, getKataList } from "@/app/data/get-kata";
 import {
   Sidebar,
@@ -19,7 +19,10 @@ import {
 } from "@/components/ui/sidebar";
 import { Level } from "@/type";
 
-const getPageTitle = (kataId: string | undefined) => {
+const getPageTitle = (pathName: string, kataId: string | undefined) => {
+  if (pathName === "/about") {
+    return "About";
+  }
   if (!kataId) {
     return "";
   }
@@ -43,42 +46,56 @@ export default function AppLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const katas = getKataList();
+  const pathName = usePathname();
 
   const { kataId: kataIdValue } = useParams();
   const kataId = getParamValueAsString(kataIdValue);
 
+  const katas = getKataList();
   const kataByLevel = groupBy(katas, (kata) => kata.level);
 
   return (
     <SidebarProvider>
       <Sidebar>
-        <SidebarContent>
-          {Object.values(Level)
-            .sort(sortLevel)
-            .map((level) => (
-              <SidebarGroup key={level}>
-                <SidebarGroupLabel className="capitalize">
-                  {level}
-                </SidebarGroupLabel>
-                <SidebarGroupContent>
-                  {(kataByLevel[level] ?? []).map((kata) => (
-                    <SidebarMenu key={kata.id}>
-                      <SidebarMenuItem>
-                        <SidebarMenuButton>
-                          <a
-                            className={kata.id === kataId ? "text-bold" : ""}
-                            href={`/kata/${kata.id}/motions`}
-                          >
-                            {kata.name}
-                          </a>
-                        </SidebarMenuButton>
-                      </SidebarMenuItem>
-                    </SidebarMenu>
-                  ))}
-                </SidebarGroupContent>
-              </SidebarGroup>
-            ))}
+        <SidebarContent className="flex flex-col gap-2">
+          <div className="flex flex-col gap-2 flex-1 overflow-y-auto">
+            {Object.values(Level)
+              .sort(sortLevel)
+              .map((level) => (
+                <SidebarGroup key={level}>
+                  <SidebarGroupLabel className="capitalize">
+                    {level}
+                  </SidebarGroupLabel>
+                  <SidebarGroupContent>
+                    {(kataByLevel[level] ?? []).map((kata) => (
+                      <SidebarMenu key={kata.id}>
+                        <SidebarMenuItem>
+                          <SidebarMenuButton>
+                            <a
+                              className="w-full"
+                              href={`/kata/${kata.id}/motions`}
+                            >
+                              {kata.name}
+                            </a>
+                          </SidebarMenuButton>
+                        </SidebarMenuItem>
+                      </SidebarMenu>
+                    ))}
+                  </SidebarGroupContent>
+                </SidebarGroup>
+              ))}
+          </div>
+          <div className="flex flex-col gap-2 shrink-0 py-4">
+            <SidebarMenu>
+              <SidebarMenuItem>
+                <SidebarMenuButton>
+                  <a className="w-full" href={`/about`}>
+                    About
+                  </a>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+            </SidebarMenu>
+          </div>
         </SidebarContent>
       </Sidebar>
       <SidebarInset>
@@ -89,10 +106,12 @@ export default function AppLayout({
               className="[&_svg]:size-5! absolute left-1 top-1/2 -translate-y-1/2"
             />
             <h1 className="text-center text-2xl font-semibold">
-              {getPageTitle(kataId)}
+              {getPageTitle(pathName, kataId)}
             </h1>
           </header>
-          <div className="flex flex-col flex-1 min-h-0">{children}</div>
+          <div className="w-full md:w-[460px] flex-1 min-h-0 flex flex-col gap-4 items-center m-auto">
+            {children}
+          </div>
         </div>
       </SidebarInset>
     </SidebarProvider>
