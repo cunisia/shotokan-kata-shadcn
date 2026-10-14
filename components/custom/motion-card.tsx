@@ -1,23 +1,23 @@
 'use client";';
 
-import { Motion, Position } from "@/type";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import { RadioGroup } from "@base-ui/react";
+import { Undo2 } from "lucide-react";
+import Image from "next/image";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   Item,
   ItemContent,
-  ItemTitle,
   ItemDescription,
+  ItemTitle,
 } from "@/components/ui/item";
-import { Label } from "@/components/ui/label";
-import TechniquesTables from "./techniques-table";
-import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Undo2 } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
-import Image from "next/image";
-import { Switch } from "@/components/ui/switch";
+import { type Motion, Position } from "@/type";
 import { Field, FieldLabel } from "../ui/field";
-import { Checkbox } from "../ui/checkbox";
+import { RadioGroupItem } from "../ui/radio-group";
+import TechniquesTables from "./techniques-table";
+
+export type Angle = "back" | "side" | "default";
 
 const getMotionName = (motion: Motion) => {
   const nameItems: string[] = [];
@@ -42,48 +42,42 @@ const getPositionName = (position: Position) => {
   }
 };
 
-const getPictureName = (motion: Motion, isBack?: boolean, isSide?: boolean) => {
+const getPictureName = (
+  motion: Motion,
+  isBackPictureDisplayed: boolean | undefined,
+  isSidePictureDisplayed: boolean | undefined,
+) => {
   const nameItems: (string | undefined)[] = [
     `${motion.position}`,
     ...motion.techniques.map(
       (technique) => `${technique.side}_${technique.target}_${technique.name}`,
     ),
     motion.orientation,
-    ...(isBack && !isSide ? ["back"] : []),
-    ...(isSide ? ["side"] : []),
+    ...(isBackPictureDisplayed ? ["back"] : []),
+    ...(isSidePictureDisplayed ? ["side"] : []),
   ];
   return `/motions/${nameItems.join("_")}.png`;
 };
 
 export default function MotionCard({
   motion,
-  showBackPicture,
-  setShowBackPicture,
+  angle,
+  setAngle,
   goBackToYoi,
 }: {
   motion: Motion;
-  showBackPicture: boolean;
-  setShowBackPicture: (show: boolean) => void;
+  angle: Angle;
+  setAngle: (angle: Angle) => void;
   goBackToYoi: () => void;
 }) {
-  const [showSidePicture, setShowSidePicture] = useState<boolean>(false);
-
-  const isSidePictureDisplayed = (motion: Motion) =>
-    showSidePicture && motion.hasSidePicture;
-
-  const isBackPictureDisplayed = (motion: Motion) =>
-    !isSidePictureDisplayed(motion) &&
-    motion.hasBackPicture &&
-    (motion.hasNoFrontPicture || showBackPicture);
-
-  const isBackPictureSwitchDisplayed = (motion: Motion) =>
-    motion.hasBackPicture || showBackPicture;
-
-  const isSidePictureSwitchDisplayed = (motion: Motion) =>
-    !motion.hasBackPicture && motion.hasSidePicture;
-
+  console.log("---> angle = ", angle);
   const isTableDisplayed = (motion: Motion) =>
     !["yoi", "yame"].includes(motion.techniques[0].name);
+
+  const isBackPictureDisplayed =
+    (angle === "back" || motion.hasNoFrontPicture) && motion.hasBackPicture;
+
+  const isSidePictureDisplayed = angle === "side" && motion.hasSidePicture;
 
   return (
     <Card className="h-full">
@@ -122,87 +116,81 @@ export default function MotionCard({
           <Image
             src={getPictureName(
               motion,
-              motion.hasBackPicture && showBackPicture,
-              showSidePicture,
+              isBackPictureDisplayed,
+              isSidePictureDisplayed,
             )}
             alt={getMotionName(motion)}
             width={385}
             height={500}
             className="h-full w-auto max-w-none m-auto"
           />
-          {(isBackPictureDisplayed(motion) ||
-            isSidePictureDisplayed(motion)) && (
+          {(isBackPictureDisplayed || isSidePictureDisplayed) && (
             <Badge
               variant="secondary"
               className="absolute bottom-2 right-2 font-bold"
             >
-              {isBackPictureDisplayed(motion) && "Back"}
-              {isSidePictureDisplayed(motion) && "Side"}
+              {isBackPictureDisplayed && "Back"}
+              {isSidePictureDisplayed && "Side"}
             </Badge>
           )}
         </div>
         <div className="flex flex-col gap-4">
-          {isBackPictureSwitchDisplayed(motion) && (
-            <div className="flex items-center space-x-2">
-              <Switch
-                checked={showBackPicture}
-                onCheckedChange={(isChecked) => setShowBackPicture(isChecked)}
-                id="always-show-front-picture"
-              />
-              <Label htmlFor="always-show-front-picture">
-                Always show front picture
-              </Label>
-            </div>
-          )}
-          {isSidePictureSwitchDisplayed(motion) && (
-            <div className="flex items-center space-x-2">
-              <Field orientation="horizontal" data-disabled>
-                <Checkbox
-                  id="show-side-picture"
-                  name="show-side-picture"
-                  checked={showSidePicture}
-                  onCheckedChange={(isChecked) => setShowSidePicture(isChecked)}
+          {(motion.hasBackPicture || motion.hasSidePicture) && (
+            <RadioGroup
+              value={angle}
+              onValueChange={setAngle}
+              className="flex flex-row justify-between w-full px-4"
+            >
+              <Field orientation="horizontal">
+                <RadioGroupItem
+                  value="default"
+                  id="default"
+                  disabled={motion.hasNoFrontPicture}
                 />
-                <FieldLabel htmlFor="show-side-picture">
-                  Show side picture
+                <FieldLabel htmlFor="default" className="font-normal">
+                  Default angle
                 </FieldLabel>
               </Field>
-            </div>
+              {motion.hasBackPicture && (
+                <Field orientation="horizontal">
+                  <RadioGroupItem
+                    value="back"
+                    id="back"
+                    disabled={!motion.hasBackPicture}
+                  />
+                  <FieldLabel htmlFor="back" className="font-normal">
+                    Front angle
+                  </FieldLabel>
+                </Field>
+              )}
+              {motion.hasSidePicture && (
+                <Field orientation="horizontal">
+                  <RadioGroupItem
+                    value="side"
+                    id="side"
+                    disabled={!motion.hasSidePicture}
+                  />
+                  <FieldLabel htmlFor="side" className="font-normal">
+                    Side
+                  </FieldLabel>
+                </Field>
+              )}
+            </RadioGroup>
           )}
           {isTableDisplayed(motion) && <TechniquesTables motion={motion} />}
           <div className="grid grid-cols-2">
             {!isTableDisplayed(motion) && (
-              <>
-                <Item className="items-start">
-                  <ItemContent>
-                    <ItemTitle className="text-muted-foreground">
-                      Technique
-                    </ItemTitle>
-                    <ItemDescription className="first-letter:uppercase text-foreground">
-                      {motion.techniques[0].name}
-                      {motion.kiai && (
-                        <span className="font-bold"> + kiai</span>
-                      )}
-                    </ItemDescription>
-                  </ItemContent>
-                </Item>
-                {/* { motion.techniques[0].target &&
-                                (<Item className="items-start">
-                                    <ItemContent>
-                                        <ItemTitle className="text-muted-foreground">Target</ItemTitle>
-                                        <ItemDescription className="first-letter:uppercase text-foreground">{motion.techniques[0].target}</ItemDescription>
-                                    </ItemContent>
-                                </Item>)
-                            }
-                            { motion.techniques[0].side &&
-                                (<Item className="items-start">
-                                    <ItemContent>
-                                        <ItemTitle className="text-muted-foreground">Side</ItemTitle>
-                                        <ItemDescription className="first-letter:uppercase text-foreground">{getSideName(motion.techniques[0].side)}</ItemDescription>
-                                    </ItemContent>
-                                </Item>)
-                            } */}
-              </>
+              <Item className="items-start">
+                <ItemContent>
+                  <ItemTitle className="text-muted-foreground">
+                    Technique
+                  </ItemTitle>
+                  <ItemDescription className="first-letter:uppercase text-foreground">
+                    {motion.techniques[0].name}
+                    {motion.kiai && <span className="font-bold"> + kiai</span>}
+                  </ItemDescription>
+                </ItemContent>
+              </Item>
             )}
             {motion.position && (
               <Item className="items-start">

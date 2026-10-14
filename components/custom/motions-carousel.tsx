@@ -1,6 +1,4 @@
 "use client";
-import { Undo2 } from "lucide-react";
-import Image from "next/image";
 import {
   notFound,
   useParams,
@@ -10,10 +8,6 @@ import {
 } from "next/navigation";
 import { useEffect, useEffectEvent, useState } from "react";
 import { getKata } from "@/app/data/get-kata";
-import TechniquesTables from "@/components/custom/techniques-table";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   Carousel,
   type CarouselApi,
@@ -22,16 +16,8 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import {
-  Item,
-  ItemContent,
-  ItemDescription,
-  ItemTitle,
-} from "@/components/ui/item";
-import { Label } from "@/components/ui/label";
-import { Switch } from "@/components/ui/switch";
-import { type Motion, Position } from "@/type";
-import MotionCard from "./motion-card";
+import type { Motion } from "@/type";
+import MotionCard, { type Angle } from "./motion-card";
 
 const getMotionId = (motion: Motion) => {
   if (motion.index) {
@@ -45,7 +31,7 @@ export default function MotionsCarousel() {
   const pathName = usePathname();
   const { replace } = useRouter();
 
-  const [showBackPicture, setShowBackPicture] = useState<boolean>(false);
+  const [angle, setAngle] = useState<Angle>("default");
 
   const { kataId } = useParams();
   const kata = getKata(typeof kataId === "string" ? kataId : "");
@@ -92,12 +78,12 @@ export default function MotionsCarousel() {
       opts={{ startIndex: initialIndex }}
     >
       <CarouselContent className="h-full">
-        {kata.motions.map((motion, index) => (
+        {kata.motions.map((motion) => (
           <CarouselItem key={getMotionId(motion)}>
             <MotionCard
               motion={motion}
-              showBackPicture={showBackPicture}
-              setShowBackPicture={setShowBackPicture}
+              angle={angle}
+              setAngle={setAngle}
               goBackToYoi={goBackToYoi}
             />
           </CarouselItem>
