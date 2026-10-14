@@ -40,6 +40,7 @@ export interface Motion {
   index?: string; // the index of the motion in the kata, use the one from the book but concatenate numbers and letters (remove the dash) and make the letter lowercase. yoi and yame have no index
   hasBackPicture?: boolean; // true if a back picture was extracted from the technique too
   hasSidePicture?: boolean; // true if a side picture was extracted from the technique too
+  hasNoFrontPicture?: boolean; // true if the only picture extracted from the technique is a back picture
   // The orientation is the direction the practitioner faces in a fixed
   // coordinate system for the kata, not the camera angle or the rotation
   // of the head, shoulders or hips.
@@ -79,6 +80,7 @@ export enum Position {
   TSURU_ASHI = "tsuru-ashi",
   HEISOKU = "heisoku",
   KOSA = "kosa",
+  MOTO = "moto",
 }
 
 export interface Technique {
