@@ -1,4 +1,5 @@
 import type { Kata } from "@/type";
+import { BASSAI_DAI } from "./bassai-dai";
 import { HEIAN_GODAN } from "./heian-godan";
 import { HEIAN_NIDAN } from "./heian-nidan";
 import { HEIAN_SANDAN } from "./heian-sandan";
@@ -13,6 +14,7 @@ const ALL_KATA: Kata[] = [
   HEIAN_YONDAN,
   HEIAN_GODAN,
   TEKKI_SHODAN,
+  BASSAI_DAI,
 ];
 
 export function getKata(kataId: string): Kata | undefined {

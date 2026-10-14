@@ -278,7 +278,7 @@ export const HEIAN_GODAN: Kata = {
     },
     {
       index: "13a",
-      position: Position.TSURU_ASHI,
+      position: Position.KIBA,
       techniques: [
         {
           name: "mikazuki-geri",

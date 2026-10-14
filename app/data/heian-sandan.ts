@@ -440,7 +440,7 @@ export const HEIAN_SANDAN: Kata = {
     },
     {
       position: Position.KIBA,
-      index: "17b",
+      index: "17a",
       hasBackPicture: true,
       hasSidePicture: true,
       note: "stay where you are; repeat the right backfist strike from motion 13b.",
@@ -463,6 +463,7 @@ export const HEIAN_SANDAN: Kata = {
         {
           name: "ryoken koshi-gamae",
           type: Type.KAMAE,
+          side: Side.MIGI,
         },
       ],
       orientation: Orientation.S,
