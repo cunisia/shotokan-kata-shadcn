@@ -13,6 +13,7 @@ export const HEIAN_YONDAN: Kata = {
   name: "Heian Yondan",
   meaning: "Heian N° 4",
   level: Level.BEGINNER,
+  numberOfMoves: 27,
   description:
     "Heian Yondan begins much like Heian Nidan, but uses open hands. It features more kicks and knife-hand blocks in back stance, and introduces advanced combinations such as high front snap kicks, counterattacks supported by simultaneous blocks, and a knee strike performed while pulling an opponent’s head downward.",
   videoId: "HrAiTCcatbY",

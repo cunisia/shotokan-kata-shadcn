@@ -1,4 +1,14 @@
+import type { Metadata } from "next";
 import { Card, CardContent } from "@/components/ui/card";
+
+export const metadata: Metadata = {
+  title: "About – A Study Companion for Shotokan Kata",
+  description:
+    "Why this site exists: a centralized place to check what comes next in a Shotokan kata, how each motion is performed, and support your day-to-day practice between dojo classes.",
+  alternates: {
+    canonical: "/about",
+  },
+};
 
 export default function Page() {
   return (

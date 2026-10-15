@@ -1,6 +1,12 @@
 import { YouTubeEmbed } from "@next/third-parties/google";
 import { notFound } from "next/navigation";
 import { getKata } from "@/app/data/get-kata";
+import { getKataInfoMetadata } from "@/app/data/kata-metadata";
+import {
+  getKataNumberOfAttacks,
+  getKataNumberOfBlocks,
+  getKataNumberOfKiai,
+} from "@/app/data/kata-stats";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import {
@@ -9,35 +15,14 @@ import {
   ItemDescription,
   ItemTitle,
 } from "@/components/ui/item";
-import { type Kata, Level, Type } from "@/type";
-
-const getKataNumberOfCounts = (kata: Kata) => {
-  const lastIndex =
-    kata.motions.filter((motions) => !!motions.index).pop()?.index ?? "0";
-  const digits = [...lastIndex.matchAll(/\d/g)].map((match) => match[0]);
-  console.log(digits);
-  return parseInt(digits.join(""), 10);
-};
-
-const getKataNumberOfBlocks = (kata: Kata) =>
-  kata.motions
-    .flatMap((motions) => motions.techniques)
-    .filter((technique) => technique.type === Type.BLOCK).length;
-
-const getKataNumberOfAttacks = (kata: Kata) =>
-  kata.motions
-    .flatMap((motions) => motions.techniques)
-    .filter((technique) => technique.type === Type.HATEMI).length;
-
-const getKataNumberOfKiai = (kata: Kata) =>
-  kata.motions.filter((motion) => motion.kiai).length;
+import { Level } from "@/type";
 
 const getLevelClassNames = (level: Level) => {
   switch (level) {
     case Level.BEGINNER:
       return "bg-green-50 text-green-700 dark:bg-green-950 dark:text-green-300";
     case Level.INTERMEDIATE:
-      return "bg-oranbe-50 text-yellow-700 dark:bg-yellow-950 dark:text-yellow-300";
+      return "bg-yellow-50 text-yellow-700 dark:bg-yellow-950 dark:text-yellow-300";
     case Level.ADVANCED:
       return "bg-red-50 text-red-700 dark:bg-red-950 dark:text-red-300";
   }
@@ -49,9 +34,12 @@ export async function generateMetadata({
   params: Promise<{ kataId: string }>;
 }) {
   const { kataId } = await params;
-  const kata = await getKata(kataId);
+  const kata = getKata(kataId);
   return {
-    title: kata?.name,
+    ...(kata && getKataInfoMetadata(kata)),
+    alternates: {
+      canonical: `/kata/${kataId}/info`,
+    },
   };
 }
 
@@ -102,7 +90,7 @@ export default async function Page({
                 Number of counts
               </ItemTitle>
               <ItemDescription className="text-foreground">
-                {getKataNumberOfCounts(kata)}
+                {kata.numberOfMoves}
               </ItemDescription>
             </ItemContent>
           </Item>
@@ -144,7 +132,7 @@ export default async function Page({
               <div className="w-full shrink-0 mt-2">
                 <YouTubeEmbed
                   videoid={kata.videoId}
-                  playlabel="Play Heian Shodan demonstration"
+                  playlabel={`Play ${kata.name} demonstration`}
                 />
               </div>
             </ItemContent>

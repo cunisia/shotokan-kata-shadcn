@@ -1,5 +1,3 @@
-'use client";';
-
 import { RadioGroup } from "@base-ui/react";
 import { Undo2 } from "lucide-react";
 import Image from "next/image";
@@ -64,11 +62,15 @@ export default function MotionCard({
   angle,
   setAngle,
   goBackToYoi,
+  isAboveTheFold = false,
+  isLcpCandidate = false,
 }: {
   motion: Motion;
   angle: Angle;
   setAngle: (angle: Angle) => void;
   goBackToYoi: () => void;
+  isAboveTheFold?: boolean;
+  isLcpCandidate?: boolean;
 }) {
   const isTableDisplayed = (motion: Motion) =>
     !["yoi", "yame"].includes(motion.techniques[0].name);
@@ -121,6 +123,11 @@ export default function MotionCard({
             alt={getMotionName(motion)}
             width={385}
             height={500}
+            // Slide width: 85% of the viewport on mobile, the 460px content
+            // column (minus card padding) from the md breakpoint.
+            sizes="(min-width: 768px) 412px, 85vw"
+            loading={isAboveTheFold ? "eager" : "lazy"}
+            fetchPriority={isLcpCandidate ? "high" : undefined}
             className="h-full w-full object-contain"
           />
           {(isBackPictureDisplayed || isSidePictureDisplayed) && (

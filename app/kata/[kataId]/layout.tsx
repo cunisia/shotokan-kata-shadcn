@@ -1,65 +1,24 @@
-"use client";
+import { notFound } from "next/navigation";
+import { getKata, getKataList } from "@/app/data/get-kata";
+import KataTabs from "@/components/custom/kata-tabs";
 
-import { cn } from "cn";
-import Link from "next/link";
-import { notFound, useParams, usePathname } from "next/navigation";
-import { getKata } from "@/app/data/get-kata";
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+export const dynamicParams = false;
 
-const useCurrentPath = () => {
-  const pathName = usePathname();
+export function generateStaticParams() {
+  return getKataList().map((kata) => ({ kataId: kata.id }));
+}
 
-  if (pathName.includes("info")) {
-    return "info";
-  }
-  if (pathName.includes("motions")) {
-    return "motions";
-  }
-  if (pathName.includes("map")) {
-    return "map";
-  }
-  if (pathName.includes("videos")) {
-    return "videos";
-  }
-  return undefined;
-};
-
-export default function Layout({
+export default async function Layout({
   children,
-}: Readonly<{ children: React.ReactNode }>) {
-  const currentPath = useCurrentPath();
-  const { kataId } = useParams();
-  const kata = getKata(typeof kataId === "string" ? kataId : "");
-  if (!kata) {
+  params,
+}: Readonly<{
+  children: React.ReactNode;
+  params: Promise<{ kataId: string }>;
+}>) {
+  const { kataId } = await params;
+  if (!getKata(kataId)) {
     notFound();
   }
 
-  return (
-    <>
-      <Tabs value={currentPath} className="flex-none">
-        <TabsList>
-          <TabsTrigger value="info">
-            <Link href={`/kata/${kataId}/info`}>Info</Link>
-          </TabsTrigger>
-          <TabsTrigger value="motions">
-            <Link href={`/kata/${kataId}/motions`}>Motions</Link>
-          </TabsTrigger>
-          <TabsTrigger value="map">
-            <Link href={`/kata/${kataId}/map`}>Map</Link>
-          </TabsTrigger>
-          {/* <TabsTrigger value="videos">
-            <Link href={`/kata/${kataId}/videos`}>Videos</Link>
-          </TabsTrigger> */}
-        </TabsList>
-      </Tabs>
-      <div
-        className={cn(
-          "flex w-full flex-col items-center flex-1 min-h-0",
-          currentPath !== "motions" && "px-4",
-        )}
-      >
-        {children}
-      </div>
-    </>
-  );
+  return <KataTabs kataId={kataId}>{children}</KataTabs>;
 }

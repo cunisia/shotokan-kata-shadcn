@@ -5,6 +5,7 @@ import { Analytics } from "@vercel/analytics/next";
 import type { Metadata } from "next";
 import AppLayout from "@/components/custom/app-layout";
 import { ThemeProvider } from "@/components/theme-provider";
+import { SITE_URL } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
@@ -22,7 +23,7 @@ export const metadata: Metadata = {
   description:
     "Explore Shotokan karate katas, techniques, and step-by-step sequences to support your practice.",
   keywords: "shotokan, kata, karate, jka, kwf",
-  metadataBase: new URL("https://shotokan-kata.org"),
+  metadataBase: new URL(SITE_URL),
   openGraph: {
     images: [
       {

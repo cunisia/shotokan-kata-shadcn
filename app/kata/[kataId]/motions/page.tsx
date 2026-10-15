@@ -1,4 +1,5 @@
 import { getKata } from "@/app/data/get-kata";
+import { getKataMotionsMetadata } from "@/app/data/kata-metadata";
 import MotionsCarousel from "@/components/custom/motions-carousel";
 
 export async function generateMetadata({
@@ -7,9 +8,12 @@ export async function generateMetadata({
   params: Promise<{ kataId: string }>;
 }) {
   const { kataId } = await params;
-  const kata = await getKata(kataId);
+  const kata = getKata(kataId);
   return {
-    title: kata?.name,
+    ...(kata && getKataMotionsMetadata(kata)),
+    alternates: {
+      canonical: `/kata/${kataId}/motions`,
+    },
   };
 }
 

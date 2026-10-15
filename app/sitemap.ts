@@ -1,8 +1,9 @@
 import type { MetadataRoute } from "next";
 import { getKataList } from "@/app/data/get-kata";
+import { SITE_URL } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://shotokan-kata.org";
+  const baseUrl = SITE_URL;
 
   return [
     { url: `${baseUrl}/about` },

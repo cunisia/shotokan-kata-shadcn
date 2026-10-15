@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import { getKata } from "@/app/data/get-kata";
+import { getKataMapMetadata } from "@/app/data/kata-metadata";
 import { ZoomableImage } from "@/components/custom/zoomable-image";
 import { Card, CardContent } from "@/components/ui/card";
 import type { Kata } from "@/type";
@@ -16,7 +17,10 @@ export async function generateMetadata({
   const { kataId } = await params;
   const kata = getKata(kataId);
   return {
-    title: kata?.name,
+    ...(kata && getKataMapMetadata(kata)),
+    alternates: {
+      canonical: `/kata/${kataId}/map`,
+    },
   };
 }
 
@@ -39,6 +43,9 @@ export default async function Page({
           alt={`${kata?.name} map`}
           width={1600}
           height={2400}
+          // Never wider than the content column: viewport minus tab and card
+          // padding (2 x 16px + 2 x 24px) on mobile, 460px column from md.
+          sizes="(min-width: 768px) 380px, calc(100vw - 80px)"
         />
       </CardContent>
     </Card>

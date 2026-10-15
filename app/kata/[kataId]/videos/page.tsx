@@ -12,6 +12,10 @@ export async function generateMetadata({
   const kata = getKata(kataId);
   return {
     title: kata?.name,
+    // Hidden page (its tab is commented out): keep it out of search results.
+    robots: {
+      index: false,
+    },
   };
 }
 
@@ -32,7 +36,7 @@ export default async function Page({
         {kata.videoId && (
           <YouTubeEmbed
             videoid={kata.videoId}
-            playlabel="Play Heian Shodan demonstration"
+            playlabel={`Play ${kata.name} demonstration`}
           />
         )}
       </CardContent>

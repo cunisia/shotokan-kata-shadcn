@@ -13,6 +13,7 @@ export const HEIAN_GODAN: Kata = {
   name: "Heian Godan",
   meaning: "Heian N° 5",
   level: Level.BEGINNER,
+  numberOfMoves: 23,
   videoId: "dBFe54glhTs",
   description:
     "The final Heian kata introduces a broad range of advanced techniques. Its opening sequence combines an inward-to-outward block and a reverse punch in a back stance, followed by a flowing-water guard with the feet together. It also features low and high cross blocks, a crescent kick, a forward elbow strike, a reinforced rear uppercut, downward spear-hand strikes and simultaneous high and low blocks. A jump avoids a low staff attack, followed by a counter to the shin on landing.",
