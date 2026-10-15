@@ -76,6 +76,17 @@ export default function AppLayout({
       <Sidebar>
         <SidebarContent className="flex flex-col gap-2">
           <div className="flex flex-col gap-2 flex-1 overflow-y-auto">
+            <SidebarGroup>
+              <SidebarGroupContent>
+                <SidebarMenu>
+                  <SidebarMenuItem>
+                    <SidebarNavButton href="/" isActive={pathName === "/"}>
+                      Home
+                    </SidebarNavButton>
+                  </SidebarMenuItem>
+                </SidebarMenu>
+              </SidebarGroupContent>
+            </SidebarGroup>
             {LEVELS_IN_ORDER.map((level) => (
               <SidebarGroup key={level}>
                 <SidebarGroupLabel className="capitalize">
