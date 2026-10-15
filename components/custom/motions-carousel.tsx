@@ -31,18 +31,23 @@ export default function MotionsCarousel() {
   const goBackToYoi = () => api?.scrollTo(0);
 
   // The page is prerendered at build time, so `?index=` is unknown on the
-  // server: render slide 0 there and jump to the requested slide after mount.
-  // Reading `window.location` (rather than `useSearchParams`) keeps the motion
-  // cards in the prerendered HTML instead of bailing out to client rendering.
-  const scrollToInitialIndex = useEffectEvent(
-    (_api: NonNullable<CarouselApi>) => {
-      const value = Number(
-        new URLSearchParams(window.location.search).get("index") ?? "0",
-      );
-      if (!Number.isSafeInteger(value) || value <= 0) return;
-      _api.scrollTo(Math.min(value, _api.scrollSnapList().length - 1), true);
-    },
-  );
+  // server: the server HTML always shows slide 0. On the client, the lazy
+  // initializer reads the URL so Embla starts directly on the requested slide
+  // when it initializes. `startIndex` is only an Embla option (applied in an
+  // effect after hydration), not rendered markup, so there is no hydration
+  // mismatch. Reading `window.location` (rather than `useSearchParams`) keeps
+  // the motion cards in the prerendered HTML instead of bailing out to client
+  // rendering. During a client-side navigation the URL may still be the
+  // previous page's when this runs, hence the pathname check.
+  const [startIndex] = useState(() => {
+    if (typeof window === "undefined" || !kata) return 0;
+    if (window.location.pathname !== `/kata/${kata.id}/motions`) return 0;
+    const value = Number(
+      new URLSearchParams(window.location.search).get("index") ?? "0",
+    );
+    if (!Number.isSafeInteger(value) || value < 0) return 0;
+    return Math.min(value, kata.motions.length - 1);
+  });
 
   const onNavigate = useEffectEvent((_api: CarouselApi) => {
     const params = new URLSearchParams(window.location.search);
@@ -63,7 +68,6 @@ export default function MotionsCarousel() {
     if (!api) return;
 
     api.on("select", onNavigate);
-    scrollToInitialIndex(api);
 
     return () => {
       api.off("select", onNavigate);
@@ -78,7 +82,7 @@ export default function MotionsCarousel() {
     <Carousel
       className="w-full flex-1 min-h-0 [&>[data-slot=carousel-content]]:h-full"
       setApi={setApi}
-      opts={{ containScroll: false }}
+      opts={{ containScroll: false, startIndex }}
     >
       <CarouselContent className="h-full">
         {kata.motions.map((motion, index) => (
