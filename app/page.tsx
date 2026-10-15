@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     absolute: "Shotokan Kata List & Step-by-Step Guide",
   },
   description:
-    "The Shotokan kata list, ordered by level, with step-by-step motions and photos, floor maps (embusen) and key facts such as moves and kiai for each kata.",
+    "The Shotokan kata list, ordered by level, with step-by-step motions and pictures, floor maps (embusen) and key facts such as moves and kiai for each kata.",
   alternates: {
     canonical: "/",
   },
@@ -87,7 +87,7 @@ export default function Page() {
           A kata is a fixed sequence of stances, blocks and strikes performed
           against imaginary opponents, and one of the three pillars of Shotokan
           training alongside kihon and kumite. This site breaks each kata down
-          into its numbered moves, with photos of every move (sometimes from
+          into its numbered moves, with pictures of every move (sometimes from
           several angles), a floor map of its path (embusen) and key facts such
           as its level, number of moves and kiai.
         </p>
