@@ -52,13 +52,13 @@ function KataRow({ kata }: Readonly<{ kata: Kata }>) {
         )}
         <nav
           aria-label={`${kata.name} pages`}
-          className="mt-1 flex gap-3 text-xs"
+          className="mt-1 flex gap-4 text-sm"
         >
           {KATA_PAGES.map(({ path, label }) => (
             <Link
               key={path}
               href={`/kata/${kata.id}/${path}`}
-              className="text-primary underline-offset-4 hover:underline"
+              className="py-1 text-primary underline-offset-4 hover:underline"
             >
               {label}
             </Link>
