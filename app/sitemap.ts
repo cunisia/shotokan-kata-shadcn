@@ -6,6 +6,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = SITE_URL;
 
   return [
+    { url: `${baseUrl}/`, priority: 1 },
     { url: `${baseUrl}/about` },
     ...getKataList().flatMap((kata) =>
       ["info", "motions", "map"].map((page) => ({
