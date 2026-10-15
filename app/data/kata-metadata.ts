@@ -17,10 +17,10 @@ const hasSeveralAngles = (kata: Kata) =>
   kata.motions.some((motion) => motion.hasBackPicture || motion.hasSidePicture);
 
 export const getKataInfoMetadata = (kata: Kata): Metadata => {
-  const name = kata.meaning ? `${kata.name} (${kata.meaning})` : kata.name;
   return {
     title: `${kata.name} – Meaning, History & Key Facts`,
-    description: `${name}: history, ${plural(getKataNumberOfCounts(kata), "move")}, ${plural(getKataNumberOfBlocks(kata), "block")}, ${plural(getKataNumberOfAttacks(kata), "attack")} and ${plural(getKataNumberOfKiai(kata), "kiai", "kiai")}. ${capitalize(kata.level)} Shotokan kata.`,
+    // The meaning appears only once per page's metadata: here.
+    description: `${kata.name}${kata.meaning ? ` (${kata.meaning})` : ""}: history, ${plural(getKataNumberOfCounts(kata), "move")}, ${plural(getKataNumberOfBlocks(kata), "block")}, ${plural(getKataNumberOfAttacks(kata), "attack")} and ${plural(getKataNumberOfKiai(kata), "kiai", "kiai")}. ${capitalize(kata.level)} Shotokan kata.`,
   };
 };
 
