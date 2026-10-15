@@ -43,6 +43,9 @@ export default async function Page({
           alt={`${kata?.name} map`}
           width={1600}
           height={2400}
+          // Never wider than the content column: viewport minus tab and card
+          // padding (2 x 16px + 2 x 24px) on mobile, 460px column from md.
+          sizes="(min-width: 768px) 380px, calc(100vw - 80px)"
         />
       </CardContent>
     </Card>

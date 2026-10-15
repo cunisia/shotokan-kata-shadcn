@@ -81,7 +81,7 @@ export default function MotionsCarousel() {
       opts={{ containScroll: false }}
     >
       <CarouselContent className="h-full">
-        {kata.motions.map((motion) => (
+        {kata.motions.map((motion, index) => (
           <CarouselItem
             key={getMotionId(motion)}
             className="basis-[85%] md:basis-full"
@@ -91,6 +91,9 @@ export default function MotionsCarousel() {
               angle={angle}
               setAngle={setAngle}
               goBackToYoi={goBackToYoi}
+              // The first slide is visible on load and the second one peeks
+              // in on mobile: load both right away (LCP candidates).
+              isAboveTheFold={index < 2}
             />
           </CarouselItem>
         ))}

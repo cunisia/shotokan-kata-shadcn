@@ -12,9 +12,16 @@ type ZoomableImageProps = {
   alt: string;
   width: number;
   height: number;
+  sizes?: string;
 };
 
-export function ZoomableImage({ src, alt, width, height }: ZoomableImageProps) {
+export function ZoomableImage({
+  src,
+  alt,
+  width,
+  height,
+  sizes,
+}: ZoomableImageProps) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -30,6 +37,7 @@ export function ZoomableImage({ src, alt, width, height }: ZoomableImageProps) {
           alt={alt}
           width={width}
           height={height}
+          sizes={sizes}
           className="h-full w-auto m-auto"
         />
       </button>
