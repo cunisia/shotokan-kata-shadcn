@@ -52,6 +52,9 @@ export async function generateMetadata({
   const kata = await getKata(kataId);
   return {
     title: kata?.name,
+    alternates: {
+      canonical: `/kata/${kataId}/info`,
+    },
   };
 }
 
