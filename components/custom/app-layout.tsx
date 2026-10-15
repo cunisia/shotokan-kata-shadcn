@@ -88,7 +88,7 @@ export default function AppLayout({
           <div className="flex flex-col gap-2 shrink-0 py-4">
             <SidebarMenu>
               <SidebarMenuItem>
-                <SidebarMenuButton isActive={pathName.includes('about')}>
+                <SidebarMenuButton isActive={pathName.includes("about")}>
                   <a className="w-full" href={`/about`}>
                     About
                   </a>
@@ -109,7 +109,7 @@ export default function AppLayout({
               {getPageTitle(pathName, kataId)}
             </h1>
           </header>
-          <div className="w-full md:w-[460px] flex-1 min-h-0 flex flex-col gap-4 items-center m-auto">
+          <div className="w-full md:w-[460px] flex-1 min-h-0 flex flex-col gap-4 items-center m-auto pb-2">
             {children}
           </div>
         </div>
