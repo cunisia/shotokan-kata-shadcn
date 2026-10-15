@@ -1,5 +1,3 @@
-'use client";';
-
 import { RadioGroup } from "@base-ui/react";
 import { Undo2 } from "lucide-react";
 import Image from "next/image";
