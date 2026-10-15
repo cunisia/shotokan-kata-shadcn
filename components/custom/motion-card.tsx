@@ -192,7 +192,7 @@ export default function MotionCard({
               </Item>
             )}
             {motion.position && (
-              <Item className="items-start">
+              <Item className="items-start col-span-2">
                 <ItemContent>
                   <ItemTitle className="text-muted-foreground">
                     Position

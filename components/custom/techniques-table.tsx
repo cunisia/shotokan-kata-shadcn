@@ -25,9 +25,9 @@ const getSideName = (side: Side | undefined) => {
   }
   switch (side) {
     case Side.HIDARI:
-      return `${side} (left)`;
+      return `left`;
     case Side.MIGI:
-      return `${side} (right)`;
+      return `right`;
   }
 };
 
