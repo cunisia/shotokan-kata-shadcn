@@ -2,6 +2,7 @@
 
 import { groupBy } from "es-toolkit";
 import type { ParamValue } from "next/dist/server/request/params";
+import Link from "next/link";
 import { useParams, usePathname } from "next/navigation";
 import { getKata, getKataList } from "@/app/data/get-kata";
 import {
@@ -16,6 +17,7 @@ import {
   SidebarMenuItem,
   SidebarProvider,
   SidebarTrigger,
+  useSidebar,
 } from "@/components/ui/sidebar";
 import { Level } from "@/type";
 
@@ -40,6 +42,26 @@ const sortLevel = (l1: Level, l2: Level) =>
 
 const getParamValueAsString = (value: ParamValue): string =>
   typeof value === "string" ? value : "";
+
+// Must be rendered inside SidebarProvider: closes the mobile sheet once a link
+// is followed, since client-side navigation keeps the sidebar state.
+function SidebarNavButton({
+  href,
+  isActive,
+  children,
+}: Readonly<{ href: string; isActive: boolean; children: React.ReactNode }>) {
+  const { setOpenMobile } = useSidebar();
+
+  return (
+    <SidebarMenuButton
+      isActive={isActive}
+      render={<Link href={href} />}
+      onClick={() => setOpenMobile(false)}
+    >
+      {children}
+    </SidebarMenuButton>
+  );
+}
 
 export default function AppLayout({
   children,
@@ -70,14 +92,12 @@ export default function AppLayout({
                     {(kataByLevel[level] ?? []).map((kata) => (
                       <SidebarMenu key={kata.id}>
                         <SidebarMenuItem>
-                          <SidebarMenuButton isActive={kata.id === kataId}>
-                            <a
-                              className="w-full"
-                              href={`/kata/${kata.id}/motions`}
-                            >
-                              {kata.name}
-                            </a>
-                          </SidebarMenuButton>
+                          <SidebarNavButton
+                            href={`/kata/${kata.id}/motions`}
+                            isActive={kata.id === kataId}
+                          >
+                            {kata.name}
+                          </SidebarNavButton>
                         </SidebarMenuItem>
                       </SidebarMenu>
                     ))}
@@ -88,11 +108,12 @@ export default function AppLayout({
           <div className="flex flex-col gap-2 shrink-0 py-4">
             <SidebarMenu>
               <SidebarMenuItem>
-                <SidebarMenuButton isActive={pathName.includes("about")}>
-                  <a className="w-full" href={`/about`}>
-                    About
-                  </a>
-                </SidebarMenuButton>
+                <SidebarNavButton
+                  href="/about"
+                  isActive={pathName.includes("about")}
+                >
+                  About
+                </SidebarNavButton>
               </SidebarMenuItem>
             </SidebarMenu>
           </div>

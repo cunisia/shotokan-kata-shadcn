@@ -33,17 +33,33 @@ export default function KataTabs({
     <>
       <Tabs value={currentPath} className="flex-none">
         <TabsList>
-          <TabsTrigger value="info">
-            <Link href={`/kata/${kataId}/info`}>Info</Link>
+          <TabsTrigger
+            value="info"
+            nativeButton={false}
+            render={<Link href={`/kata/${kataId}/info`} />}
+          >
+            Info
           </TabsTrigger>
-          <TabsTrigger value="motions">
-            <Link href={`/kata/${kataId}/motions`}>Motions</Link>
+          <TabsTrigger
+            value="motions"
+            nativeButton={false}
+            render={<Link href={`/kata/${kataId}/motions`} />}
+          >
+            Motions
           </TabsTrigger>
-          <TabsTrigger value="map">
-            <Link href={`/kata/${kataId}/map`}>Map</Link>
+          <TabsTrigger
+            value="map"
+            nativeButton={false}
+            render={<Link href={`/kata/${kataId}/map`} />}
+          >
+            Map
           </TabsTrigger>
-          {/* <TabsTrigger value="videos">
-            <Link href={`/kata/${kataId}/videos`}>Videos</Link>
+          {/* <TabsTrigger
+            value="videos"
+            nativeButton={false}
+            render={<Link href={`/kata/${kataId}/videos`} />}
+          >
+            Videos
           </TabsTrigger> */}
         </TabsList>
       </Tabs>
