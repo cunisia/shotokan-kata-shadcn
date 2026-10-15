@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import { getKata } from "@/app/data/get-kata";
+import { getKataMapMetadata } from "@/app/data/kata-metadata";
 import { ZoomableImage } from "@/components/custom/zoomable-image";
 import { Card, CardContent } from "@/components/ui/card";
 import type { Kata } from "@/type";
@@ -16,7 +17,7 @@ export async function generateMetadata({
   const { kataId } = await params;
   const kata = getKata(kataId);
   return {
-    title: kata?.name,
+    ...(kata && getKataMapMetadata(kata)),
     alternates: {
       canonical: `/kata/${kataId}/map`,
     },
