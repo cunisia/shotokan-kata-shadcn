@@ -191,7 +191,7 @@ export default function MotionListPicker({
     >
       <PopoverContent
         anchor={anchor}
-        align="end"
+        align="start"
         initialFocus={listProps.currentRowRef}
         finalFocus={finalFocus}
         className="max-h-[60vh] w-[380px] max-w-[calc(100vw-2rem)] gap-0 p-0"

@@ -1,5 +1,6 @@
 import { RadioGroup } from "@base-ui/react";
-import { ChevronDown, Undo2 } from "lucide-react";
+import { capitalize } from "es-toolkit";
+import { ChevronDown, ListIcon, Undo2 } from "lucide-react";
 import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -16,6 +17,7 @@ import {
   getMotionName,
   getPictureName,
   getPositionName,
+  getTechniqueName,
 } from "@/lib/motion";
 import type { Motion } from "@/type";
 import { Field, FieldLabel } from "../ui/field";
@@ -29,7 +31,6 @@ export default function MotionCard({
   goBackToYoi,
   isAboveTheFold = false,
   isLcpCandidate = false,
-  stepTotal,
   isListOpen,
   toggleList,
 }: {
@@ -39,7 +40,6 @@ export default function MotionCard({
   goBackToYoi: () => void;
   isAboveTheFold?: boolean;
   isLcpCandidate?: boolean;
-  stepTotal: number;
   isListOpen: boolean;
   toggleList: (counter: HTMLButtonElement) => void;
 }) {
@@ -55,34 +55,36 @@ export default function MotionCard({
     <Card className="h-full">
       <CardHeader>
         <CardTitle className="flex flex-row items-center justify-center gap-2">
-          <h2 className="text-xl font-semibold capitalize flex-1 min-w-0 break-words">
-            {getMotionName(motion)}
-          </h2>
           <Button
             variant="outline"
+            size={motion.index ? "sm" : "icon-sm"}
             data-slot="step-counter"
             aria-haspopup="dialog"
             aria-expanded={isListOpen}
             aria-label={`${
               motion.index
-                ? `Step ${motion.index} of ${stepTotal}`
-                : motion.techniques[0].name
-            }, show all motions`}
+                ? `Step ${motion.index}`
+                : capitalize(motion.techniques[0].name)
+            }, open motion list`}
             onClick={(event) => toggleList(event.currentTarget)}
-            // As tall as the button next to it (36px), with a 44px tap area.
-            className="relative tabular-nums after:absolute after:-inset-1"
+            // Visually compact (32px) to leave the width to the title, with
+            // a 44px tap area.
+            className="relative shrink-0 gap-0.5 tabular-nums after:absolute after:-inset-1.5"
           >
             {motion.index ? (
-              <span>
+              <>
                 {motion.index}
-                <span className="text-muted-foreground"> / {stepTotal}</span>
-              </span>
+                <ChevronDown data-icon="inline-end" />
+              </>
             ) : (
-              // Yoi and yame have no step number in the book.
-              <span className="capitalize">{motion.techniques[0].name}</span>
+              // Yoi and yame have no step number, and their name is already
+              // the title: an icon only avoids repeating it.
+              <ListIcon />
             )}
-            <ChevronDown data-icon="inline-end" />
           </Button>
+          <h2 className="text-xl font-semibold capitalize flex-1 min-w-0 break-words">
+            {getTechniqueName(motion)}
+          </h2>
           {motion.techniques[0].name !== "yoi" && (
             <Button
               variant="outline"

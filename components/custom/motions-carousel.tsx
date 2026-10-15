@@ -10,7 +10,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { type Angle, getStepTotal } from "@/lib/motion";
+import type { Angle } from "@/lib/motion";
 import type { Motion } from "@/type";
 import MotionCard from "./motion-card";
 import MotionListPicker from "./motion-list";
@@ -109,8 +109,6 @@ export default function MotionsCarousel() {
     notFound();
   }
 
-  const stepTotal = getStepTotal(kata.motions);
-
   return (
     <>
       <Carousel
@@ -134,7 +132,6 @@ export default function MotionsCarousel() {
                 // first one a high fetch priority.
                 isAboveTheFold={index < 2}
                 isLcpCandidate={index === 0}
-                stepTotal={stepTotal}
                 isListOpen={isListOpen && index === selectedIndex}
                 toggleList={toggleList}
               />
