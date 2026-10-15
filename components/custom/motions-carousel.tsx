@@ -1,11 +1,5 @@
 "use client";
-import {
-  notFound,
-  useParams,
-  usePathname,
-  useRouter,
-  useSearchParams,
-} from "next/navigation";
+import { notFound, useParams } from "next/navigation";
 import { useEffect, useEffectEvent, useState } from "react";
 import { getKata } from "@/app/data/get-kata";
 import {
@@ -27,10 +21,6 @@ const getMotionId = (motion: Motion) => {
 };
 
 export default function MotionsCarousel() {
-  const searchParams = useSearchParams();
-  const pathName = usePathname();
-  const { replace } = useRouter();
-
   const [angle, setAngle] = useState<Angle>("default");
 
   const { kataId } = useParams();
@@ -40,27 +30,40 @@ export default function MotionsCarousel() {
 
   const goBackToYoi = () => api?.scrollTo(0);
 
-  const [initialIndex] = useState(() => {
-    const value = Number(searchParams.get("index") ?? "0");
-
-    return Number.isSafeInteger(value) && value >= 0 ? value : 0;
-  });
+  // The page is prerendered at build time, so `?index=` is unknown on the
+  // server: render slide 0 there and jump to the requested slide after mount.
+  // Reading `window.location` (rather than `useSearchParams`) keeps the motion
+  // cards in the prerendered HTML instead of bailing out to client rendering.
+  const scrollToInitialIndex = useEffectEvent(
+    (_api: NonNullable<CarouselApi>) => {
+      const value = Number(
+        new URLSearchParams(window.location.search).get("index") ?? "0",
+      );
+      if (!Number.isSafeInteger(value) || value <= 0) return;
+      _api.scrollTo(Math.min(value, _api.scrollSnapList().length - 1), true);
+    },
+  );
 
   const onNavigate = useEffectEvent((_api: CarouselApi) => {
-    const params = new URLSearchParams(searchParams);
+    const params = new URLSearchParams(window.location.search);
     const index = _api?.selectedScrollSnap();
     if (index !== undefined) {
       params.set("index", `${index}`);
     } else {
       params.delete("index");
     }
-    replace(`${pathName}?${params.toString()}`);
+    window.history.replaceState(
+      null,
+      "",
+      `${window.location.pathname}?${params.toString()}`,
+    );
   });
 
   useEffect(() => {
     if (!api) return;
 
     api.on("select", onNavigate);
+    scrollToInitialIndex(api);
 
     return () => {
       api.off("select", onNavigate);
@@ -75,7 +78,7 @@ export default function MotionsCarousel() {
     <Carousel
       className="w-full flex-1 min-h-0 [&>[data-slot=carousel-content]]:h-full"
       setApi={setApi}
-      opts={{ containScroll: false, startIndex: initialIndex }}
+      opts={{ containScroll: false }}
     >
       <CarouselContent className="h-full">
         {kata.motions.map((motion) => (
