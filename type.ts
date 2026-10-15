@@ -5,6 +5,7 @@ export interface Kata {
   description: string; // text underneath the title on the book. Please rephrase it from the original text and translate it to english
   videoId?: string; // not something the agent can infer, prompt the user
   level: Level; // not something the agent can infer, prompt the user
+  numberOfMoves: number; // commonly quoted Shotokan move count (e.g. Heian Nidan: 26). Not derived from motion indexes, which follow the book's numbering. Prompt the user
   // There are represented on the page by photographies and a text attached to each of them (using some kind of index to link both: yoi, 1, 1-A, for instances)
   // I'm only interested in the first one (labelled Yoi) and all the following ones that use a number as index and the last one called Yame
   // (so for instanced 1 and not 1-A, 2 and not 2-A)

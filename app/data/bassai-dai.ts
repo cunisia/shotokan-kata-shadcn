@@ -14,6 +14,7 @@ export const BASSAI_DAI: Kata = {
   meaning: "Penetrate a Fortress",
   videoId: "tXPZFarJMh0",
   level: Level.INTERMEDIATE,
+  numberOfMoves: 42,
   description:
     "Bassai Dai expresses the power and determination of an assault on a fortress. Its origins remain uncertain, although the book associates its development with Kokan Oyadomari. In Shotokan, Bassai Dai and Bassai Sho are distinct forms. Bassai Dai combines dynamic blocks, attacks at several levels and broad double punches. Alongside Kanku Dai, it is presented as a major kata to study after the fundamentals and to master before black-belt examination.",
   motions: [

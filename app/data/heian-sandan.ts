@@ -13,6 +13,7 @@ export const HEIAN_SANDAN: Kata = {
   name: "Heian Sandan",
   meaning: "Heian N° 3",
   level: Level.BEGINNER,
+  numberOfMoves: 20,
   description:
     "Heian Sandan develops a varied set of techniques, including inward-to-outward forearm blocks and simultaneous crossed blocks combining a middle-level block with a downward block. A spear-hand attack is followed by a wrist-grab escape that uses a full-body turn and a counterstrike. The final sequence combines a backward elbow strike with a vertical punch over the shoulder against an opponent holding the practitioner from behind.",
   videoId: "8OI-FTV3-4o",

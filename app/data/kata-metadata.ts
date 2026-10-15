@@ -3,7 +3,6 @@ import type { Kata } from "@/type";
 import {
   getKataNumberOfAttacks,
   getKataNumberOfBlocks,
-  getKataNumberOfCounts,
   getKataNumberOfKiai,
 } from "./kata-stats";
 
@@ -20,13 +19,13 @@ export const getKataInfoMetadata = (kata: Kata): Metadata => {
   return {
     title: `${kata.name} – Meaning, History & Key Facts`,
     // The meaning appears only once per page's metadata: here.
-    description: `${kata.name}${kata.meaning ? ` (${kata.meaning})` : ""}: history, ${plural(getKataNumberOfCounts(kata), "move")}, ${plural(getKataNumberOfBlocks(kata), "block")}, ${plural(getKataNumberOfAttacks(kata), "attack")} and ${plural(getKataNumberOfKiai(kata), "kiai", "kiai")}. ${capitalize(kata.level)} Shotokan kata.`,
+    description: `${kata.name}${kata.meaning ? ` (${kata.meaning})` : ""}: history, ${plural(kata.numberOfMoves, "move")}, ${plural(getKataNumberOfBlocks(kata), "block")}, ${plural(getKataNumberOfAttacks(kata), "attack")} and ${plural(getKataNumberOfKiai(kata), "kiai", "kiai")}. ${capitalize(kata.level)} Shotokan kata.`,
   };
 };
 
 export const getKataMotionsMetadata = (kata: Kata): Metadata => ({
   title: `${kata.name} – Step-by-Step Motions`,
-  description: `Learn ${kata.name} step by step: all ${getKataNumberOfCounts(kata)} moves with pictures${hasSeveralAngles(kata) ? " from several angles" : ""}, stances, techniques and kiai points. ${capitalize(kata.level)} Shotokan kata.`,
+  description: `Learn ${kata.name} step by step: all ${kata.numberOfMoves} moves with pictures${hasSeveralAngles(kata) ? " from several angles" : ""}, stances, techniques and kiai points. ${capitalize(kata.level)} Shotokan kata.`,
 });
 
 export const getKataMapMetadata = (kata: Kata): Metadata => ({
