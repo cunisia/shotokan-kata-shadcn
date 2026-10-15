@@ -82,7 +82,7 @@ export default function MotionCard({
               <ListIcon />
             )}
           </Button>
-          <h2 className="text-xl font-semibold capitalize flex-1 min-w-0 break-words">
+          <h2 className="text-lg md:text-xl font-semibold capitalize flex-1 min-w-0 break-words">
             {getTechniqueName(motion)}
           </h2>
           {motion.techniques[0].name !== "yoi" && (
