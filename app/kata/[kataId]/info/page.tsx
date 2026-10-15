@@ -15,18 +15,7 @@ import {
   ItemDescription,
   ItemTitle,
 } from "@/components/ui/item";
-import { Level } from "@/type";
-
-const getLevelClassNames = (level: Level) => {
-  switch (level) {
-    case Level.BEGINNER:
-      return "bg-green-50 text-green-700 dark:bg-green-950 dark:text-green-300";
-    case Level.INTERMEDIATE:
-      return "bg-yellow-50 text-yellow-700 dark:bg-yellow-950 dark:text-yellow-300";
-    case Level.ADVANCED:
-      return "bg-red-50 text-red-700 dark:bg-red-950 dark:text-red-300";
-  }
-};
+import { getLevelClassNames } from "@/lib/level";
 
 export async function generateMetadata({
   params,

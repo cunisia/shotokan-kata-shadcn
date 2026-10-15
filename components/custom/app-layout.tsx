@@ -19,7 +19,7 @@ import {
   SidebarTrigger,
   useSidebar,
 } from "@/components/ui/sidebar";
-import { Level } from "@/type";
+import { LEVELS_IN_ORDER } from "@/lib/level";
 import { Badge } from "../ui/badge";
 
 const getPageTitle = (pathName: string, kataId: string | undefined) => {
@@ -31,15 +31,6 @@ const getPageTitle = (pathName: string, kataId: string | undefined) => {
   }
   return getKata(kataId)?.name ?? "";
 };
-
-const LEVEL_TO_VALUE: Record<Level, number> = {
-  [Level.BEGINNER]: 0,
-  [Level.INTERMEDIATE]: 2,
-  [Level.ADVANCED]: 3,
-};
-
-const sortLevel = (l1: Level, l2: Level) =>
-  LEVEL_TO_VALUE[l1] - LEVEL_TO_VALUE[l2];
 
 const getParamValueAsString = (value: ParamValue): string =>
   typeof value === "string" ? value : "";
@@ -82,36 +73,34 @@ export default function AppLayout({
       <Sidebar>
         <SidebarContent className="flex flex-col gap-2">
           <div className="flex flex-col gap-2 flex-1 overflow-y-auto">
-            {Object.values(Level)
-              .sort(sortLevel)
-              .map((level) => (
-                <SidebarGroup key={level}>
-                  <SidebarGroupLabel className="capitalize">
-                    {level}
-                  </SidebarGroupLabel>
-                  <SidebarGroupContent>
-                    {(kataByLevel[level] ?? []).map((kata) => (
-                      <SidebarMenu key={kata.id}>
-                        <SidebarMenuItem>
-                          <SidebarNavButton
-                            href={`/kata/${kata.id}/motions`}
-                            isActive={kata.id === kataId}
-                          >
-                            <div className="w-full flex flex-row gap-2 items-center justify-between">
-                              <span>{kata.name}</span>
-                              {kata.isUnderReview && (
-                                <Badge className="text-orange-700 dark:bg-orange-950 dark:text-orange-300 flex-none">
-                                  Under Review
-                                </Badge>
-                              )}
-                            </div>
-                          </SidebarNavButton>
-                        </SidebarMenuItem>
-                      </SidebarMenu>
-                    ))}
-                  </SidebarGroupContent>
-                </SidebarGroup>
-              ))}
+            {LEVELS_IN_ORDER.map((level) => (
+              <SidebarGroup key={level}>
+                <SidebarGroupLabel className="capitalize">
+                  {level}
+                </SidebarGroupLabel>
+                <SidebarGroupContent>
+                  {(kataByLevel[level] ?? []).map((kata) => (
+                    <SidebarMenu key={kata.id}>
+                      <SidebarMenuItem>
+                        <SidebarNavButton
+                          href={`/kata/${kata.id}/motions`}
+                          isActive={kata.id === kataId}
+                        >
+                          <div className="w-full flex flex-row gap-2 items-center justify-between">
+                            <span>{kata.name}</span>
+                            {kata.isUnderReview && (
+                              <Badge className="text-orange-700 dark:bg-orange-950 dark:text-orange-300 flex-none">
+                                Under Review
+                              </Badge>
+                            )}
+                          </div>
+                        </SidebarNavButton>
+                      </SidebarMenuItem>
+                    </SidebarMenu>
+                  ))}
+                </SidebarGroupContent>
+              </SidebarGroup>
+            ))}
           </div>
           <div className="flex flex-col gap-2 shrink-0 py-4">
             <SidebarMenu>
