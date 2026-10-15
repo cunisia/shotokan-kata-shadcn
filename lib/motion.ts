@@ -1,27 +1,29 @@
-import { type Motion, Position } from "@/type";
+import { type Motion, Position, type Technique } from "@/type";
 
 export type Angle = "back" | "side" | "default";
 
-// Technique name shown as the card title: "chudan uchi-uke". The step index
-// is shown separately, in the step selector.
-export const getTechniqueName = (motion: Motion) =>
-  [motion.techniques[0].target, motion.techniques[0].name]
-    .filter(Boolean)
-    .join(" ");
+// Technique name with its target: "chudan uchi-uke".
+const getTargetedName = (technique: Technique) =>
+  [technique.target, technique.name].filter(Boolean).join(" ");
 
-// Full motion name with its step index, for contexts without a separate step
-// selector (e.g. image alt text): "8 - chudan uchi-uke".
+// Technique name shown as the card title, without the target, which the
+// techniques table already shows: "uchi-uke". A target word that is part of
+// the name itself stays: "gedan-barai". The step index is shown separately,
+// in the step selector.
+export const getTechniqueName = (motion: Motion) => motion.techniques[0].name;
+
+// Full motion name with its step index and target, for contexts without a
+// separate step selector or techniques table (e.g. image alt text):
+// "8 - chudan uchi-uke".
 export const getMotionName = (motion: Motion) =>
-  [motion.index, getTechniqueName(motion)].filter(Boolean).join(" - ");
+  [motion.index, getTargetedName(motion.techniques[0])]
+    .filter(Boolean)
+    .join(" - ");
 
-// All the techniques of a motion, for the rare motions combining two:
-// "chudan uchi ude-uke + soete".
+// All the techniques of a motion with their target, for the rare motions
+// combining two: "chudan uchi ude-uke + soete".
 export const getTechniquesName = (motion: Motion) =>
-  motion.techniques
-    .map((technique) =>
-      [technique.target, technique.name].filter(Boolean).join(" "),
-    )
-    .join(" + ");
+  motion.techniques.map(getTargetedName).join(" + ");
 
 export const getPositionName = (position: Position) => {
   switch (position) {
