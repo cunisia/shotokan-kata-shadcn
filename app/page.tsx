@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     absolute: "Shotokan Kata List & Step-by-Step Guide",
   },
   description:
-    "The Shotokan kata list with step-by-step motions, photos, floor maps (embusen), number of moves and kiai for each kata, from Heian Shodan to Bassai Dai.",
+    "The Shotokan kata list, ordered by level, with step-by-step motions and photos, floor maps (embusen) and key facts such as moves and kiai for each kata.",
   alternates: {
     canonical: "/",
   },
