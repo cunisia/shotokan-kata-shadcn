@@ -26,7 +26,7 @@ export const getKataInfoMetadata = (kata: Kata): Metadata => {
 
 export const getKataMotionsMetadata = (kata: Kata): Metadata => ({
   title: `${kata.name} – Step-by-Step Motions`,
-  description: `Learn ${kata.name} step by step: all ${getKataNumberOfCounts(kata)} moves with photos${hasSeveralAngles(kata) ? " from several angles" : ""}, stances, techniques and kiai points. ${capitalize(kata.level)} Shotokan kata.`,
+  description: `Learn ${kata.name} step by step: all ${getKataNumberOfCounts(kata)} moves with pictures${hasSeveralAngles(kata) ? " from several angles" : ""}, stances, techniques and kiai points. ${capitalize(kata.level)} Shotokan kata.`,
 });
 
 export const getKataMapMetadata = (kata: Kata): Metadata => ({
