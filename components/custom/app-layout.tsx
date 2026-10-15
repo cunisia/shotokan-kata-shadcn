@@ -23,6 +23,9 @@ import { LEVELS_IN_ORDER } from "@/lib/level";
 import { Badge } from "../ui/badge";
 
 const getPageTitle = (pathName: string, kataId: string | undefined) => {
+  if (pathName === "/") {
+    return "Shotokan Kata";
+  }
   if (pathName === "/about") {
     return "About";
   }
