@@ -10,6 +10,7 @@ import {
 
 export const TEKKI_SHODAN: Kata = {
   id: "tekki-shodan",
+  published: true,
   name: "Tekki Shodan",
   meaning: "Tekki N° 1",
   videoId: "VAkA5zAosC4",

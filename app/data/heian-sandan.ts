@@ -10,6 +10,7 @@ import {
 
 export const HEIAN_SANDAN: Kata = {
   id: "heian-sandan",
+  published: true,
   name: "Heian Sandan",
   meaning: "Heian N° 3",
   level: Level.BEGINNER,
