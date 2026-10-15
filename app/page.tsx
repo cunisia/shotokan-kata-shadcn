@@ -1,12 +1,8 @@
 import { groupBy } from "es-toolkit";
 import type { Metadata } from "next";
 import Link from "next/link";
-import { getKataList } from "@/app/data/get-kata";
+import { getAllKataList } from "@/app/data/get-kata";
 import { getKataNumberOfKiai } from "@/app/data/kata-stats";
-import {
-  getUncoveredShotokanKata,
-  SHOTOKAN_KATA,
-} from "@/app/data/shotokan-kata-list";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -18,7 +14,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { getLevelClassNames, LEVELS_IN_ORDER } from "@/lib/level";
-import type { Kata } from "@/type";
+import type { Kata, UnpublishedKata } from "@/type";
 
 export const metadata: Metadata = {
   title: {
@@ -76,9 +72,12 @@ function KataRow({ kata }: Readonly<{ kata: Kata }>) {
 }
 
 export default function Page() {
-  const kataList = getKataList();
-  const kataByLevel = groupBy(kataList, (kata) => kata.level);
-  const uncoveredKata = getUncoveredShotokanKata();
+  const allKata = getAllKataList();
+  const publishedKata = allKata.filter((kata): kata is Kata => kata.published);
+  const unpublishedKata = allKata.filter(
+    (kata): kata is UnpublishedKata => !kata.published,
+  );
+  const kataByLevel = groupBy(publishedKata, (kata) => kata.level);
 
   return (
     <div className="w-full overflow-y-auto px-4 pb-6 flex flex-col gap-8">
@@ -113,7 +112,7 @@ export default function Page() {
           Shotokan kata list
         </h2>
         <p className="text-sm text-muted-foreground">
-          {kataList.length} of the {SHOTOKAN_KATA.length} JKA Shotokan kata are
+          {publishedKata.length} of the {allKata.length} JKA Shotokan kata are
           covered so far, ordered by level.
         </p>
         <Table>
@@ -141,7 +140,7 @@ export default function Page() {
         </Table>
       </section>
 
-      {uncoveredKata.length > 0 && (
+      {unpublishedKata.length > 0 && (
         <section aria-labelledby="coming-soon" className="flex flex-col gap-2">
           <h2 id="coming-soon" className="text-xl font-semibold">
             Coming soon
@@ -150,7 +149,7 @@ export default function Page() {
             The other standard Shotokan kata, not covered yet.
           </p>
           <ul className="grid grid-cols-1 gap-x-4 sm:grid-cols-2">
-            {uncoveredKata.map((kata) => (
+            {unpublishedKata.map((kata) => (
               <li
                 key={kata.id}
                 className="flex items-center justify-between gap-2 border-b py-2 text-muted-foreground"

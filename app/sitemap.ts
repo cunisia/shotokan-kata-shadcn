@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { getKataList } from "@/app/data/get-kata";
+import { getPublishedKataList } from "@/app/data/get-kata";
 import { SITE_URL } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -8,7 +8,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     { url: `${baseUrl}/`, priority: 1 },
     { url: `${baseUrl}/about` },
-    ...getKataList().flatMap((kata) =>
+    ...getPublishedKataList().flatMap((kata) =>
       ["info", "motions", "map"].map((page) => ({
         url: `${baseUrl}/kata/${kata.id}/${page}`,
       })),

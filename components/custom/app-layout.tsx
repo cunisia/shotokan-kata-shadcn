@@ -4,7 +4,7 @@ import { groupBy } from "es-toolkit";
 import type { ParamValue } from "next/dist/server/request/params";
 import Link from "next/link";
 import { useParams, usePathname } from "next/navigation";
-import { getKata, getKataList } from "@/app/data/get-kata";
+import { getKata, getPublishedKataList } from "@/app/data/get-kata";
 import {
   Sidebar,
   SidebarContent,
@@ -68,7 +68,7 @@ export default function AppLayout({
   const { kataId: kataIdValue } = useParams();
   const kataId = getParamValueAsString(kataIdValue);
 
-  const katas = getKataList();
+  const katas = getPublishedKataList();
   const kataByLevel = groupBy(katas, (kata) => kata.level);
 
   return (

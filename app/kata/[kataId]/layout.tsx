@@ -1,11 +1,11 @@
 import { notFound } from "next/navigation";
-import { getKata, getKataList } from "@/app/data/get-kata";
+import { getKata, getPublishedKataList } from "@/app/data/get-kata";
 import KataTabs from "@/components/custom/kata-tabs";
 
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return getKataList().map((kata) => ({ kataId: kata.id }));
+  return getPublishedKataList().map((kata) => ({ kataId: kata.id }));
 }
 
 export default async function Layout({
