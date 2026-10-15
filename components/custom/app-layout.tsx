@@ -4,7 +4,7 @@ import { groupBy } from "es-toolkit";
 import type { ParamValue } from "next/dist/server/request/params";
 import Link from "next/link";
 import { useParams, usePathname } from "next/navigation";
-import { getKata, getPublishedKataList } from "@/app/data/get-kata";
+import { getAllKataList, getKata } from "@/app/data/get-kata";
 import {
   Sidebar,
   SidebarContent,
@@ -20,6 +20,7 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar";
 import { LEVELS_IN_ORDER } from "@/lib/level";
+import type { Kata } from "@/type";
 import { Badge } from "../ui/badge";
 
 const getPageTitle = (pathName: string, kataId: string | undefined) => {
@@ -58,6 +59,18 @@ function SidebarNavButton({
   );
 }
 
+// Unpublished kata have no page: a span is neither a link nor focusable, and
+// aria-disabled applies the button's disabled styles (greyed, no pointer events).
+function SidebarDisabledButton({
+  children,
+}: Readonly<{ children: React.ReactNode }>) {
+  return (
+    <SidebarMenuButton render={<span />} role="link" aria-disabled="true">
+      {children}
+    </SidebarMenuButton>
+  );
+}
+
 export default function AppLayout({
   children,
 }: Readonly<{
@@ -68,8 +81,12 @@ export default function AppLayout({
   const { kataId: kataIdValue } = useParams();
   const kataId = getParamValueAsString(kataIdValue);
 
-  const katas = getPublishedKataList();
-  const kataByLevel = groupBy(katas, (kata) => kata.level);
+  const allKata = getAllKataList();
+  const kataByLevel = groupBy(
+    allKata.filter((kata): kata is Kata => kata.published),
+    (kata) => kata.level,
+  );
+  const unpublishedKata = allKata.filter((kata) => !kata.published);
 
   return (
     <SidebarProvider>
@@ -115,6 +132,22 @@ export default function AppLayout({
                 </SidebarGroupContent>
               </SidebarGroup>
             ))}
+            {unpublishedKata.length > 0 && (
+              <SidebarGroup>
+                <SidebarGroupLabel>Coming soon</SidebarGroupLabel>
+                <SidebarGroupContent>
+                  <SidebarMenu>
+                    {unpublishedKata.map((kata) => (
+                      <SidebarMenuItem key={kata.id}>
+                        <SidebarDisabledButton>
+                          {kata.name}
+                        </SidebarDisabledButton>
+                      </SidebarMenuItem>
+                    ))}
+                  </SidebarMenu>
+                </SidebarGroupContent>
+              </SidebarGroup>
+            )}
           </div>
           <div className="flex flex-col gap-2 shrink-0 py-4">
             <SidebarMenu>
