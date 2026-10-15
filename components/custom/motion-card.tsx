@@ -63,12 +63,14 @@ export default function MotionCard({
   setAngle,
   goBackToYoi,
   isAboveTheFold = false,
+  isLcpCandidate = false,
 }: {
   motion: Motion;
   angle: Angle;
   setAngle: (angle: Angle) => void;
   goBackToYoi: () => void;
   isAboveTheFold?: boolean;
+  isLcpCandidate?: boolean;
 }) {
   const isTableDisplayed = (motion: Motion) =>
     !["yoi", "yame"].includes(motion.techniques[0].name);
@@ -125,7 +127,7 @@ export default function MotionCard({
             // column (minus card padding) from the md breakpoint.
             sizes="(min-width: 768px) 412px, 85vw"
             loading={isAboveTheFold ? "eager" : "lazy"}
-            fetchPriority={isAboveTheFold ? "high" : undefined}
+            fetchPriority={isLcpCandidate ? "high" : undefined}
             className="h-full w-full object-contain"
           />
           {(isBackPictureDisplayed || isSidePictureDisplayed) && (

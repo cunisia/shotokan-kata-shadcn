@@ -95,9 +95,11 @@ export default function MotionsCarousel() {
               angle={angle}
               setAngle={setAngle}
               goBackToYoi={goBackToYoi}
-              // The first slide is visible on load and the second one peeks
-              // in on mobile: load both right away (LCP candidates).
+              // The first slide is visible on load (LCP) and the second one
+              // peeks in on mobile: load both right away, but only give the
+              // first one a high fetch priority.
               isAboveTheFold={index < 2}
+              isLcpCandidate={index === 0}
             />
           </CarouselItem>
         ))}
