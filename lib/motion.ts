@@ -16,6 +16,26 @@ export const getMotionName = (motion: Motion) => {
   return nameItems.join(" ");
 };
 
+// All the techniques of a motion, for the rare motions combining two:
+// "chudan uchi ude-uke + soete".
+export const getTechniquesName = (motion: Motion) =>
+  motion.techniques
+    .map((technique) =>
+      [technique.target, technique.name].filter(Boolean).join(" "),
+    )
+    .join(" + ");
+
+// Last step number of the book's numbering, used as the step counter total.
+// Intermediate steps ("6a") and the unnumbered yoi / yame don't add to it.
+// Deliberately not `kata.numberOfMoves`: that is the commonly quoted count,
+// which differs from the book's numbering used by `motion.index` (Heian
+// Nidan: 26 moves, indexes 1 to 21), so the counter would never reach it.
+export const getStepTotal = (motions: Motion[]) =>
+  Math.max(
+    0,
+    ...motions.map((motion) => Number.parseInt(motion.index ?? "", 10) || 0),
+  );
+
 export const getPositionName = (position: Position) => {
   switch (position) {
     case Position.HACHIJI:
