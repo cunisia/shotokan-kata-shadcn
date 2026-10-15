@@ -19,7 +19,7 @@ export const SHOTOKAN_KATA: ShotokanKata[] = [
   { id: "bassai-sho", name: "Bassai Sho" },
   { id: "kanku-dai", name: "Kanku Dai" },
   { id: "kanku-sho", name: "Kanku Sho" },
-  { id: "enpi", name: "Enpi" },
+  { id: "empi", name: "Empi" },
   { id: "jion", name: "Jion" },
   { id: "jiin", name: "Jiin" },
   { id: "jitte", name: "Jitte" },
