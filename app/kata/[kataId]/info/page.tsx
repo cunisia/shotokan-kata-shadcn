@@ -133,7 +133,7 @@ export default async function Page({
               <div className="w-full shrink-0 mt-2">
                 <YouTubeEmbed
                   videoid={kata.videoId}
-                  playlabel="Play Heian Shodan demonstration"
+                  playlabel={`Play ${kata.name} demonstration`}
                 />
               </div>
             </ItemContent>

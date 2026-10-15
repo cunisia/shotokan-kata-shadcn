@@ -35,7 +35,7 @@ export default async function Page({
         {kata.videoId && (
           <YouTubeEmbed
             videoid={kata.videoId}
-            playlabel="Play Heian Shodan demonstration"
+            playlabel={`Play ${kata.name} demonstration`}
           />
         )}
       </CardContent>
