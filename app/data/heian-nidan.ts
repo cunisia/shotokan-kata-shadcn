@@ -13,6 +13,7 @@ export const HEIAN_NIDAN: Kata = {
   name: "Heian Nidan",
   meaning: "Heian N° 2",
   level: Level.BEGINNER,
+  numberOfMoves: 26,
   description:
     "Heian Nidan adds several fundamentals not found in Heian Shodan: inside-to-outside forearm blocks, close-range punches, snapping side kicks paired with a backfist strike, and snapping front kicks. Its greater use of knife-hand blocks in back stance gives it a particularly characteristic kata structure.",
   videoId: "6Hc1NMdjU9U",

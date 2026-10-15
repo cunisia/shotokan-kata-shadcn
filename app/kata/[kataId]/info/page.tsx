@@ -5,7 +5,6 @@ import { getKataInfoMetadata } from "@/app/data/kata-metadata";
 import {
   getKataNumberOfAttacks,
   getKataNumberOfBlocks,
-  getKataNumberOfCounts,
   getKataNumberOfKiai,
 } from "@/app/data/kata-stats";
 import { Badge } from "@/components/ui/badge";
@@ -91,7 +90,7 @@ export default async function Page({
                 Number of counts
               </ItemTitle>
               <ItemDescription className="text-foreground">
-                {getKataNumberOfCounts(kata)}
+                {kata.numberOfMoves}
               </ItemDescription>
             </ItemContent>
           </Item>
