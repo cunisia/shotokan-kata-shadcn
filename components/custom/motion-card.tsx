@@ -1,9 +1,10 @@
 import { RadioGroup } from "@base-ui/react";
+import { cn } from "cn";
 import { capitalize } from "es-toolkit";
 import { ChevronDown, ListIcon, Undo2 } from "lucide-react";
 import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   Item,
@@ -51,50 +52,81 @@ export default function MotionCard({
     angle,
   );
 
+  const isBackToYoiDisplayed = motion.techniques[0].name !== "yoi";
+  const stepCounterSize = motion.index ? "sm" : "icon-sm";
+  const stepCounterClassName = "relative shrink-0 gap-0.5 tabular-nums";
+  const stepCounterContent = motion.index ? (
+    <>
+      {motion.index}
+      <ChevronDown data-icon="inline-end" />
+    </>
+  ) : (
+    // Yoi and yame have no step number, and their name is already the title:
+    // an icon only avoids repeating it.
+    <ListIcon />
+  );
+
   return (
     <Card className="h-full">
       <CardHeader>
-        <CardTitle className="flex flex-row items-center justify-center gap-2">
-          <Button
-            variant="outline"
-            size={motion.index ? "sm" : "icon-sm"}
-            data-slot="step-counter"
-            aria-haspopup="dialog"
-            aria-expanded={isListOpen}
-            aria-label={`${
-              motion.index
-                ? `Step ${motion.index}`
-                : capitalize(motion.techniques[0].name)
-            }, open motion list`}
-            onClick={(event) => toggleList(event.currentTarget)}
-            // Visually compact (32px) to leave the width to the title, with
-            // a 44px tap area.
-            className="relative shrink-0 gap-0.5 tabular-nums after:absolute after:-inset-1.5"
-          >
-            {motion.index ? (
-              <>
-                {motion.index}
-                <ChevronDown data-icon="inline-end" />
-              </>
-            ) : (
-              // Yoi and yame have no step number, and their name is already
-              // the title: an icon only avoids repeating it.
-              <ListIcon />
-            )}
-          </Button>
-          <h2 className="text-lg md:text-xl font-semibold capitalize flex-1 min-w-0 break-words">
-            {getTechniqueName(motion)}
-          </h2>
-          {motion.techniques[0].name !== "yoi" && (
+        {/* Three columns: the title is centred in the card. Each side column
+            stacks its button with an invisible twin of the other side's one,
+            so both sides are as wide as the widest button. */}
+        <CardTitle className="grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-2">
+          <div className="grid justify-items-start *:[grid-area:1/1]">
             <Button
               variant="outline"
-              size="icon"
-              aria-label="Back to beginning"
-              onClick={goBackToYoi}
+              size={stepCounterSize}
+              data-slot="step-counter"
+              aria-haspopup="dialog"
+              aria-expanded={isListOpen}
+              aria-label={`${
+                motion.index
+                  ? `Step ${motion.index}`
+                  : capitalize(motion.techniques[0].name)
+              }, open motion list`}
+              onClick={(event) => toggleList(event.currentTarget)}
+              // Visually compact (32px) to leave the width to the title, with
+              // a 44px tap area.
+              className={cn(
+                stepCounterClassName,
+                "after:absolute after:-inset-1.5",
+              )}
             >
-              <Undo2 />
+              {stepCounterContent}
             </Button>
-          )}
+            {isBackToYoiDisplayed && (
+              <span
+                aria-hidden
+                className={cn(buttonVariants({ size: "icon" }), "invisible")}
+              />
+            )}
+          </div>
+          <h2 className="text-lg md:text-xl font-semibold capitalize text-center text-balance break-words">
+            {getTechniqueName(motion)}
+          </h2>
+          <div className="grid justify-items-end *:[grid-area:1/1]">
+            <span
+              aria-hidden
+              className={cn(
+                buttonVariants({ variant: "outline", size: stepCounterSize }),
+                stepCounterClassName,
+                "invisible",
+              )}
+            >
+              {stepCounterContent}
+            </span>
+            {isBackToYoiDisplayed && (
+              <Button
+                variant="outline"
+                size="icon"
+                aria-label="Back to beginning"
+                onClick={goBackToYoi}
+              >
+                <Undo2 />
+              </Button>
+            )}
+          </div>
         </CardTitle>
       </CardHeader>
       <CardContent className="flex flex-col flex-1 min-h-0 gap-4">
