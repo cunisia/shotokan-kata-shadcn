@@ -4,7 +4,6 @@ export const getKataNumberOfCounts = (kata: Kata) => {
   const lastIndex =
     kata.motions.filter((motions) => !!motions.index).pop()?.index ?? "0";
   const digits = [...lastIndex.matchAll(/\d/g)].map((match) => match[0]);
-  console.log(digits);
   return parseInt(digits.join(""), 10);
 };
 
