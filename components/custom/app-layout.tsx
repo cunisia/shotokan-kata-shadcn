@@ -70,7 +70,7 @@ export default function AppLayout({
                     {(kataByLevel[level] ?? []).map((kata) => (
                       <SidebarMenu key={kata.id}>
                         <SidebarMenuItem>
-                          <SidebarMenuButton>
+                          <SidebarMenuButton isActive={kata.id === kataId}>
                             <a
                               className="w-full"
                               href={`/kata/${kata.id}/motions`}
@@ -88,7 +88,7 @@ export default function AppLayout({
           <div className="flex flex-col gap-2 shrink-0 py-4">
             <SidebarMenu>
               <SidebarMenuItem>
-                <SidebarMenuButton>
+                <SidebarMenuButton isActive={pathName.includes('about')}>
                   <a className="w-full" href={`/about`}>
                     About
                   </a>
