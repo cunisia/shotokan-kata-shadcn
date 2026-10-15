@@ -1,6 +1,6 @@
 "use client";
 import { notFound, useParams } from "next/navigation";
-import { useEffect, useEffectEvent, useState } from "react";
+import { useEffect, useEffectEvent, useRef, useState } from "react";
 import { getKata } from "@/app/data/get-kata";
 import {
   Carousel,
@@ -10,9 +10,10 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import type { Angle } from "@/lib/motion";
+import { type Angle, getStepTotal } from "@/lib/motion";
 import type { Motion } from "@/type";
 import MotionCard from "./motion-card";
+import MotionListPicker from "./motion-list";
 
 const getMotionId = (motion: Motion) => {
   if (motion.index) {
@@ -30,6 +31,32 @@ export default function MotionsCarousel() {
   const [api, setApi] = useState<CarouselApi>();
 
   const goBackToYoi = () => api?.scrollTo(0);
+
+  const [isListOpen, setIsListOpen] = useState(false);
+  // The step counter that opened the list: the desktop popover is anchored
+  // to it.
+  const [listAnchor, setListAnchor] = useState<HTMLElement | null>(null);
+  const currentRowRef = useRef<HTMLButtonElement>(null);
+
+  const toggleList = (counter: HTMLButtonElement) => {
+    setListAnchor(counter);
+    setIsListOpen((isOpen) => !isOpen);
+  };
+
+  // Jump without animating through every slide in between. Embla emits
+  // `select`, so the URL is updated by `onNavigate` exactly like on swipe.
+  const goToMotion = (index: number) => {
+    setIsListOpen(false);
+    api?.scrollTo(index, true);
+  };
+
+  // Return the focus to the step counter of the slide now displayed.
+  const getCurrentCounter = () =>
+    api
+      ?.slideNodes()
+      [api.selectedScrollSnap()]?.querySelector<HTMLElement>(
+        "[data-slot=step-counter]",
+      ) ?? null;
 
   // The page is prerendered at build time, so `?index=` is unknown on the
   // server: the server HTML always shows slide 0. On the client, the lazy
@@ -50,7 +77,10 @@ export default function MotionsCarousel() {
     return Math.min(value, kata.motions.length - 1);
   });
 
+  const [selectedIndex, setSelectedIndex] = useState(startIndex);
+
   const onNavigate = useEffectEvent((_api: CarouselApi) => {
+    setSelectedIndex(_api?.selectedScrollSnap() ?? 0);
     const params = new URLSearchParams(window.location.search);
     const index = _api?.selectedScrollSnap();
     if (index !== undefined) {
@@ -79,34 +109,52 @@ export default function MotionsCarousel() {
     notFound();
   }
 
+  const stepTotal = getStepTotal(kata.motions);
+
   return (
-    <Carousel
-      className="w-full flex-1 min-h-0 [&>[data-slot=carousel-content]]:h-full"
-      setApi={setApi}
-      opts={{ containScroll: false, startIndex }}
-    >
-      <CarouselContent className="h-full">
-        {kata.motions.map((motion, index) => (
-          <CarouselItem
-            key={getMotionId(motion)}
-            className="basis-[85%] md:basis-full"
-          >
-            <MotionCard
-              motion={motion}
-              angle={angle}
-              setAngle={setAngle}
-              goBackToYoi={goBackToYoi}
-              // The first slide is visible on load (LCP) and the second one
-              // peeks in on mobile: load both right away, but only give the
-              // first one a high fetch priority.
-              isAboveTheFold={index < 2}
-              isLcpCandidate={index === 0}
-            />
-          </CarouselItem>
-        ))}
-      </CarouselContent>
-      <CarouselPrevious className="hidden md:flex" />
-      <CarouselNext className="hidden md:flex" />
-    </Carousel>
+    <>
+      <Carousel
+        className="w-full flex-1 min-h-0 [&>[data-slot=carousel-content]]:h-full"
+        setApi={setApi}
+        opts={{ containScroll: false, startIndex }}
+      >
+        <CarouselContent className="h-full">
+          {kata.motions.map((motion, index) => (
+            <CarouselItem
+              key={getMotionId(motion)}
+              className="basis-[85%] md:basis-full"
+            >
+              <MotionCard
+                motion={motion}
+                angle={angle}
+                setAngle={setAngle}
+                goBackToYoi={goBackToYoi}
+                // The first slide is visible on load (LCP) and the second one
+                // peeks in on mobile: load both right away, but only give the
+                // first one a high fetch priority.
+                isAboveTheFold={index < 2}
+                isLcpCandidate={index === 0}
+                stepTotal={stepTotal}
+                isListOpen={isListOpen && index === selectedIndex}
+                toggleList={toggleList}
+              />
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+        <CarouselPrevious className="hidden md:flex" />
+        <CarouselNext className="hidden md:flex" />
+      </Carousel>
+      <MotionListPicker
+        open={isListOpen}
+        onOpenChange={setIsListOpen}
+        anchor={listAnchor}
+        finalFocus={getCurrentCounter}
+        motions={kata.motions}
+        angle={angle}
+        currentIndex={selectedIndex}
+        currentRowRef={currentRowRef}
+        onSelect={goToMotion}
+      />
+    </>
   );
 }

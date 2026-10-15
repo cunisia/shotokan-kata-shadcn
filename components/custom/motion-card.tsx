@@ -1,5 +1,5 @@
 import { RadioGroup } from "@base-ui/react";
-import { Undo2 } from "lucide-react";
+import { ChevronDown, Undo2 } from "lucide-react";
 import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -29,6 +29,9 @@ export default function MotionCard({
   goBackToYoi,
   isAboveTheFold = false,
   isLcpCandidate = false,
+  stepTotal,
+  isListOpen,
+  toggleList,
 }: {
   motion: Motion;
   angle: Angle;
@@ -36,6 +39,9 @@ export default function MotionCard({
   goBackToYoi: () => void;
   isAboveTheFold?: boolean;
   isLcpCandidate?: boolean;
+  stepTotal: number;
+  isListOpen: boolean;
+  toggleList: (counter: HTMLButtonElement) => void;
 }) {
   const isTableDisplayed = (motion: Motion) =>
     !["yoi", "yame"].includes(motion.techniques[0].name);
@@ -48,10 +54,35 @@ export default function MotionCard({
   return (
     <Card className="h-full">
       <CardHeader>
-        <CardTitle className="flex flex-row items-center justify-center">
-          <h2 className="text-xl font-semibold capitalize flex-1">
+        <CardTitle className="flex flex-row items-center justify-center gap-2">
+          <h2 className="text-xl font-semibold capitalize flex-1 min-w-0 break-words">
             {getMotionName(motion)}
           </h2>
+          <Button
+            variant="outline"
+            data-slot="step-counter"
+            aria-haspopup="dialog"
+            aria-expanded={isListOpen}
+            aria-label={`${
+              motion.index
+                ? `Step ${motion.index} of ${stepTotal}`
+                : motion.techniques[0].name
+            }, show all motions`}
+            onClick={(event) => toggleList(event.currentTarget)}
+            // As tall as the button next to it (36px), with a 44px tap area.
+            className="relative tabular-nums after:absolute after:-inset-1"
+          >
+            {motion.index ? (
+              <span>
+                {motion.index}
+                <span className="text-muted-foreground"> / {stepTotal}</span>
+              </span>
+            ) : (
+              // Yoi and yame have no step number in the book.
+              <span className="capitalize">{motion.techniques[0].name}</span>
+            )}
+            <ChevronDown data-icon="inline-end" />
+          </Button>
           {motion.techniques[0].name !== "yoi" && (
             <Button
               variant="outline"
