@@ -75,11 +75,14 @@ export default function MotionsCarousel() {
     <Carousel
       className="w-full flex-1 min-h-0 [&>[data-slot=carousel-content]]:h-full"
       setApi={setApi}
-      opts={{ startIndex: initialIndex }}
+      opts={{ containScroll: false, startIndex: initialIndex }}
     >
       <CarouselContent className="h-full">
         {kata.motions.map((motion) => (
-          <CarouselItem key={getMotionId(motion)}>
+          <CarouselItem
+            key={getMotionId(motion)}
+            className="basis-[85%] md:basis-full"
+          >
             <MotionCard
               motion={motion}
               angle={angle}

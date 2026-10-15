@@ -70,7 +70,6 @@ export default function MotionCard({
   setAngle: (angle: Angle) => void;
   goBackToYoi: () => void;
 }) {
-  console.log("---> angle = ", angle);
   const isTableDisplayed = (motion: Motion) =>
     !["yoi", "yame"].includes(motion.techniques[0].name);
 
@@ -99,7 +98,7 @@ export default function MotionCard({
         </CardTitle>
       </CardHeader>
       <CardContent className="flex flex-col flex-1 min-h-0 gap-4">
-        <div className="relative bg-white h-6/10">
+        <div className="relative bg-white h-1/2">
           {motion.kiai && (
             <Badge
               variant="destructive"
@@ -122,7 +121,7 @@ export default function MotionCard({
             alt={getMotionName(motion)}
             width={385}
             height={500}
-            className="h-full w-auto max-w-none m-auto"
+            className="h-full w-full object-contain"
           />
           {(isBackPictureDisplayed || isSidePictureDisplayed) && (
             <Badge
@@ -134,12 +133,12 @@ export default function MotionCard({
             </Badge>
           )}
         </div>
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-4 overflow-auto ">
           {(motion.hasBackPicture || motion.hasSidePicture) && (
             <RadioGroup
               value={angle}
               onValueChange={setAngle}
-              className="flex flex-row justify-between w-full px-4"
+              className="flex flex-row justify-between w-full px-4 shrink-0"
             >
               <Field orientation="horizontal">
                 <RadioGroupItem
@@ -178,7 +177,7 @@ export default function MotionCard({
             </RadioGroup>
           )}
           {isTableDisplayed(motion) && <TechniquesTables motion={motion} />}
-          <div className="grid grid-cols-2">
+          <div className="grid grid-cols-2 shrink-0">
             {!isTableDisplayed(motion) && (
               <Item className="items-start">
                 <ItemContent>

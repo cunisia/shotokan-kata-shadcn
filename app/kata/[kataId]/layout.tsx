@@ -1,5 +1,6 @@
 "use client";
 
+import { cn } from "cn";
 import Link from "next/link";
 import { notFound, useParams, usePathname } from "next/navigation";
 import { getKata } from "@/app/data/get-kata";
@@ -51,7 +52,12 @@ export default function Layout({
           </TabsTrigger> */}
         </TabsList>
       </Tabs>
-      <div className="flex w-full flex-col items-center flex-1 min-h-0 px-4">
+      <div
+        className={cn(
+          "flex w-full flex-col items-center flex-1 min-h-0",
+          currentPath !== "motions" && "px-4",
+        )}
+      >
         {children}
       </div>
     </>
