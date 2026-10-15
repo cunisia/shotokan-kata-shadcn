@@ -12,8 +12,9 @@ export async function generateMetadata({
   const kata = getKata(kataId);
   return {
     title: kata?.name,
-    alternates: {
-      canonical: `/kata/${kataId}/videos`,
+    // Hidden page (its tab is commented out): keep it out of search results.
+    robots: {
+      index: false,
     },
   };
 }
