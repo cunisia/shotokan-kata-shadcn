@@ -10,52 +10,17 @@ import {
   ItemDescription,
   ItemTitle,
 } from "@/components/ui/item";
-import { type Motion, Position } from "@/type";
+import {
+  type Angle,
+  getDisplayedAngle,
+  getMotionName,
+  getPictureName,
+  getPositionName,
+} from "@/lib/motion";
+import type { Motion } from "@/type";
 import { Field, FieldLabel } from "../ui/field";
 import { RadioGroupItem } from "../ui/radio-group";
 import TechniquesTables from "./techniques-table";
-
-export type Angle = "back" | "side" | "default";
-
-const getMotionName = (motion: Motion) => {
-  const nameItems: string[] = [];
-  const name = motion.techniques[0].name;
-  if (motion.index) {
-    nameItems.push(`${motion.index} - `);
-  }
-  const target = motion.techniques[0].target;
-  if (target) {
-    nameItems.push(target);
-  }
-  nameItems.push(name);
-  return nameItems.join(" ");
-};
-
-const getPositionName = (position: Position) => {
-  switch (position) {
-    case Position.HACHIJI:
-      return `Shizentai ${position} dachi`;
-    default:
-      return `${position} dachi`;
-  }
-};
-
-const getPictureName = (
-  motion: Motion,
-  isBackPictureDisplayed: boolean | undefined,
-  isSidePictureDisplayed: boolean | undefined,
-) => {
-  const nameItems: (string | undefined)[] = [
-    `${motion.position}`,
-    ...motion.techniques.map(
-      (technique) => `${technique.side}_${technique.target}_${technique.name}`,
-    ),
-    motion.orientation,
-    ...(isBackPictureDisplayed ? ["back"] : []),
-    ...(isSidePictureDisplayed ? ["side"] : []),
-  ];
-  return `/motions/${nameItems.join("_")}.png`;
-};
 
 export default function MotionCard({
   motion,
@@ -75,10 +40,10 @@ export default function MotionCard({
   const isTableDisplayed = (motion: Motion) =>
     !["yoi", "yame"].includes(motion.techniques[0].name);
 
-  const isBackPictureDisplayed =
-    (angle === "back" || motion.hasNoFrontPicture) && motion.hasBackPicture;
-
-  const isSidePictureDisplayed = angle === "side" && motion.hasSidePicture;
+  const { isBackPictureDisplayed, isSidePictureDisplayed } = getDisplayedAngle(
+    motion,
+    angle,
+  );
 
   return (
     <Card className="h-full">

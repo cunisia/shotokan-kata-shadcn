@@ -10,8 +10,9 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import type { Angle } from "@/lib/motion";
 import type { Motion } from "@/type";
-import MotionCard, { type Angle } from "./motion-card";
+import MotionCard from "./motion-card";
 
 const getMotionId = (motion: Motion) => {
   if (motion.index) {
