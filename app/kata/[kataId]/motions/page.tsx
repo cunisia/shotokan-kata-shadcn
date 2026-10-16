@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import { getKata } from "@/app/data/get-kata";
 import { getKataMotionsMetadata } from "@/app/data/kata-metadata";
 import MotionsCarousel from "@/components/custom/motions-carousel";
+import { getKataBreadcrumbJsonLd, JsonLd } from "@/lib/json-ld";
 
 export async function generateMetadata({
   params,
@@ -29,5 +30,10 @@ export default async function Page({
     notFound();
   }
 
-  return <MotionsCarousel kataId={kata.id} motions={kata.motions} />;
+  return (
+    <>
+      <JsonLd data={getKataBreadcrumbJsonLd(kata, "motions")} />
+      <MotionsCarousel kataId={kata.id} motions={kata.motions} />
+    </>
+  );
 }
