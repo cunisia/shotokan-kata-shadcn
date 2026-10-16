@@ -29,23 +29,27 @@ function KataRow({ kata }: Readonly<{ kata: KataListItem }>) {
   return (
     <TableRow>
       <TableCell className="whitespace-normal">
-        <div className="flex flex-wrap items-center gap-2">
+        <div className="flex items-center justify-between gap-2">
           {kata.isPublished ? (
             <Link
               href={`/kata/${kata.id}/motions`}
-              className="py-1 font-medium underline-offset-4 hover:underline"
+              className="min-w-0 py-1 font-medium underline-offset-4 hover:underline"
             >
               {kata.name}
             </Link>
           ) : (
-            <span className="text-muted-foreground">{kata.name}</span>
+            <span className="min-w-0 text-muted-foreground">{kata.name}</span>
           )}
           {kata.isPublished && kata.isUnderReview && (
-            <Badge className="text-orange-700 dark:bg-orange-950 dark:text-orange-300">
+            <Badge className="shrink-0 text-orange-700 dark:bg-orange-950 dark:text-orange-300">
               Under Review
             </Badge>
           )}
-          {!kata.isPublished && <Badge variant="outline">Coming soon</Badge>}
+          {!kata.isPublished && (
+            <Badge variant="outline" className="shrink-0">
+              Coming soon
+            </Badge>
+          )}
         </div>
       </TableCell>
       <TableCell className="text-right tabular-nums">
