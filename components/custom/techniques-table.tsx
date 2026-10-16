@@ -3,6 +3,7 @@ import {
   tableFeatures,
   useTable,
 } from "@tanstack/react-table";
+import { cn } from "cn";
 import {
   Table,
   TableBody,
@@ -44,6 +45,13 @@ export const techniquesTableColumns = columnHelper.columns([
   }),
 ]);
 
+// Side and target are short words (left/right, jodan/chudan/gedan): fixed
+// widths leave the remaining room to the technique name, which wraps.
+const columnClassNames: Record<string, string> = {
+  side: "w-16",
+  target: "w-20",
+};
+
 export default function TechniquesTables({ motion }: { motion: Motion }) {
   const table = useTable({
     features: techniquesTablefeatures,
@@ -52,14 +60,22 @@ export default function TechniquesTables({ motion }: { motion: Motion }) {
   });
 
   return (
-    <div className="flex-none">
-      <Table>
+    // The table is fixed to the card width, so the overflow-x-auto container
+    // of the shadcn table never needs to scroll.
+    <div className="flex-none *:data-[slot=table-container]:overflow-x-visible">
+      <Table className="table-fixed">
         <TableHeader>
           {table.getHeaderGroups().map((headerGroup) => (
             <TableRow key={headerGroup.id}>
               {headerGroup.headers.map((header) => {
                 return (
-                  <TableHead key={header.id} className="text-muted-foreground">
+                  <TableHead
+                    key={header.id}
+                    className={cn(
+                      "text-muted-foreground whitespace-normal wrap-break-word",
+                      columnClassNames[header.column.id],
+                    )}
+                  >
                     {header.isPlaceholder ? null : (
                       <table.FlexRender header={header} />
                     )}
@@ -74,7 +90,10 @@ export default function TechniquesTables({ motion }: { motion: Motion }) {
             table.getRowModel().rows.map((row) => (
               <TableRow key={row.id}>
                 {row.getAllCells().map((cell) => (
-                  <TableCell className="capitalize" key={cell.id}>
+                  <TableCell
+                    className="capitalize whitespace-normal wrap-break-word"
+                    key={cell.id}
+                  >
                     <table.FlexRender cell={cell} />
                   </TableCell>
                 ))}
@@ -84,7 +103,7 @@ export default function TechniquesTables({ motion }: { motion: Motion }) {
             <TableRow>
               <TableCell
                 colSpan={techniquesTableColumns.length}
-                className="h-24 text-center"
+                className="h-24 text-center whitespace-normal"
               >
                 No techniques.
               </TableCell>

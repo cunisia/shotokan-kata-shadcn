@@ -55,7 +55,7 @@ export default function MotionCard({
   const isBackToYoiDisplayed = motion.techniques[0].name !== "yoi";
 
   return (
-    <Card className="h-full">
+    <Card className="h-full [--card-spacing:--spacing(3)] md:[--card-spacing:--spacing(6)]">
       <CardHeader>
         <CardTitle className="flex w-full items-center justify-between gap-2">
           <Button
