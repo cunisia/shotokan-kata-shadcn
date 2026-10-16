@@ -20,7 +20,6 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar";
 import { LEVELS_IN_ORDER } from "@/lib/level";
-import type { Kata } from "@/type";
 import { Badge } from "../ui/badge";
 
 const getPageTitle = (pathName: string, kataId: string | undefined) => {
@@ -81,12 +80,7 @@ export default function AppLayout({
   const { kataId: kataIdValue } = useParams();
   const kataId = getParamValueAsString(kataIdValue);
 
-  const allKata = getAllKataList();
-  const kataByLevel = groupBy(
-    allKata.filter((kata): kata is Kata => kata.isPublished),
-    (kata) => kata.level,
-  );
-  const unpublishedKata = allKata.filter((kata) => !kata.isPublished);
+  const kataByLevel = groupBy(getAllKataList(), (kata) => kata.level);
 
   return (
     <SidebarProvider>
@@ -104,49 +98,41 @@ export default function AppLayout({
                 </SidebarMenu>
               </SidebarGroupContent>
             </SidebarGroup>
-            {LEVELS_IN_ORDER.map((level) => (
-              <SidebarGroup key={level}>
-                <SidebarGroupLabel className="capitalize">
-                  {level}
-                </SidebarGroupLabel>
-                <SidebarGroupContent>
-                  {(kataByLevel[level] ?? []).map((kata) => (
-                    <SidebarMenu key={kata.id}>
-                      <SidebarMenuItem>
-                        <SidebarNavButton
-                          href={`/kata/${kata.id}/motions`}
-                          isActive={kata.id === kataId}
-                        >
-                          <div className="w-full flex flex-row gap-2 items-center justify-between">
-                            <span>{kata.name}</span>
-                            {kata.isUnderReview && (
-                              <Badge className="text-orange-700 dark:bg-orange-950 dark:text-orange-300 flex-none">
-                                Under Review
-                              </Badge>
-                            )}
-                          </div>
-                        </SidebarNavButton>
-                      </SidebarMenuItem>
+            {LEVELS_IN_ORDER.filter((level) => kataByLevel[level]).map(
+              (level) => (
+                <SidebarGroup key={level}>
+                  <SidebarGroupLabel className="capitalize">
+                    {level}
+                  </SidebarGroupLabel>
+                  <SidebarGroupContent>
+                    <SidebarMenu>
+                      {kataByLevel[level].map((kata) => (
+                        <SidebarMenuItem key={kata.id}>
+                          {kata.isPublished ? (
+                            <SidebarNavButton
+                              href={`/kata/${kata.id}/motions`}
+                              isActive={kata.id === kataId}
+                            >
+                              <div className="w-full flex flex-row gap-2 items-center justify-between">
+                                <span>{kata.name}</span>
+                                {kata.isUnderReview && (
+                                  <Badge className="text-orange-700 dark:bg-orange-950 dark:text-orange-300 flex-none">
+                                    Under Review
+                                  </Badge>
+                                )}
+                              </div>
+                            </SidebarNavButton>
+                          ) : (
+                            <SidebarDisabledButton>
+                              {kata.name}
+                            </SidebarDisabledButton>
+                          )}
+                        </SidebarMenuItem>
+                      ))}
                     </SidebarMenu>
-                  ))}
-                </SidebarGroupContent>
-              </SidebarGroup>
-            ))}
-            {unpublishedKata.length > 0 && (
-              <SidebarGroup>
-                <SidebarGroupLabel>Coming soon</SidebarGroupLabel>
-                <SidebarGroupContent>
-                  <SidebarMenu>
-                    {unpublishedKata.map((kata) => (
-                      <SidebarMenuItem key={kata.id}>
-                        <SidebarDisabledButton>
-                          {kata.name}
-                        </SidebarDisabledButton>
-                      </SidebarMenuItem>
-                    ))}
-                  </SidebarMenu>
-                </SidebarGroupContent>
-              </SidebarGroup>
+                  </SidebarGroupContent>
+                </SidebarGroup>
+              ),
             )}
           </div>
           <div className="flex flex-col gap-2 shrink-0 py-4">
