@@ -24,8 +24,8 @@ const PUBLISHED_KATA: Kata[] = [
   HEIAN_YONDAN,
   HEIAN_GODAN,
   TEKKI_SHODAN,
-  JION,
   BASSAI_DAI,
+  JION,
 ];
 
 const UNPUBLISHED_KATA: UnpublishedKata[] = [
