@@ -147,7 +147,6 @@ export default function MotionsCarousel() {
         anchor={listAnchor}
         finalFocus={getCurrentCounter}
         motions={kata.motions}
-        angle={angle}
         currentIndex={selectedIndex}
         currentRowRef={currentRowRef}
         onSelect={goToMotion}

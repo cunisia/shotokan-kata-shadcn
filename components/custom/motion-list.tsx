@@ -12,7 +12,6 @@ import {
 } from "@/components/ui/sheet";
 import { useIsMobile } from "@/hooks/use-mobile";
 import {
-  type Angle,
   getDisplayedAngle,
   getPictureName,
   getPositionName,
@@ -22,7 +21,6 @@ import type { Motion } from "@/type";
 
 type MotionListProps = {
   motions: Motion[];
-  angle: Angle;
   currentIndex: number;
   currentRowRef: RefObject<HTMLButtonElement | null>;
   onSelect: (index: number) => void;
@@ -51,7 +49,6 @@ const moveFocus = (event: React.KeyboardEvent<HTMLUListElement>) => {
 
 function MotionList({
   motions,
-  angle,
   currentIndex,
   currentRowRef,
   onSelect,
@@ -78,8 +75,11 @@ function MotionList({
     >
       {motions.map((motion, index) => {
         const isCurrent = index === currentIndex;
+        // Always the default angle, whatever the one picked on the cards. The
+        // default angle falls back to the back picture when a motion has no
+        // front one.
         const { isBackPictureDisplayed, isSidePictureDisplayed } =
-          getDisplayedAngle(motion, angle);
+          getDisplayedAngle(motion, "default");
         return (
           <li key={`${motion.index}-${motion.techniques[0].name}`}>
             <button
