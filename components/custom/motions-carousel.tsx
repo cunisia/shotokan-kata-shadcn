@@ -1,6 +1,6 @@
 "use client";
 import { notFound, useParams } from "next/navigation";
-import { useEffect, useEffectEvent, useRef, useState } from "react";
+import { useEffect, useEffectEvent, useState } from "react";
 import { getKata } from "@/app/data/get-kata";
 import {
   Carousel,
@@ -36,7 +36,6 @@ export default function MotionsCarousel() {
   // The step counter that opened the list: the desktop popover is anchored
   // to it.
   const [listAnchor, setListAnchor] = useState<HTMLElement | null>(null);
-  const currentRowRef = useRef<HTMLButtonElement>(null);
 
   const toggleList = (counter: HTMLButtonElement) => {
     setListAnchor(counter);
@@ -148,7 +147,6 @@ export default function MotionsCarousel() {
         finalFocus={getCurrentCounter}
         motions={kata.motions}
         currentIndex={selectedIndex}
-        currentRowRef={currentRowRef}
         onSelect={goToMotion}
       />
     </>

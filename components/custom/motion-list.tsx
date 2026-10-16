@@ -22,7 +22,6 @@ import type { Motion } from "@/type";
 type MotionListProps = {
   motions: Motion[];
   currentIndex: number;
-  currentRowRef: RefObject<HTMLButtonElement | null>;
   onSelect: (index: number) => void;
 };
 
@@ -52,7 +51,9 @@ function MotionList({
   currentIndex,
   currentRowRef,
   onSelect,
-}: MotionListProps) {
+}: MotionListProps & {
+  currentRowRef: RefObject<HTMLButtonElement | null>;
+}) {
   const listRef = useRef<HTMLUListElement>(null);
 
   // Centre the current motion in the scrollable list when it opens. The list
@@ -158,20 +159,22 @@ export default function MotionListPicker({
   finalFocus: () => HTMLElement | null;
 }) {
   const isMobile = useIsMobile();
+  // The current motion's row: focused and centred when the list opens.
+  const currentRowRef = useRef<HTMLButtonElement>(null);
 
   if (isMobile) {
     return (
       <Sheet open={isOpen} onOpenChange={onOpenChange}>
         <SheetContent
           side="bottom"
-          initialFocus={listProps.currentRowRef}
+          initialFocus={currentRowRef}
           finalFocus={finalFocus}
           className="max-h-[80svh] rounded-t-2xl pb-[env(safe-area-inset-bottom)]"
         >
           <SheetHeader className="p-4 pr-14">
             <SheetTitle>Motions</SheetTitle>
           </SheetHeader>
-          <MotionList {...listProps} />
+          <MotionList {...listProps} currentRowRef={currentRowRef} />
         </SheetContent>
       </Sheet>
     );
@@ -195,12 +198,12 @@ export default function MotionListPicker({
       <PopoverContent
         anchor={anchor}
         align="start"
-        initialFocus={listProps.currentRowRef}
+        initialFocus={currentRowRef}
         finalFocus={finalFocus}
         className="max-h-[60vh] w-[380px] max-w-[calc(100vw-2rem)] gap-0 p-0"
       >
         <PopoverTitle className="sr-only">Motions</PopoverTitle>
-        <MotionList {...listProps} />
+        <MotionList {...listProps} currentRowRef={currentRowRef} />
       </PopoverContent>
     </Popover>
   );
