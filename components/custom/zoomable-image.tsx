@@ -1,11 +1,17 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import Image from "next/image";
 import { useState } from "react";
-import Lightbox from "yet-another-react-lightbox";
-import Fullscreen from "yet-another-react-lightbox/plugins/fullscreen";
-import Zoom from "yet-another-react-lightbox/plugins/zoom";
-import "yet-another-react-lightbox/styles.css";
+
+// The lightbox and its plugins are only needed once the image is enlarged:
+// keep them out of the page's initial JS.
+const ZoomableImageLightbox = dynamic(
+  () => import("./zoomable-image-lightbox"),
+  {
+    ssr: false,
+  },
+);
 
 type ZoomableImageProps = {
   src: string;
@@ -23,12 +29,18 @@ export function ZoomableImage({
   sizes,
 }: ZoomableImageProps) {
   const [open, setOpen] = useState(false);
+  // Mount the lightbox on the first open only (that triggers the download),
+  // then keep it mounted so closing still animates.
+  const [hasOpened, setHasOpened] = useState(false);
 
   return (
     <>
       <button
         type="button"
-        onClick={() => setOpen(true)}
+        onClick={() => {
+          setHasOpened(true);
+          setOpen(true);
+        }}
         aria-label={`Enlarge: ${alt}`}
         className="block cursor-zoom-in h-full"
       >
@@ -42,18 +54,16 @@ export function ZoomableImage({
         />
       </button>
 
-      <Lightbox
-        open={open}
-        close={() => setOpen(false)}
-        slides={[{ src, alt, width, height }]}
-        plugins={[Zoom, Fullscreen]}
-        zoom={{ scrollToZoom: true }}
-        carousel={{ finite: true }}
-        render={{
-          buttonPrev: () => null,
-          buttonNext: () => null,
-        }}
-      />
+      {hasOpened && (
+        <ZoomableImageLightbox
+          open={open}
+          close={() => setOpen(false)}
+          src={src}
+          alt={alt}
+          width={width}
+          height={height}
+        />
+      )}
     </>
   );
 }
