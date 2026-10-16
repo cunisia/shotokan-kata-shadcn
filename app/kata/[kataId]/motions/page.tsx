@@ -33,7 +33,7 @@ export default async function Page({
   return (
     <>
       <JsonLd data={getKataBreadcrumbJsonLd(kata, "motions")} />
-      <MotionsCarousel />
+      <MotionsCarousel kataId={kata.id} motions={kata.motions} />
     </>
   );
 }

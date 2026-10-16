@@ -1,7 +1,5 @@
 "use client";
-import { notFound, useParams } from "next/navigation";
 import { useEffect, useEffectEvent, useState } from "react";
-import { getKata } from "@/app/data/get-kata";
 import {
   Carousel,
   type CarouselApi,
@@ -22,11 +20,13 @@ const getMotionId = (motion: Motion) => {
   return motion.techniques[0].name;
 };
 
-export default function MotionsCarousel() {
+// The motions page (a Server Component) reads the kata and passes only what
+// the carousel needs, so the kata data module never ships to the browser.
+export default function MotionsCarousel({
+  kataId,
+  motions,
+}: Readonly<{ kataId: string; motions: Motion[] }>) {
   const [angle, setAngle] = useState<Angle>("default");
-
-  const { kataId } = useParams();
-  const kata = getKata(typeof kataId === "string" ? kataId : "");
 
   const [api, setApi] = useState<CarouselApi>();
 
@@ -67,13 +67,13 @@ export default function MotionsCarousel() {
   // rendering. During a client-side navigation the URL may still be the
   // previous page's when this runs, hence the pathname check.
   const [startIndex] = useState(() => {
-    if (typeof window === "undefined" || !kata) return 0;
-    if (window.location.pathname !== `/kata/${kata.id}/motions`) return 0;
+    if (typeof window === "undefined") return 0;
+    if (window.location.pathname !== `/kata/${kataId}/motions`) return 0;
     const value = Number(
       new URLSearchParams(window.location.search).get("index") ?? "0",
     );
     if (!Number.isSafeInteger(value) || value < 0) return 0;
-    return Math.min(value, kata.motions.length - 1);
+    return Math.min(value, motions.length - 1);
   });
 
   const [selectedIndex, setSelectedIndex] = useState(startIndex);
@@ -104,10 +104,6 @@ export default function MotionsCarousel() {
     };
   }, [api]);
 
-  if (!kata) {
-    notFound();
-  }
-
   return (
     <>
       <Carousel
@@ -116,7 +112,7 @@ export default function MotionsCarousel() {
         opts={{ containScroll: false, startIndex }}
       >
         <CarouselContent className="h-full">
-          {kata.motions.map((motion, index) => (
+          {motions.map((motion, index) => (
             <CarouselItem
               key={getMotionId(motion)}
               className="basis-[85%] md:basis-full"
@@ -145,7 +141,7 @@ export default function MotionsCarousel() {
         onOpenChange={setIsListOpen}
         anchor={listAnchor}
         finalFocus={getCurrentCounter}
-        motions={kata.motions}
+        motions={motions}
         currentIndex={selectedIndex}
         onSelect={goToMotion}
       />
