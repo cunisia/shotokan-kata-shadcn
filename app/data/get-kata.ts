@@ -5,8 +5,8 @@ import { HEIAN_NIDAN } from "./heian-nidan";
 import { HEIAN_SANDAN } from "./heian-sandan";
 import { HEIAN_SHODAN } from "./heian-shodan";
 import { HEIAN_YONDAN } from "./heian-yondan";
-import { TEKKI_SHODAN } from "./tekki-shodan";
 import { JION } from "./jion";
+import { TEKKI_SHODAN } from "./tekki-shodan";
 
 const unpublished = (id: string, name: string): UnpublishedKata => ({
   id,
