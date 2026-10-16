@@ -60,7 +60,7 @@ export default function Page() {
 
   return (
     <div className="w-full overflow-y-auto px-4 pb-6 flex flex-col gap-8">
-      <section className="flex flex-col gap-4">
+      <section className="mt-4 flex flex-col gap-4">
         <p>
           The kata capture the essence of Shotokan karate. For a very long time,
           they were the only means of passing on karate knowledge from sensei to
