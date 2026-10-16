@@ -17,15 +17,18 @@ const unpublished = (
   kata: Omit<UnpublishedKata, "isPublished">,
 ): UnpublishedKata => ({ ...kata, isPublished: false });
 
-// The 26 kata of the JKA (Japan Karate Association) Shotokan curriculum, in
-// curriculum order. Single source of truth for every kata list on the site.
-const ALL_KATA: KataListItem[] = [
+const PUBLISHED_KATA: Kata[] = [
   HEIAN_SHODAN,
   HEIAN_NIDAN,
   HEIAN_SANDAN,
   HEIAN_YONDAN,
   HEIAN_GODAN,
   TEKKI_SHODAN,
+  JION,
+  BASSAI_DAI,
+];
+
+const UNPUBLISHED_KATA: UnpublishedKata[] = [
   unpublished({
     id: "tekki-nidan",
     name: "Tekki Nidan",
@@ -38,7 +41,6 @@ const ALL_KATA: KataListItem[] = [
     level: Level.ADVANCED,
     numberOfMoves: 36,
   }),
-  BASSAI_DAI,
   unpublished({
     id: "bassai-sho",
     name: "Bassai Sho",
@@ -63,7 +65,6 @@ const ALL_KATA: KataListItem[] = [
     level: Level.INTERMEDIATE,
     numberOfMoves: 37,
   }),
-  JION,
   unpublished({
     id: "jiin",
     name: "Jiin",
@@ -138,9 +139,9 @@ const ALL_KATA: KataListItem[] = [
   }),
 ];
 
-const PUBLISHED_KATA: Kata[] = ALL_KATA.filter(
-  (kata): kata is Kata => kata.isPublished,
-);
+// The 26 kata of the JKA (Japan Karate Association) Shotokan curriculum, in
+// curriculum order. Single source of truth for every kata list on the site.
+const ALL_KATA: KataListItem[] = [...PUBLISHED_KATA, ...UNPUBLISHED_KATA];
 
 // Only published kata have pages: use this for anything that renders or
 // links to a kata page.
