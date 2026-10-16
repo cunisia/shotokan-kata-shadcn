@@ -62,12 +62,16 @@ export default function Page() {
     <div className="w-full overflow-y-auto px-4 pb-6 flex flex-col gap-8">
       <section className="flex flex-col gap-4">
         <p>
-          A kata is a fixed sequence of stances, blocks and strikes performed
-          against imaginary opponents, and one of the three pillars of Shotokan
-          training alongside kihon and kumite. This site breaks each kata down
-          into its numbered moves, with pictures of every move (sometimes from
-          several angles), a floor map of its path (embusen) and key facts such
-          as its level, number of moves and kiai.
+          The kata capture the essence of Shotokan karate. For a very long time,
+          they were the only means of passing on karate knowledge from sensei to
+          disciple. They are taught in the dojo, by the sensei.
+        </p>
+        <p>
+          This site is meant as a textbook to help you practise them outside the
+          dojo, should you forget part of one. Each kata page brings together a
+          series of cards (one per motion), a floor map of the kata's path
+          (embusen), a video, and some general information. May it help you in
+          your practice.
         </p>
       </section>
 
