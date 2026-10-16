@@ -93,7 +93,7 @@ export default function Page() {
                   <TableHead
                     colSpan={2}
                     scope="rowgroup"
-                    className="capitalize"
+                    className="capitalize text-muted-foreground"
                   >
                     {level}
                   </TableHead>
