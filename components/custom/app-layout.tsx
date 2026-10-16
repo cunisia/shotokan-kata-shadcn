@@ -4,7 +4,7 @@ import { groupBy } from "es-toolkit";
 import type { ParamValue } from "next/dist/server/request/params";
 import Link from "next/link";
 import { useParams, usePathname } from "next/navigation";
-import { getKata, getKataList } from "@/app/data/get-kata";
+import { getAllKataList, getKata } from "@/app/data/get-kata";
 import {
   Sidebar,
   SidebarContent,
@@ -19,10 +19,13 @@ import {
   SidebarTrigger,
   useSidebar,
 } from "@/components/ui/sidebar";
-import { Level } from "@/type";
+import { LEVELS_IN_ORDER } from "@/lib/level";
 import { Badge } from "../ui/badge";
 
 const getPageTitle = (pathName: string, kataId: string | undefined) => {
+  if (pathName === "/") {
+    return "Shotokan Kata";
+  }
   if (pathName === "/about") {
     return "About";
   }
@@ -31,15 +34,6 @@ const getPageTitle = (pathName: string, kataId: string | undefined) => {
   }
   return getKata(kataId)?.name ?? "";
 };
-
-const LEVEL_TO_VALUE: Record<Level, number> = {
-  [Level.BEGINNER]: 0,
-  [Level.INTERMEDIATE]: 2,
-  [Level.ADVANCED]: 3,
-};
-
-const sortLevel = (l1: Level, l2: Level) =>
-  LEVEL_TO_VALUE[l1] - LEVEL_TO_VALUE[l2];
 
 const getParamValueAsString = (value: ParamValue): string =>
   typeof value === "string" ? value : "";
@@ -64,6 +58,18 @@ function SidebarNavButton({
   );
 }
 
+// Unpublished kata have no page: a span is neither a link nor focusable, and
+// aria-disabled applies the button's disabled styles (greyed, no pointer events).
+function SidebarDisabledButton({
+  children,
+}: Readonly<{ children: React.ReactNode }>) {
+  return (
+    <SidebarMenuButton render={<span />} role="link" aria-disabled="true">
+      {children}
+    </SidebarMenuButton>
+  );
+}
+
 export default function AppLayout({
   children,
 }: Readonly<{
@@ -74,44 +80,60 @@ export default function AppLayout({
   const { kataId: kataIdValue } = useParams();
   const kataId = getParamValueAsString(kataIdValue);
 
-  const katas = getKataList();
-  const kataByLevel = groupBy(katas, (kata) => kata.level);
+  const kataByLevel = groupBy(getAllKataList(), (kata) => kata.level);
 
   return (
     <SidebarProvider>
       <Sidebar>
         <SidebarContent className="flex flex-col gap-2">
           <div className="flex flex-col gap-2 flex-1 overflow-y-auto">
-            {Object.values(Level)
-              .sort(sortLevel)
-              .map((level) => (
+            <SidebarGroup>
+              <SidebarGroupContent>
+                <SidebarMenu>
+                  <SidebarMenuItem>
+                    <SidebarNavButton href="/" isActive={pathName === "/"}>
+                      Home
+                    </SidebarNavButton>
+                  </SidebarMenuItem>
+                </SidebarMenu>
+              </SidebarGroupContent>
+            </SidebarGroup>
+            {LEVELS_IN_ORDER.filter((level) => kataByLevel[level]).map(
+              (level) => (
                 <SidebarGroup key={level}>
                   <SidebarGroupLabel className="capitalize">
                     {level}
                   </SidebarGroupLabel>
                   <SidebarGroupContent>
-                    {(kataByLevel[level] ?? []).map((kata) => (
-                      <SidebarMenu key={kata.id}>
-                        <SidebarMenuItem>
-                          <SidebarNavButton
-                            href={`/kata/${kata.id}/motions`}
-                            isActive={kata.id === kataId}
-                          >
-                            <div className="w-full flex flex-row gap-2 items-center justify-between">
-                              <span>{kata.name}</span>
-                              {kata.isUnderReview && (
-                                <Badge className="text-orange-700 dark:bg-orange-950 dark:text-orange-300 flex-none">
-                                  Under Review
-                                </Badge>
-                              )}
-                            </div>
-                          </SidebarNavButton>
+                    <SidebarMenu>
+                      {kataByLevel[level].map((kata) => (
+                        <SidebarMenuItem key={kata.id}>
+                          {kata.isPublished ? (
+                            <SidebarNavButton
+                              href={`/kata/${kata.id}/motions`}
+                              isActive={kata.id === kataId}
+                            >
+                              <div className="w-full flex flex-row gap-2 items-center justify-between">
+                                <span>{kata.name}</span>
+                                {kata.isUnderReview && (
+                                  <Badge className="text-orange-700 dark:bg-orange-950 dark:text-orange-300 flex-none">
+                                    Under Review
+                                  </Badge>
+                                )}
+                              </div>
+                            </SidebarNavButton>
+                          ) : (
+                            <SidebarDisabledButton>
+                              {kata.name}
+                            </SidebarDisabledButton>
+                          )}
                         </SidebarMenuItem>
-                      </SidebarMenu>
-                    ))}
+                      ))}
+                    </SidebarMenu>
                   </SidebarGroupContent>
                 </SidebarGroup>
-              ))}
+              ),
+            )}
           </div>
           <div className="flex flex-col gap-2 shrink-0 py-4">
             <SidebarMenu>
@@ -132,7 +154,7 @@ export default function AppLayout({
           <header className="relative py-2 shrink-0">
             <SidebarTrigger
               size="icon-lg"
-              className="[&_svg]:size-5! absolute left-1 top-1/2 -translate-y-1/2"
+              className="[&_svg]:size-5! absolute inset-y-0 left-1 my-auto"
             />
             <h1 className="text-center text-2xl font-semibold">
               {getPageTitle(pathName, kataId)}

@@ -1,13 +1,23 @@
-import { Kata, Position, Side, Target, Type, Orientation, Level } from "@/type";
+import {
+  type Kata,
+  Level,
+  Orientation,
+  Position,
+  Side,
+  Target,
+  Type,
+} from "@/type";
 
 export const JION: Kata = {
   id: "jion",
   name: "Jion",
   meaning: "I don't want to fight",
-  description: "Jion belongs to the same family as Jitte and Jiin. The book links their history to Tomari and to traditions associated with the Buddhist temple Jionji, while presenting these origins as historical interpretations. Its character combines calm, mature movement with underlying strength. Many sequences build on the five Heian katas, making their mastery a useful foundation for learning Jion. Front, back and horse stances give it a strong emphasis on Shotokan fundamentals. Understanding the applications matters as much as performing the sequence, particularly the closing actions that seize and pull an opponent's wrist before a counterpunch.",
+  description:
+    "Jion belongs to the same family as Jitte and Jiin. The book links their history to Tomari and to traditions associated with the Buddhist temple Jionji, while presenting these origins as historical interpretations. Its character combines calm, mature movement with underlying strength. Many sequences build on the five Heian katas, making their mastery a useful foundation for learning Jion. Front, back and horse stances give it a strong emphasis on Shotokan fundamentals. Understanding the applications matters as much as performing the sequence, particularly the closing actions that seize and pull an opponent's wrist before a counterpunch.",
   videoId: "Lrr-c5RCKpo",
   level: Level.INTERMEDIATE,
   isUnderReview: true,
+  isPublished: true,
   numberOfMoves: 47,
   motions: [
     {
