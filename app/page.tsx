@@ -99,7 +99,7 @@ export default function Page() {
             help you in your practice.
           </p>
         </div>
-        <div className="mt-6 flex flex-wrap items-center gap-4">
+        <div className="mt-6 flex flex-wrap items-center gap-3">
           <Button
             size="lg"
             nativeButton={false}
@@ -107,12 +107,14 @@ export default function Page() {
           >
             Start with Heian Shodan
           </Button>
-          <Link
-            href="/about"
-            className="text-sm text-muted-foreground underline underline-offset-4 hover:text-foreground"
+          <Button
+            size="lg"
+            variant="outline"
+            nativeButton={false}
+            render={<Link href="/about" />}
           >
             Why this site?
-          </Link>
+          </Button>
         </div>
       </section>
 
