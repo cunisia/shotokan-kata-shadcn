@@ -129,7 +129,7 @@ export default function Page() {
           <TableHeader>
             <TableRow>
               <TableHead>Kata</TableHead>
-              <TableHead className="text-right">Moves</TableHead>
+              <TableHead className="w-16 text-right">Moves</TableHead>
             </TableRow>
           </TableHeader>
           {LEVELS_IN_ORDER.filter((level) => kataByLevel[level]).map(
