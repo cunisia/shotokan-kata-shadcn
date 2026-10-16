@@ -13,6 +13,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { getWebSiteJsonLd, JsonLd } from "@/lib/json-ld";
 import { LEVELS_IN_ORDER } from "@/lib/level";
 import type { KataListItem } from "@/type";
 
@@ -102,6 +103,7 @@ export default function Page() {
 
   return (
     <div className="w-full overflow-y-auto px-4 pb-6">
+      <JsonLd data={getWebSiteJsonLd()} />
       <section className="mt-8">
         <div className="flex flex-col gap-4">
           <p>
