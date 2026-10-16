@@ -83,21 +83,23 @@ export default function Page() {
   );
 
   return (
-    <div className="w-full overflow-y-auto px-4 pb-6 flex flex-col gap-8">
-      <section className="mt-4 flex flex-col gap-4">
-        <p>
-          The kata capture the essence of Shotokan karate. For a very long time,
-          they were the only means of passing on karate knowledge from sensei to
-          disciple. They are taught in the dojo, by the sensei.
-        </p>
-        <p>
-          This site is meant as a textbook to help you practise them outside the
-          dojo, should you forget part of one. Each kata page brings together a
-          series of cards (one per motion), a floor map of the kata's path
-          (embusen), a video, and some general information. May it help you in
-          your practice.
-        </p>
-        <div className="flex flex-wrap items-center gap-4">
+    <div className="w-full overflow-y-auto px-4 pb-6">
+      <section className="mt-8">
+        <div className="flex flex-col gap-4">
+          <p>
+            The kata capture the essence of Shotokan karate. For a very long
+            time, they were the only means of passing on karate knowledge from
+            sensei to disciple. They are taught in the dojo, by the sensei.
+          </p>
+          <p>
+            This site is meant as a textbook to help you practise them outside
+            the dojo, should you forget part of one. Each kata page brings
+            together a series of cards (one per motion), a floor map of the
+            kata's path (embusen), a video, and some general information. May it
+            help you in your practice.
+          </p>
+        </div>
+        <div className="mt-6 flex flex-wrap items-center gap-4">
           <Button
             size="lg"
             nativeButton={false}
@@ -114,7 +116,10 @@ export default function Page() {
         </div>
       </section>
 
-      <section aria-labelledby="kata-list" className="flex flex-col gap-2">
+      <section
+        aria-labelledby="kata-list"
+        className="mt-12 flex flex-col gap-2"
+      >
         <h2 id="kata-list" className="text-xl font-semibold">
           Shotokan kata list
         </h2>
