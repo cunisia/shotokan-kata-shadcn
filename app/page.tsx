@@ -25,15 +25,25 @@ export const metadata: Metadata = {
   },
 };
 
+// Published rows are clickable as a whole: the name stays the only link (one
+// tab stop, real href), and its ::after is stretched over the relative row, so
+// a click anywhere on the row follows it. The focus ring is drawn on that
+// overlay so keyboard users see the whole row as focused.
 function KataRow({ kata }: Readonly<{ kata: KataListItem }>) {
   return (
-    <TableRow>
+    <TableRow
+      className={
+        kata.isPublished
+          ? "group relative cursor-pointer"
+          : "hover:bg-transparent"
+      }
+    >
       <TableCell className="whitespace-normal">
         <div className="flex items-center justify-between gap-2">
           {kata.isPublished ? (
             <Link
               href={`/kata/${kata.id}/motions`}
-              className="min-w-0 py-1 font-medium underline-offset-4 hover:underline"
+              className="min-w-0 py-1 font-medium underline-offset-4 outline-none group-hover:underline after:absolute after:inset-0 after:rounded-sm focus-visible:after:ring-[3px] focus-visible:after:ring-ring/50 focus-visible:after:ring-inset"
             >
               {kata.name}
             </Link>
