@@ -60,7 +60,16 @@ function KataRow({ kata }: Readonly<{ kata: KataListItem }>) {
 }
 
 export default function Page() {
-  const kataByLevel = groupBy(getAllKataList(), (kata) => kata.level);
+  // Published kata first, each half keeping the canonical list order, so every
+  // level group starts with the kata that have a page.
+  const allKata = getAllKataList();
+  const kataByLevel = groupBy(
+    [
+      ...allKata.filter((kata) => kata.isPublished),
+      ...allKata.filter((kata) => !kata.isPublished),
+    ],
+    (kata) => kata.level,
+  );
 
   return (
     <div className="w-full overflow-y-auto px-4 pb-6 flex flex-col gap-8">
