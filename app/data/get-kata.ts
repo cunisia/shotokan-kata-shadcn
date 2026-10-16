@@ -14,15 +14,8 @@ import { JION } from "./jion";
 import { TEKKI_SHODAN } from "./tekki-shodan";
 
 const unpublished = (
-  id: string,
-  name: string,
-  level: Level,
-): UnpublishedKata => ({
-  id,
-  name,
-  level,
-  isPublished: false,
-});
+  kata: Omit<UnpublishedKata, "isPublished">,
+): UnpublishedKata => ({ ...kata, isPublished: false });
 
 // The 26 kata of the JKA (Japan Karate Association) Shotokan curriculum, in
 // curriculum order. Single source of truth for every kata list on the site.
@@ -33,26 +26,116 @@ const ALL_KATA: KataListItem[] = [
   HEIAN_YONDAN,
   HEIAN_GODAN,
   TEKKI_SHODAN,
-  unpublished("tekki-nidan", "Tekki Nidan", Level.ADVANCED),
-  unpublished("tekki-sandan", "Tekki Sandan", Level.ADVANCED),
+  unpublished({
+    id: "tekki-nidan",
+    name: "Tekki Nidan",
+    level: Level.ADVANCED,
+    numberOfMoves: 24,
+  }),
+  unpublished({
+    id: "tekki-sandan",
+    name: "Tekki Sandan",
+    level: Level.ADVANCED,
+    numberOfMoves: 36,
+  }),
   BASSAI_DAI,
-  unpublished("bassai-sho", "Bassai Sho", Level.ADVANCED),
-  unpublished("kanku-dai", "Kanku Dai", Level.INTERMEDIATE),
-  unpublished("kanku-sho", "Kanku Sho", Level.ADVANCED),
-  unpublished("empi", "Empi", Level.INTERMEDIATE),
+  unpublished({
+    id: "bassai-sho",
+    name: "Bassai Sho",
+    level: Level.ADVANCED,
+    numberOfMoves: 27,
+  }),
+  unpublished({
+    id: "kanku-dai",
+    name: "Kanku Dai",
+    level: Level.INTERMEDIATE,
+    numberOfMoves: 65,
+  }),
+  unpublished({
+    id: "kanku-sho",
+    name: "Kanku Sho",
+    level: Level.ADVANCED,
+    numberOfMoves: 47,
+  }),
+  unpublished({
+    id: "empi",
+    name: "Empi",
+    level: Level.INTERMEDIATE,
+    numberOfMoves: 37,
+  }),
   JION,
-  unpublished("jiin", "Jiin", Level.ADVANCED),
-  unpublished("jitte", "Jitte", Level.ADVANCED),
-  unpublished("hangetsu", "Hangetsu", Level.ADVANCED),
-  unpublished("gankaku", "Gankaku", Level.ADVANCED),
-  unpublished("chinte", "Chinte", Level.ADVANCED),
-  unpublished("sochin", "Sochin", Level.ADVANCED),
-  unpublished("nijushiho", "Nijushiho", Level.ADVANCED),
-  unpublished("meikyo", "Meikyo", Level.ADVANCED),
-  unpublished("unsu", "Unsu", Level.ADVANCED),
-  unpublished("wankan", "Wankan", Level.ADVANCED),
-  unpublished("gojushiho-dai", "Gojushiho Dai", Level.ADVANCED),
-  unpublished("gojushiho-sho", "Gojushiho Sho", Level.ADVANCED),
+  unpublished({
+    id: "jiin",
+    name: "Jiin",
+    level: Level.ADVANCED,
+    numberOfMoves: 35,
+  }),
+  unpublished({
+    id: "jitte",
+    name: "Jitte",
+    level: Level.ADVANCED,
+    numberOfMoves: 24,
+  }),
+  unpublished({
+    id: "hangetsu",
+    name: "Hangetsu",
+    level: Level.ADVANCED,
+    numberOfMoves: 41,
+  }),
+  unpublished({
+    id: "gankaku",
+    name: "Gankaku",
+    level: Level.ADVANCED,
+    numberOfMoves: 42,
+  }),
+  unpublished({
+    id: "chinte",
+    name: "Chinte",
+    level: Level.ADVANCED,
+    numberOfMoves: 33,
+  }),
+  unpublished({
+    id: "sochin",
+    name: "Sochin",
+    level: Level.ADVANCED,
+    numberOfMoves: 40,
+  }),
+  unpublished({
+    id: "nijushiho",
+    name: "Nijushiho",
+    level: Level.ADVANCED,
+    numberOfMoves: 34,
+  }),
+  unpublished({
+    id: "meikyo",
+    name: "Meikyo",
+    level: Level.ADVANCED,
+    numberOfMoves: 33,
+  }),
+  unpublished({
+    id: "unsu",
+    name: "Unsu",
+    level: Level.ADVANCED,
+    numberOfMoves: 48,
+  }),
+  unpublished({
+    id: "wankan",
+    name: "Wankan",
+    level: Level.ADVANCED,
+    numberOfMoves: 24,
+  }),
+  unpublished({
+    id: "gojushiho-dai",
+    name: "Gojushiho Dai",
+    level: Level.ADVANCED,
+    numberOfMoves: 67,
+  }),
+  unpublished({
+    id: "gojushiho-sho",
+    name: "Gojushiho Sho",
+    level: Level.ADVANCED,
+    numberOfMoves: 65,
+  }),
 ];
 
 const PUBLISHED_KATA: Kata[] = ALL_KATA.filter(

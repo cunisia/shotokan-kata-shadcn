@@ -19,6 +19,7 @@ export interface UnpublishedKata {
   id: string; // same format as Kata.id
   name: string;
   level: Level;
+  numberOfMoves: number; // same convention as Kata.numberOfMoves
   isPublished: false;
 }
 

@@ -49,7 +49,7 @@ function KataRow({ kata }: Readonly<{ kata: KataListItem }>) {
         </div>
       </TableCell>
       <TableCell className="text-right tabular-nums">
-        {kata.isPublished ? kata.numberOfMoves : "—"}
+        {kata.numberOfMoves}
       </TableCell>
     </TableRow>
   );
