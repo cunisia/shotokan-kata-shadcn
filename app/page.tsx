@@ -63,7 +63,7 @@ function KataRow({ kata }: Readonly<{ kata: KataListItem }>) {
           )}
         </div>
       </TableCell>
-      <TableCell className="text-right tabular-nums">
+      <TableCell className="text-center tabular-nums text-muted-foreground">
         {kata.numberOfMoves}
       </TableCell>
     </TableRow>
@@ -99,7 +99,7 @@ export default function Page() {
             help you in your practice.
           </p>
         </div>
-        <div className="mt-6 flex flex-wrap items-center gap-3">
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
           <Button
             size="lg"
             nativeButton={false}
@@ -120,7 +120,7 @@ export default function Page() {
 
       <section
         aria-labelledby="kata-list"
-        className="mt-12 flex flex-col gap-2"
+        className="mt-10 flex flex-col gap-2"
       >
         <h2 id="kata-list" className="text-xl font-semibold">
           Shotokan kata list
@@ -129,7 +129,7 @@ export default function Page() {
           <TableHeader>
             <TableRow>
               <TableHead>Kata</TableHead>
-              <TableHead className="w-16 text-right">Moves</TableHead>
+              <TableHead className="w-10 text-right">Moves</TableHead>
             </TableRow>
           </TableHeader>
           {LEVELS_IN_ORDER.filter((level) => kataByLevel[level]).map(
