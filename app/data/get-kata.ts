@@ -55,7 +55,7 @@ const ALL_KATA: KataListItem[] = [
     id: "kanku-sho",
     name: "Kanku Sho",
     level: Level.ADVANCED,
-    numberOfMoves: 47,
+    numberOfMoves: 48,
   }),
   unpublished({
     id: "empi",
@@ -68,7 +68,7 @@ const ALL_KATA: KataListItem[] = [
     id: "jiin",
     name: "Jiin",
     level: Level.ADVANCED,
-    numberOfMoves: 35,
+    numberOfMoves: 38,
   }),
   unpublished({
     id: "jitte",
@@ -92,13 +92,13 @@ const ALL_KATA: KataListItem[] = [
     id: "chinte",
     name: "Chinte",
     level: Level.ADVANCED,
-    numberOfMoves: 33,
+    numberOfMoves: 32,
   }),
   unpublished({
     id: "sochin",
     name: "Sochin",
     level: Level.ADVANCED,
-    numberOfMoves: 40,
+    numberOfMoves: 41,
   }),
   unpublished({
     id: "nijushiho",
