@@ -1,3 +1,4 @@
+import { cn } from "cn";
 import { groupBy } from "es-toolkit";
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -25,6 +26,23 @@ export const metadata: Metadata = {
     canonical: "/",
   },
 };
+
+// The table uses separate borders: with collapsed ones, a stuck cell leaves its
+// border behind and Chrome paints scrolled rows through it. Row dividers are
+// therefore drawn on the cells, keeping shadcn's look (none after the last row
+// of a level).
+const KATA_TABLE =
+  "border-separate border-spacing-0 [&_td]:border-b [&_th]:border-b [&_tbody_tr:last-child>*]:border-b-0";
+
+// Header cells stick to the top of the page's scroll box (th, not tr: Safari
+// ignores sticky on rows). z-10 keeps them above the rows' link overlay, and
+// the opaque background hides the rows scrolling underneath. A sticky cell is
+// bounded by the whole table, so the next level header slides over the
+// previous one.
+const STICKY_HEAD = "sticky z-10 bg-background";
+// The column header row is h-12 (TableHead), so level headers stick below it.
+const STICKY_COLUMN_HEAD = `${STICKY_HEAD} top-0`;
+const STICKY_LEVEL_HEAD = `${STICKY_HEAD} top-12`;
 
 // Published rows are clickable as a whole: the name stays the only link (one
 // tab stop, real href), and its ::after is stretched over the relative row, so
@@ -125,32 +143,43 @@ export default function Page() {
         <h2 id="kata-list" className="text-xl font-semibold">
           Shotokan kata list
         </h2>
-        <Table>
-          <TableHeader>
-            <TableRow>
-              <TableHead>Kata</TableHead>
-              <TableHead className="w-10 text-right">Moves</TableHead>
-            </TableRow>
-          </TableHeader>
-          {LEVELS_IN_ORDER.filter((level) => kataByLevel[level]).map(
-            (level) => (
-              <TableBody key={level}>
-                <TableRow className="hover:bg-transparent">
-                  <TableHead
-                    colSpan={2}
-                    scope="rowgroup"
-                    className="capitalize text-muted-foreground"
-                  >
-                    {level}
-                  </TableHead>
-                </TableRow>
-                {kataByLevel[level].map((kata) => (
-                  <KataRow key={kata.id} kata={kata} />
-                ))}
-              </TableBody>
-            ),
-          )}
-        </Table>
+        {/* The page wrapper above is the scroll box; the table container's
+            overflow-x-auto would otherwise capture the sticky headers. */}
+        <div className="*:data-[slot=table-container]:overflow-x-visible">
+          <Table className={KATA_TABLE}>
+            <TableHeader>
+              <TableRow>
+                <TableHead className={STICKY_COLUMN_HEAD}>Kata</TableHead>
+                <TableHead
+                  className={cn(STICKY_COLUMN_HEAD, "w-10 text-right")}
+                >
+                  Moves
+                </TableHead>
+              </TableRow>
+            </TableHeader>
+            {LEVELS_IN_ORDER.filter((level) => kataByLevel[level]).map(
+              (level) => (
+                <TableBody key={level}>
+                  <TableRow className="hover:bg-transparent">
+                    <TableHead
+                      colSpan={2}
+                      scope="rowgroup"
+                      className={cn(
+                        STICKY_LEVEL_HEAD,
+                        "capitalize text-muted-foreground",
+                      )}
+                    >
+                      {level}
+                    </TableHead>
+                  </TableRow>
+                  {kataByLevel[level].map((kata) => (
+                    <KataRow key={kata.id} kata={kata} />
+                  ))}
+                </TableBody>
+              ),
+            )}
+          </Table>
+        </div>
       </section>
     </div>
   );
