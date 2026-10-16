@@ -157,7 +157,7 @@ export const HEIAN_SHODAN: Kata = {
     {
       index: "10",
       position: Position.ZENKUTSU,
-      note: "rotate 90 degrees right around front foot from previous position.",
+      note: "rotate 270 degrees left around front foot from previous position.",
       techniques: [
         {
           name: "gedan-barai",
