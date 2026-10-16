@@ -10,6 +10,7 @@ export interface Kata {
   // I'm only interested in the first one (labelled Yoi) and all the following ones that use a number as index and the last one called Yame
   // (so for instanced 1 and not 1-A, 2 and not 2-A)
   motions: Motion[];
+  isUnderReview?: boolean // default to true after extraction, user removes the flag when he is done reviewing the result of the extraction
 }
 
 // Here is how to fill one Motion. Each of them has a title in bold next to the index. It's from this title that we extract most of the information

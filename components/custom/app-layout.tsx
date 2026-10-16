@@ -20,6 +20,7 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar";
 import { Level } from "@/type";
+import { Badge } from "../ui/badge";
 
 const getPageTitle = (pathName: string, kataId: string | undefined) => {
   if (pathName === "/about") {
@@ -96,7 +97,14 @@ export default function AppLayout({
                             href={`/kata/${kata.id}/motions`}
                             isActive={kata.id === kataId}
                           >
-                            {kata.name}
+                            <div className="w-full flex flex-row gap-2 items-center justify-between">
+                              <span>{kata.name}</span>
+                              {kata.isUnderReview && (
+                                <Badge className="text-orange-700 dark:bg-orange-950 dark:text-orange-300 flex-none">
+                                  Under Review
+                                </Badge>
+                              )}
+                            </div>
                           </SidebarNavButton>
                         </SidebarMenuItem>
                       </SidebarMenu>
