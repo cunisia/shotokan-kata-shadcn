@@ -154,7 +154,7 @@ export default function AppLayout({
           <header className="relative py-2 shrink-0">
             <SidebarTrigger
               size="icon-lg"
-              className="[&_svg]:size-5! absolute left-1 top-1/2 -translate-y-1/2"
+              className="[&_svg]:size-5! absolute inset-y-0 left-1 my-auto"
             />
             <h1 className="text-center text-2xl font-semibold">
               {getPageTitle(pathName, kataId)}
