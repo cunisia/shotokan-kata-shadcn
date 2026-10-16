@@ -18,7 +18,7 @@ import type { KataListItem } from "@/type";
 
 export const metadata: Metadata = {
   title: {
-    absolute: "Shotokan Kata List & Step-by-Step Guide",
+    absolute: "Shotokan Kata – Step-by-Step Guide",
   },
   description:
     "The Shotokan kata list, ordered by level, with step-by-step motions and pictures, floor maps (embusen) and key facts such as moves and kiai for each kata.",
