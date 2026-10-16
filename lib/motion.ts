@@ -2,11 +2,18 @@ import { type Motion, Position, type Technique } from "@/type";
 
 export type Angle = "back" | "side" | "default";
 
-const TECHNIQUE_WITH_OBVIOUS_TARGET = ['gedan-barai']
+const TECHNIQUE_WITH_OBVIOUS_TARGET = ["gedan-barai"];
 
 // Technique name with its target: "chudan uchi-uke".
 const getTargetedName = (technique: Technique) =>
-  [TECHNIQUE_WITH_OBVIOUS_TARGET.includes(technique.name) ? undefined : technique.target, technique.name].filter(Boolean).join(" ");
+  [
+    TECHNIQUE_WITH_OBVIOUS_TARGET.includes(technique.name)
+      ? undefined
+      : technique.target,
+    technique.name,
+  ]
+    .filter(Boolean)
+    .join(" ");
 
 // Technique name shown as the card title, without the target, which the
 // techniques table already shows: "uchi-uke". A target word that is part of
