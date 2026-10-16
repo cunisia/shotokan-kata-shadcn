@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { getAllKataList } from "@/app/data/get-kata";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import {
   Table,
   TableBody,
@@ -96,6 +97,21 @@ export default function Page() {
           (embusen), a video, and some general information. May it help you in
           your practice.
         </p>
+        <div className="flex flex-wrap items-center gap-4">
+          <Button
+            size="lg"
+            nativeButton={false}
+            render={<Link href="/kata/heian-shodan/motions" />}
+          >
+            Start with Heian Shodan
+          </Button>
+          <Link
+            href="/about"
+            className="text-sm text-muted-foreground underline underline-offset-4 hover:text-foreground"
+          >
+            Why this site?
+          </Link>
+        </div>
       </section>
 
       <section aria-labelledby="kata-list" className="flex flex-col gap-2">
