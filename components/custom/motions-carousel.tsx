@@ -142,7 +142,7 @@ export default function MotionsCarousel() {
         <CarouselNext className="hidden md:flex" />
       </Carousel>
       <MotionListPicker
-        open={isListOpen}
+        isOpen={isListOpen}
         onOpenChange={setIsListOpen}
         anchor={listAnchor}
         finalFocus={getCurrentCounter}

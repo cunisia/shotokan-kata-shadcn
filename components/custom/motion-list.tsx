@@ -146,13 +146,13 @@ function MotionList({
 // the step counter that opened it from the md breakpoint. Both are only
 // rendered while open.
 export default function MotionListPicker({
-  open,
+  isOpen,
   onOpenChange,
   anchor,
   finalFocus,
   ...listProps
 }: MotionListProps & {
-  open: boolean;
+  isOpen: boolean;
   onOpenChange: (open: boolean) => void;
   anchor: HTMLElement | null;
   finalFocus: () => HTMLElement | null;
@@ -161,7 +161,7 @@ export default function MotionListPicker({
 
   if (isMobile) {
     return (
-      <Sheet open={open} onOpenChange={onOpenChange}>
+      <Sheet open={isOpen} onOpenChange={onOpenChange}>
         <SheetContent
           side="bottom"
           initialFocus={listProps.currentRowRef}
@@ -179,7 +179,7 @@ export default function MotionListPicker({
 
   return (
     <Popover
-      open={open}
+      open={isOpen}
       onOpenChange={(nextOpen, details) => {
         // The counter toggles the list itself: ignore the outside press it
         // triggers, or the list would close on pointer down and reopen on click.
