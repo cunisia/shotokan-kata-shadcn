@@ -1,6 +1,6 @@
 export interface Kata {
   id: string; // generate it from the title in japonese (lowercase, replace all spaces by dash)
-  published: true; // always true: kata with full data are published and get their own pages
+  isPublished: true; // always true: kata with full data are published and get their own pages
   name: string; // title of the kata, at the top of the first page, capital letters, underlined
   meaning?: string; // not something the agent can infer, prompt the user
   description: string; // text underneath the title on the book. Please rephrase it from the original text and translate it to english
@@ -11,17 +11,17 @@ export interface Kata {
   // I'm only interested in the first one (labelled Yoi) and all the following ones that use a number as index and the last one called Yame
   // (so for instanced 1 and not 1-A, 2 and not 2-A)
   motions: Motion[];
-  isUnderReview?: boolean // default to true after extraction, user removes the flag when he is done reviewing the result of the extraction
+  isUnderReview?: boolean; // default to true after extraction, user removes the flag when he is done reviewing the result of the extraction
 }
 
 // A standard Shotokan kata the site does not cover yet: listed, but no pages.
 export interface UnpublishedKata {
   id: string; // same format as Kata.id
   name: string;
-  published: false;
+  isPublished: false;
 }
 
-// Any entry of the kata list, narrowed with `published`.
+// Any entry of the kata list, narrowed with `isPublished`.
 export type KataListItem = Kata | UnpublishedKata;
 
 // Here is how to fill one Motion. Each of them has a title in bold next to the index. It's from this title that we extract most of the information

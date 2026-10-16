@@ -73,9 +73,11 @@ function KataRow({ kata }: Readonly<{ kata: Kata }>) {
 
 export default function Page() {
   const allKata = getAllKataList();
-  const publishedKata = allKata.filter((kata): kata is Kata => kata.published);
+  const publishedKata = allKata.filter(
+    (kata): kata is Kata => kata.isPublished,
+  );
   const unpublishedKata = allKata.filter(
-    (kata): kata is UnpublishedKata => !kata.published,
+    (kata): kata is UnpublishedKata => !kata.isPublished,
   );
   const kataByLevel = groupBy(publishedKata, (kata) => kata.level);
 

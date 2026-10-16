@@ -10,7 +10,7 @@ import {
 
 export const BASSAI_DAI: Kata = {
   id: "bassai-dai",
-  published: true,
+  isPublished: true,
   name: "Bassai Dai",
   meaning: "Penetrate a Fortress",
   videoId: "tXPZFarJMh0",

@@ -83,10 +83,10 @@ export default function AppLayout({
 
   const allKata = getAllKataList();
   const kataByLevel = groupBy(
-    allKata.filter((kata): kata is Kata => kata.published),
+    allKata.filter((kata): kata is Kata => kata.isPublished),
     (kata) => kata.level,
   );
-  const unpublishedKata = allKata.filter((kata) => !kata.published);
+  const unpublishedKata = allKata.filter((kata) => !kata.isPublished);
 
   return (
     <SidebarProvider>

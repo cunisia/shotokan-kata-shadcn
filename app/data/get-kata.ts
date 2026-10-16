@@ -11,7 +11,7 @@ import { TEKKI_SHODAN } from "./tekki-shodan";
 const unpublished = (id: string, name: string): UnpublishedKata => ({
   id,
   name,
-  published: false,
+  isPublished: false,
 });
 
 // The 26 kata of the JKA (Japan Karate Association) Shotokan curriculum, in
@@ -46,7 +46,7 @@ const ALL_KATA: KataListItem[] = [
 ];
 
 const PUBLISHED_KATA: Kata[] = ALL_KATA.filter(
-  (kata): kata is Kata => kata.published,
+  (kata): kata is Kata => kata.isPublished,
 );
 
 // Only published kata have pages: use this for anything that renders or

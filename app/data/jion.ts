@@ -17,7 +17,7 @@ export const JION: Kata = {
   videoId: "Lrr-c5RCKpo",
   level: Level.INTERMEDIATE,
   isUnderReview: true,
-  published: true,
+  isPublished: true,
   numberOfMoves: 47,
   motions: [
     {
