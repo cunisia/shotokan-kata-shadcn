@@ -1,4 +1,9 @@
-import type { Kata, KataListItem, UnpublishedKata } from "@/type";
+import {
+  type Kata,
+  type KataListItem,
+  Level,
+  type UnpublishedKata,
+} from "@/type";
 import { BASSAI_DAI } from "./bassai-dai";
 import { HEIAN_GODAN } from "./heian-godan";
 import { HEIAN_NIDAN } from "./heian-nidan";
@@ -8,9 +13,14 @@ import { HEIAN_YONDAN } from "./heian-yondan";
 import { JION } from "./jion";
 import { TEKKI_SHODAN } from "./tekki-shodan";
 
-const unpublished = (id: string, name: string): UnpublishedKata => ({
+const unpublished = (
+  id: string,
+  name: string,
+  level: Level,
+): UnpublishedKata => ({
   id,
   name,
+  level,
   isPublished: false,
 });
 
@@ -23,26 +33,26 @@ const ALL_KATA: KataListItem[] = [
   HEIAN_YONDAN,
   HEIAN_GODAN,
   TEKKI_SHODAN,
-  unpublished("tekki-nidan", "Tekki Nidan"),
-  unpublished("tekki-sandan", "Tekki Sandan"),
+  unpublished("tekki-nidan", "Tekki Nidan", Level.ADVANCED),
+  unpublished("tekki-sandan", "Tekki Sandan", Level.ADVANCED),
   BASSAI_DAI,
-  unpublished("bassai-sho", "Bassai Sho"),
-  unpublished("kanku-dai", "Kanku Dai"),
-  unpublished("kanku-sho", "Kanku Sho"),
-  unpublished("empi", "Empi"),
+  unpublished("bassai-sho", "Bassai Sho", Level.ADVANCED),
+  unpublished("kanku-dai", "Kanku Dai", Level.INTERMEDIATE),
+  unpublished("kanku-sho", "Kanku Sho", Level.ADVANCED),
+  unpublished("empi", "Empi", Level.INTERMEDIATE),
   JION,
-  unpublished("jiin", "Jiin"),
-  unpublished("jitte", "Jitte"),
-  unpublished("hangetsu", "Hangetsu"),
-  unpublished("gankaku", "Gankaku"),
-  unpublished("chinte", "Chinte"),
-  unpublished("sochin", "Sochin"),
-  unpublished("nijushiho", "Nijushiho"),
-  unpublished("meikyo", "Meikyo"),
-  unpublished("unsu", "Unsu"),
-  unpublished("wankan", "Wankan"),
-  unpublished("gojushiho-dai", "Gojushiho Dai"),
-  unpublished("gojushiho-sho", "Gojushiho Sho"),
+  unpublished("jiin", "Jiin", Level.ADVANCED),
+  unpublished("jitte", "Jitte", Level.ADVANCED),
+  unpublished("hangetsu", "Hangetsu", Level.ADVANCED),
+  unpublished("gankaku", "Gankaku", Level.ADVANCED),
+  unpublished("chinte", "Chinte", Level.ADVANCED),
+  unpublished("sochin", "Sochin", Level.ADVANCED),
+  unpublished("nijushiho", "Nijushiho", Level.ADVANCED),
+  unpublished("meikyo", "Meikyo", Level.ADVANCED),
+  unpublished("unsu", "Unsu", Level.ADVANCED),
+  unpublished("wankan", "Wankan", Level.ADVANCED),
+  unpublished("gojushiho-dai", "Gojushiho Dai", Level.ADVANCED),
+  unpublished("gojushiho-sho", "Gojushiho Sho", Level.ADVANCED),
 ];
 
 const PUBLISHED_KATA: Kata[] = ALL_KATA.filter(

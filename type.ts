@@ -18,6 +18,7 @@ export interface Kata {
 export interface UnpublishedKata {
   id: string; // same format as Kata.id
   name: string;
+  level: Level;
   isPublished: false;
 }
 
