@@ -1,5 +1,7 @@
 import { RadioGroup } from "@base-ui/react";
-import { Undo2 } from "lucide-react";
+import { cn } from "cn";
+import { capitalize } from "es-toolkit";
+import { ChevronDown, ListIcon, Undo2 } from "lucide-react";
 import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -10,52 +12,18 @@ import {
   ItemDescription,
   ItemTitle,
 } from "@/components/ui/item";
-import { type Motion, Position } from "@/type";
+import {
+  type Angle,
+  getDisplayedAngle,
+  getMotionName,
+  getPictureName,
+  getPositionName,
+  getTechniqueName,
+} from "@/lib/motion";
+import type { Motion } from "@/type";
 import { Field, FieldLabel } from "../ui/field";
 import { RadioGroupItem } from "../ui/radio-group";
 import TechniquesTables from "./techniques-table";
-
-export type Angle = "back" | "side" | "default";
-
-const getMotionName = (motion: Motion) => {
-  const nameItems: string[] = [];
-  const name = motion.techniques[0].name;
-  if (motion.index) {
-    nameItems.push(`${motion.index} - `);
-  }
-  const target = motion.techniques[0].target;
-  if (target) {
-    nameItems.push(target);
-  }
-  nameItems.push(name);
-  return nameItems.join(" ");
-};
-
-const getPositionName = (position: Position) => {
-  switch (position) {
-    case Position.HACHIJI:
-      return `Shizentai ${position} dachi`;
-    default:
-      return `${position} dachi`;
-  }
-};
-
-const getPictureName = (
-  motion: Motion,
-  isBackPictureDisplayed: boolean | undefined,
-  isSidePictureDisplayed: boolean | undefined,
-) => {
-  const nameItems: (string | undefined)[] = [
-    `${motion.position}`,
-    ...motion.techniques.map(
-      (technique) => `${technique.side}_${technique.target}_${technique.name}`,
-    ),
-    motion.orientation,
-    ...(isBackPictureDisplayed ? ["back"] : []),
-    ...(isSidePictureDisplayed ? ["side"] : []),
-  ];
-  return `/motions/${nameItems.join("_")}.png`;
-};
 
 export default function MotionCard({
   motion,
@@ -64,6 +32,8 @@ export default function MotionCard({
   goBackToYoi,
   isAboveTheFold = false,
   isLcpCandidate = false,
+  isListOpen,
+  toggleList,
 }: {
   motion: Motion;
   angle: Angle;
@@ -71,32 +41,65 @@ export default function MotionCard({
   goBackToYoi: () => void;
   isAboveTheFold?: boolean;
   isLcpCandidate?: boolean;
+  isListOpen: boolean;
+  toggleList: (counter: HTMLButtonElement) => void;
 }) {
   const isTableDisplayed = (motion: Motion) =>
     !["yoi", "yame"].includes(motion.techniques[0].name);
 
-  const isBackPictureDisplayed =
-    (angle === "back" || motion.hasNoFrontPicture) && motion.hasBackPicture;
+  const { isBackPictureDisplayed, isSidePictureDisplayed } = getDisplayedAngle(
+    motion,
+    angle,
+  );
 
-  const isSidePictureDisplayed = angle === "side" && motion.hasSidePicture;
+  const isBackToYoiDisplayed = motion.techniques[0].name !== "yoi";
 
   return (
     <Card className="h-full">
       <CardHeader>
-        <CardTitle className="flex flex-row items-center justify-center">
-          <h2 className="text-xl font-semibold capitalize flex-1">
-            {getMotionName(motion)}
+        <CardTitle className="flex w-full items-center justify-between gap-2">
+          <Button
+            variant="outline"
+            size={motion.index ? "sm" : "icon-sm"}
+            data-slot="step-counter"
+            aria-haspopup="dialog"
+            aria-expanded={isListOpen}
+            aria-label={`${
+              motion.index
+                ? `Step ${motion.index}`
+                : capitalize(motion.techniques[0].name)
+            }, open motion list`}
+            onClick={(event) => toggleList(event.currentTarget)}
+            className="relative gap-0.5 tabular-nums after:absolute after:-inset-1.5"
+          >
+            {motion.index ? (
+              <>
+                {motion.index}
+                <ChevronDown data-icon="inline-end" />
+              </>
+            ) : (
+              // Yoi and yame have no step number, and their name is already
+              // the title: an icon only avoids repeating it.
+              <ListIcon />
+            )}
+          </Button>
+          <h2 className="flex-1 min-w-0 text-lg md:text-xl font-semibold capitalize text-center text-balance break-words">
+            {getTechniqueName(motion)}
           </h2>
-          {motion.techniques[0].name !== "yoi" && (
-            <Button
-              variant="outline"
-              size="icon"
-              aria-label="Back to beginning"
-              onClick={goBackToYoi}
-            >
-              <Undo2 />
-            </Button>
-          )}
+          <Button
+            variant="outline"
+            size="icon"
+            aria-label="Back to beginning"
+            aria-hidden={!isBackToYoiDisplayed}
+            tabIndex={isBackToYoiDisplayed ? undefined : -1}
+            onClick={goBackToYoi}
+            className={cn(
+              "relative after:absolute after:-inset-1",
+              !isBackToYoiDisplayed && "invisible",
+            )}
+          >
+            <Undo2 />
+          </Button>
         </CardTitle>
       </CardHeader>
       <CardContent className="flex flex-col flex-1 min-h-0 gap-4">
