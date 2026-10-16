@@ -3,6 +3,7 @@ import { getKata } from "@/app/data/get-kata";
 import { getKataMapMetadata } from "@/app/data/kata-metadata";
 import { ZoomableImage } from "@/components/custom/zoomable-image";
 import { Card, CardContent } from "@/components/ui/card";
+import { getKataBreadcrumbJsonLd, JsonLd } from "@/lib/json-ld";
 import type { Kata } from "@/type";
 
 const getMapImageName = (kata: Kata) => {
@@ -37,6 +38,7 @@ export default async function Page({
 
   return (
     <Card>
+      <JsonLd data={getKataBreadcrumbJsonLd(kata, "map")} />
       <CardContent className="flex flex-col gap-2 overflow-hidden">
         <ZoomableImage
           src={getMapImageName(kata)}
