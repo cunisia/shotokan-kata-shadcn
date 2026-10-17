@@ -4,6 +4,7 @@ import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
 import type { Metadata, Viewport } from "next";
 import AppLayout from "@/components/custom/app-layout";
+import { RegisterSW } from "@/components/custom/register-sw";
 import { ThemeProvider } from "@/components/theme-provider";
 import { BACKGROUND_COLOR, SITE_URL } from "@/lib/site";
 import { cn } from "@/lib/utils";
@@ -65,6 +66,7 @@ export default async function RootLayout({
     >
       <body>
         <Analytics />
+        <RegisterSW />
         <ThemeProvider forcedTheme="dark">
           <AppLayout>{children}</AppLayout>
         </ThemeProvider>
