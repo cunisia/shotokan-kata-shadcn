@@ -90,20 +90,22 @@ export function KataPlaceholderCard({
       aria-disabled="true"
       className="flex cursor-default flex-col gap-1.5"
     >
-      <div className={cn(PICTURE_BOX, "bg-muted")}>
-        <Image
-          src="/tiger-placeholder.png"
-          alt=""
-          width={256}
-          height={256}
-          sizes="128px"
-          loading="lazy"
-          className="absolute inset-0 m-auto w-1/2 opacity-40 grayscale"
-        />
-        <Badge
-          variant="outline"
-          className={cn(BADGE_POSITION, "bg-background")}
-        >
+      {/* A column rather than an absolute badge: the tiger is centred in the
+          space above the badge, which sits where the cover badges do (bottom
+          centre, 0.5rem from the edge). */}
+      <div className={cn(PICTURE_BOX, "flex flex-col items-center bg-muted")}>
+        <div className="flex min-h-0 w-full flex-1 items-center justify-center">
+          <Image
+            src="/tiger-placeholder.png"
+            alt=""
+            width={256}
+            height={256}
+            sizes="128px"
+            loading="lazy"
+            className="w-1/2 opacity-40 grayscale"
+          />
+        </div>
+        <Badge variant="outline" className="mb-2 bg-background">
           Coming soon
         </Badge>
       </div>

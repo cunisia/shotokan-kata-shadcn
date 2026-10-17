@@ -1,6 +1,5 @@
 import { groupBy } from "es-toolkit";
 import type { Metadata } from "next";
-import Link from "next/link";
 import { getAllKataList } from "@/app/data/get-kata";
 import KataCarouselRow from "@/components/custom/kata-carousel-row";
 import { getWebSiteJsonLd, JsonLd } from "@/lib/json-ld";
@@ -44,13 +43,7 @@ export default function Page() {
             the dojo, should you forget part of one. Each kata page brings
             together a series of cards (one per motion), a floor map of the
             kata's path (embusen), a video, and some general information. May it
-            help you in your practice.{" "}
-            <Link
-              href="/about"
-              className="rounded-sm underline decoration-muted-foreground underline-offset-4 outline-none hover:decoration-foreground focus-visible:ring-[3px] focus-visible:ring-ring/50"
-            >
-              Why this site?
-            </Link>
+            help you in your practice.
           </p>
         </div>
       </section>
