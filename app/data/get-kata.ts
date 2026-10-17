@@ -12,6 +12,7 @@ import { HEIAN_SHODAN } from "./heian-shodan";
 import { HEIAN_YONDAN } from "./heian-yondan";
 import { JION } from "./jion";
 import { TEKKI_SHODAN } from "./tekki-shodan";
+import { EMPI } from "./empi";
 
 const unpublished = (
   kata: Omit<UnpublishedKata, "isPublished">,
@@ -26,6 +27,7 @@ const PUBLISHED_KATA: Kata[] = [
   TEKKI_SHODAN,
   BASSAI_DAI,
   JION,
+  EMPI
 ];
 
 const UNPUBLISHED_KATA: UnpublishedKata[] = [
@@ -58,12 +60,6 @@ const UNPUBLISHED_KATA: UnpublishedKata[] = [
     name: "Kanku Sho",
     level: Level.ADVANCED,
     numberOfMoves: 48,
-  }),
-  unpublished({
-    id: "empi",
-    name: "Empi",
-    level: Level.INTERMEDIATE,
-    numberOfMoves: 37,
   }),
   unpublished({
     id: "jiin",
