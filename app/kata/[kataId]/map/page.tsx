@@ -4,11 +4,6 @@ import { getKataMapMetadata } from "@/app/data/kata-metadata";
 import { ZoomableImage } from "@/components/custom/zoomable-image";
 import { Card, CardContent } from "@/components/ui/card";
 import { getKataBreadcrumbJsonLd, JsonLd } from "@/lib/json-ld";
-import type { Kata } from "@/type";
-
-const getMapImageName = (kata: Kata) => {
-  return `/maps/${kata.id}.png`;
-};
 
 export async function generateMetadata({
   params,
@@ -37,14 +32,14 @@ export default async function Page({
   }
 
   return (
-    <Card>
+    // Fills the space left under the tabs; the map is contained in it, so
+    // its size isn't needed.
+    <Card className="w-full flex-1 min-h-0">
       <JsonLd data={getKataBreadcrumbJsonLd(kata, "map")} />
-      <CardContent className="flex flex-col gap-2 overflow-hidden">
+      <CardContent className="flex flex-1 min-h-0 flex-col gap-2 overflow-hidden">
         <ZoomableImage
-          src={getMapImageName(kata)}
-          alt={`${kata?.name} map`}
-          width={1600}
-          height={2400}
+          src={`/maps/${kata.id}.png`}
+          alt={`${kata.name} map`}
           // Never wider than the content column: viewport minus tab and card
           // padding (2 x 16px + 2 x 24px) on mobile, 460px column from md.
           sizes="(min-width: 768px) 380px, calc(100vw - 80px)"

@@ -1,7 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import Image from "next/image";
+import Image, { getImageProps } from "next/image";
 import { useEffect, useState } from "react";
 
 // The lightbox and its plugins are only needed once the image is enlarged:
@@ -14,8 +14,28 @@ const ZoomableImageLightbox = dynamic(loadLightbox, { ssr: false });
 
 type NetworkInformation = { saveData?: boolean };
 
+// The zoom viewer shows a ~2000px wide version made by the image optimiser
+// rather than the original picture (up to 3000+ px wide, several MB). 2048 is
+// one of the default `images.deviceSizes`, the only widths the optimiser
+// accepts, and the closest to 2000.
+// getImageProps returns its 2x candidate as `src`, so it is given half of
+// 2048. The height only matters for the <img> attributes, not the URL: the
+// optimiser resizes by width and keeps the picture's own aspect ratio (and
+// never enlarges, so narrower maps come back at their own width).
+const ZOOM_DISPLAY_WIDTH = 1024; // getImageProps' 2x candidate → w=2048
+
+// Optimised URL of the zoomed picture. Shared by the idle preload and the
+// lightbox so that opening it reuses the preloaded file.
+const getZoomSrc = (src: string, alt: string) =>
+  getImageProps({
+    src,
+    alt,
+    width: ZOOM_DISPLAY_WIDTH,
+    height: ZOOM_DISPLAY_WIDTH,
+  }).props.src;
+
 // Once the page has loaded and the browser is idle, fetch what the first open
-// needs (the lightbox code and the full-size picture), so the zoom opens
+// needs (the lightbox code and the zoomed picture), so the zoom opens
 // instantly without competing with the page's initial load.
 const usePreloadWhenIdle = (src: string) => {
   useEffect(() => {
@@ -63,23 +83,16 @@ const usePreloadWhenIdle = (src: string) => {
 type ZoomableImageProps = {
   src: string;
   alt: string;
-  width: number;
-  height: number;
   sizes?: string;
 };
 
-export function ZoomableImage({
-  src,
-  alt,
-  width,
-  height,
-  sizes,
-}: ZoomableImageProps) {
+export function ZoomableImage({ src, alt, sizes }: ZoomableImageProps) {
   const [open, setOpen] = useState(false);
   // Mount the lightbox on the first open only (that triggers the download),
   // then keep it mounted so closing still animates.
   const [hasOpened, setHasOpened] = useState(false);
-  usePreloadWhenIdle(src);
+  const zoomSrc = getZoomSrc(src, alt);
+  usePreloadWhenIdle(zoomSrc);
 
   return (
     <>
@@ -90,15 +103,16 @@ export function ZoomableImage({
           setOpen(true);
         }}
         aria-label={`Enlarge: ${alt}`}
-        className="block cursor-zoom-in h-full"
+        // `fill` needs a sized, positioned box: it takes the height left in
+        // the parent flex column.
+        className="relative block min-h-0 w-full flex-1 cursor-zoom-in"
       >
         <Image
           src={src}
           alt={alt}
-          width={width}
-          height={height}
+          fill
           sizes={sizes}
-          className="h-full w-auto m-auto"
+          className="object-contain"
         />
       </button>
 
@@ -106,10 +120,8 @@ export function ZoomableImage({
         <ZoomableImageLightbox
           open={open}
           close={() => setOpen(false)}
-          src={src}
+          src={zoomSrc}
           alt={alt}
-          width={width}
-          height={height}
         />
       )}
     </>
