@@ -14,7 +14,9 @@ const KATA_CARD_IMAGE_SIZES =
 const PICTURE_BOX =
   "relative aspect-[385/500] w-full overflow-hidden rounded-lg border";
 
-const BADGE_POSITION = "absolute top-2 left-2";
+// Bottom centre: a corner badge at the top would often hide the karateka's
+// head on the cover pictures.
+const BADGE_POSITION = "absolute bottom-2 left-1/2 -translate-x-1/2";
 
 function MovesCount({ kata }: Readonly<{ kata: KataListItem }>) {
   return (
@@ -75,7 +77,8 @@ export function KataCard({
 
 // An unpublished kata has no page: like the sidebar entries, a disabled link
 // that is neither followed nor focusable. The tiger logo stands in for a
-// cover picture.
+// cover picture: white on a transparent background, so the whole box shows
+// the muted token, the card's grey.
 export function KataPlaceholderCard({
   kata,
 }: Readonly<{ kata: KataListItem }>) {
