@@ -1,19 +1,10 @@
-import {
-  type Kata,
-  Level,
-  Orientation,
-  Position,
-  Side,
-  Target,
-  Type,
-} from "@/type";
+import { Kata, Position, Side, Target, Type, Orientation, Level } from "@/type";
 
 export const JION: Kata = {
   id: "jion",
   name: "Jion",
   meaning: "I don't want to fight",
-  description:
-    "Jion belongs to the same family as Jitte and Jiin. The book links their history to Tomari and to traditions associated with the Buddhist temple Jionji, while presenting these origins as historical interpretations. Its character combines calm, mature movement with underlying strength. Many sequences build on the five Heian katas, making their mastery a useful foundation for learning Jion. Front, back and horse stances give it a strong emphasis on Shotokan fundamentals. Understanding the applications matters as much as performing the sequence, particularly the closing actions that seize and pull an opponent's wrist before a counterpunch.",
+  description: "Jion belongs to the same family as Jitte and Jiin. The book links their history to Tomari and to traditions associated with the Buddhist temple Jionji, while presenting these origins as historical interpretations. Its character combines calm, mature movement with underlying strength. Many sequences build on the five Heian katas, making their mastery a useful foundation for learning Jion. Front, back and horse stances give it a strong emphasis on Shotokan fundamentals. Understanding the applications matters as much as performing the sequence, particularly the closing actions that seize and pull an opponent's wrist before a counterpunch.",
   videoId: "Lrr-c5RCKpo",
   level: Level.INTERMEDIATE,
   isUnderReview: true,
@@ -338,7 +329,7 @@ export const JION: Kata = {
         },
       ],
       orientation: Orientation.S,
-      note: "Slide the left foot outward and rotate 90 degrees right around rear foot into a horse stance.",
+      note: "Stay in place and switch to kiba-dachi while delivering kagi-zuki.",
       hasBackPicture: true,
     },
     {
@@ -351,7 +342,7 @@ export const JION: Kata = {
         },
       ],
       orientation: Orientation.W,
-      note: "Shift weight onto the left leg and rotate 90 degrees right around left foot into a back stance.",
+      note: "Shift weight on the left leg and turn right into a back stance.",
       hasBackPicture: true,
     },
     {
@@ -366,7 +357,7 @@ export const JION: Kata = {
         },
       ],
       orientation: Orientation.S,
-      note: "Slide the right foot outward and rotate 90 degrees left around rear foot into a horse stance.",
+      note: "Stay in place and switch to kiba-dachi while delivering kagi-zuki.",
       hasBackPicture: true,
     },
     {
@@ -391,6 +382,7 @@ export const JION: Kata = {
           name: "teisho-uchi",
           type: Type.HATEMI,
           side: Side.MIGI,
+          target: Target.CHUDAN,
         },
       ],
       orientation: Orientation.E,
@@ -405,6 +397,7 @@ export const JION: Kata = {
           name: "teisho-uchi",
           type: Type.HATEMI,
           side: Side.HIDARI,
+          target: Target.CHUDAN,
         },
       ],
       orientation: Orientation.W,
@@ -419,6 +412,7 @@ export const JION: Kata = {
           name: "teisho-uchi",
           type: Type.HATEMI,
           side: Side.MIGI,
+          target: Target.CHUDAN,
         },
       ],
       orientation: Orientation.E,
@@ -433,8 +427,8 @@ export const JION: Kata = {
           type: Type.KAMAE,
         },
       ],
-      orientation: Orientation.W,
-      note: "Draw the left foot back and rotate 180 degrees left around right foot to prepare the next back stance.",
+      orientation: Orientation.N,
+      note: "Draw the left foot back and rotate 90 degrees left around right foot to prepare the next back stance.",
     },
     {
       index: "26",
@@ -443,9 +437,10 @@ export const JION: Kata = {
         {
           name: "manji-uke",
           type: Type.BLOCK,
+          side: Side.MIGI,
         },
       ],
-      orientation: Orientation.W,
+      orientation: Orientation.N,
       note: "Settle into the back stance.",
     },
     {
@@ -460,7 +455,7 @@ export const JION: Kata = {
         },
       ],
       orientation: Orientation.N,
-      note: "Bring the right foot against the left and rotate 90 degrees right around front foot.",
+      note: "Push from the right foot and bring it against the left, keeping the same body orientation while performing morote-uke.",
     },
     {
       index: "28",
@@ -469,10 +464,11 @@ export const JION: Kata = {
         {
           name: "manji-uke",
           type: Type.BLOCK,
+          side: Side.HIDARI,
         },
       ],
-      orientation: Orientation.E,
-      note: "Rotate 90 degrees right around left foot and step right into a back stance.",
+      orientation: Orientation.N,
+      note: "Step out to the right with the right foot and settle into a left back stance while performing manji-uke.",
     },
     {
       index: "29",
@@ -486,7 +482,7 @@ export const JION: Kata = {
         },
       ],
       orientation: Orientation.N,
-      note: "Bring the left foot against the right and rotate 90 degrees left around front foot.",
+      note: "Push from the left foot and bring it against the right, keeping the same body orientation while performing morote-uke.",
     },
     {
       index: "30",
@@ -546,6 +542,7 @@ export const JION: Kata = {
         {
           name: "ryowan uchi-uke",
           type: Type.BLOCK,
+          target: Target.CHUDAN,
         },
       ],
       orientation: Orientation.N,
@@ -572,11 +569,13 @@ export const JION: Kata = {
           name: "ura-zuki",
           type: Type.HATEMI,
           side: Side.MIGI,
+          target: Target.JODAN,
         },
         {
           name: "age-uke",
           type: Type.BLOCK,
           side: Side.HIDARI,
+          target: Target.JODAN,
         },
       ],
       orientation: Orientation.N,
@@ -694,6 +693,7 @@ export const JION: Kata = {
           name: "otoshi-uke",
           type: Type.BLOCK,
           side: Side.MIGI,
+          target: Target.CHUDAN,
         },
         {
           name: "fumikomi",
@@ -732,6 +732,7 @@ export const JION: Kata = {
           name: "otoshi-uke",
           type: Type.BLOCK,
           side: Side.HIDARI,
+          target: Target.CHUDAN,
         },
         {
           name: "fumikomi",
@@ -768,6 +769,7 @@ export const JION: Kata = {
           name: "otoshi-uke",
           type: Type.BLOCK,
           side: Side.MIGI,
+          target: Target.CHUDAN,
         },
         {
           name: "fumikomi",
@@ -812,6 +814,7 @@ export const JION: Kata = {
           name: "yumi-zuki",
           type: Type.HATEMI,
           side: Side.HIDARI,
+          target: Target.CHUDAN,
         },
       ],
       orientation: Orientation.N,
@@ -839,6 +842,7 @@ export const JION: Kata = {
           name: "yumi-zuki",
           type: Type.HATEMI,
           side: Side.MIGI,
+          target: Target.CHUDAN,
         },
       ],
       orientation: Orientation.N,
