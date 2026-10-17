@@ -3,7 +3,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { getAllKataList } from "@/app/data/get-kata";
 import KataCarouselRow from "@/components/custom/kata-carousel-row";
-import { Button } from "@/components/ui/button";
 import { getWebSiteJsonLd, JsonLd } from "@/lib/json-ld";
 import { LEVELS_IN_ORDER } from "@/lib/level";
 
@@ -45,25 +44,14 @@ export default function Page() {
             the dojo, should you forget part of one. Each kata page brings
             together a series of cards (one per motion), a floor map of the
             kata's path (embusen), a video, and some general information. May it
-            help you in your practice.
+            help you in your practice.{" "}
+            <Link
+              href="/about"
+              className="rounded-sm underline decoration-muted-foreground underline-offset-4 outline-none hover:decoration-foreground focus-visible:ring-[3px] focus-visible:ring-ring/50"
+            >
+              Why this site?
+            </Link>
           </p>
-        </div>
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-          <Button
-            size="lg"
-            nativeButton={false}
-            render={<Link href="/kata/heian-shodan/motions" />}
-          >
-            Start with Heian Shodan
-          </Button>
-          <Button
-            size="lg"
-            variant="outline"
-            nativeButton={false}
-            render={<Link href="/about" />}
-          >
-            Why this site?
-          </Button>
         </div>
       </section>
 
