@@ -1,10 +1,19 @@
-import { Kata, Position, Side, Target, Type, Orientation, Level } from "@/type";
+import {
+  type Kata,
+  Level,
+  Orientation,
+  Position,
+  Side,
+  Target,
+  Type,
+} from "@/type";
 
 export const EMPI: Kata = {
   id: "empi",
   name: "Empi",
   meaning: "Flight of the Swallow",
-  description: "Empi is associated with the older name Wanshu and with the karate traditions of Tomari. The book describes several lines of transmission and notes that the kata has changed repeatedly over its long history. Funakoshi renamed it Empi, referring to the flight of a swallow. Its light, rapid techniques, sudden changes of direction and marked changes in height express that image. The historical accounts presented in the book connect Wanshu with early Okinawan fighting traditions, while acknowledging the complexity of its development.",
+  description:
+    "Empi is associated with the older name Wanshu and with the karate traditions of Tomari. The book describes several lines of transmission and notes that the kata has changed repeatedly over its long history. Funakoshi renamed it Empi, referring to the flight of a swallow. Its light, rapid techniques, sudden changes of direction and marked changes in height express that image. The historical accounts presented in the book connect Wanshu with early Okinawan fighting traditions, while acknowledging the complexity of its development.",
   videoId: "SW5907Eeo7c",
   level: Level.INTERMEDIATE,
   isUnderReview: true,
