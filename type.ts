@@ -1,3 +1,5 @@
+import type { Angle } from "@/lib/motion";
+
 export interface Kata {
   id: string; // generate it from the title in japonese (lowercase, replace all spaces by dash)
   isPublished: true; // always true: kata with full data are published and get their own pages
@@ -12,6 +14,19 @@ export interface Kata {
   // (so for instanced 1 and not 1-A, 2 and not 2-A)
   motions: Motion[];
   isUnderReview?: boolean; // default to true after extraction, user removes the flag when he is done reviewing the result of the extraction
+  // Motion picture shown on the kata's homepage card. Not something the agent
+  // can infer: the owner picks it. When absent, the card shows the first kiai
+  // motion (see getKataCoverPicture in lib/kata-cover.ts).
+  cover?: KataCover;
+}
+
+export interface KataCover {
+  // Position of the motion in the `motions` array (0 is yoi), NOT the book's
+  // `index` string ("1", "12a"...).
+  motionIndex: number;
+  // Camera angle, "default" when omitted. Falls back like the motion card
+  // when the motion has no picture for it (see getDisplayedAngle).
+  angle?: Angle;
 }
 
 // A standard Shotokan kata the site does not cover yet: listed, but no pages.
