@@ -15,6 +15,7 @@ import {
   ItemDescription,
   ItemTitle,
 } from "@/components/ui/item";
+import { getKataBreadcrumbJsonLd, JsonLd } from "@/lib/json-ld";
 import { getLevelClassNames } from "@/lib/level";
 
 export async function generateMetadata({
@@ -44,6 +45,7 @@ export default async function Page({
   }
   return (
     <Card>
+      <JsonLd data={getKataBreadcrumbJsonLd(kata, "info")} />
       <CardContent className="flex flex-col gap-2 overflow-auto">
         <div className="grid grid-cols-2">
           {kata.meaning && (

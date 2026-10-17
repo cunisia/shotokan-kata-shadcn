@@ -1,6 +1,8 @@
+import { notFound } from "next/navigation";
 import { getKata } from "@/app/data/get-kata";
 import { getKataMotionsMetadata } from "@/app/data/kata-metadata";
 import MotionsCarousel from "@/components/custom/motions-carousel";
+import { getKataBreadcrumbJsonLd, JsonLd } from "@/lib/json-ld";
 
 export async function generateMetadata({
   params,
@@ -17,6 +19,21 @@ export async function generateMetadata({
   };
 }
 
-export default function Page() {
-  return <MotionsCarousel />;
+export default async function Page({
+  params,
+}: Readonly<{
+  params: Promise<{ kataId: string }>;
+}>) {
+  const { kataId } = await params;
+  const kata = getKata(kataId);
+  if (!kata) {
+    notFound();
+  }
+
+  return (
+    <>
+      <JsonLd data={getKataBreadcrumbJsonLd(kata, "motions")} />
+      <MotionsCarousel kataId={kata.id} motions={kata.motions} />
+    </>
+  );
 }

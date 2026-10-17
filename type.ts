@@ -96,6 +96,7 @@ export enum Position {
   HEISOKU = "heisoku",
   KOSA = "kosa",
   MOTO = "moto",
+  TACHI_HIZA = 'tachi-hiza'
 }
 
 export interface Technique {
