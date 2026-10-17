@@ -1,5 +1,6 @@
 "use client";
 
+import { cn } from "cn";
 import { groupBy } from "es-toolkit";
 import type { ParamValue } from "next/dist/server/request/params";
 import Link from "next/link";
@@ -178,7 +179,15 @@ export default function AppLayoutClient({
               {getPageTitle(pathName, kataId, kataList)}
             </h1>
           </header>
-          <div className="w-full md:w-[460px] flex-1 min-h-0 flex flex-col gap-4 items-center m-auto pb-2">
+          {/* The homepage's kata carousels get a wider column (capped by the
+              available width, e.g. with the sidebar open on a small laptop);
+              every other page keeps the 460px one. */}
+          <div
+            className={cn(
+              "w-full flex-1 min-h-0 flex flex-col gap-4 items-center m-auto pb-2",
+              pathName === "/" ? "md:max-w-[900px]" : "md:w-[460px]",
+            )}
+          >
             {children}
           </div>
         </div>
