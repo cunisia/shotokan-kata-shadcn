@@ -5,6 +5,7 @@ import {
   type UnpublishedKata,
 } from "@/type";
 import { BASSAI_DAI } from "./bassai-dai";
+import { EMPI } from "./empi";
 import { HEIAN_GODAN } from "./heian-godan";
 import { HEIAN_NIDAN } from "./heian-nidan";
 import { HEIAN_SANDAN } from "./heian-sandan";
@@ -12,7 +13,6 @@ import { HEIAN_SHODAN } from "./heian-shodan";
 import { HEIAN_YONDAN } from "./heian-yondan";
 import { JION } from "./jion";
 import { TEKKI_SHODAN } from "./tekki-shodan";
-import { EMPI } from "./empi";
 
 const unpublished = (
   kata: Omit<UnpublishedKata, "isPublished">,
@@ -27,7 +27,7 @@ const PUBLISHED_KATA: Kata[] = [
   TEKKI_SHODAN,
   BASSAI_DAI,
   JION,
-  EMPI
+  EMPI,
 ];
 
 const UNPUBLISHED_KATA: UnpublishedKata[] = [
